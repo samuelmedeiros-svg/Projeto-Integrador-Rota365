@@ -4,7 +4,7 @@ Repository made for a academic project. The repository is about a website for ca
 
 Access git-scm.com to learn how to use Git.
 
-While editing some part of the project, please make a branch. Do not add itens to the main without consent and authorization.
+While editing some part of the project, please make a branch. Do not add, edit or remove itens from the main without consent and authorization.
 
 When commiting an archive, define the changes correctly and clearly. Standard commit mensage: "feature: details".
 
