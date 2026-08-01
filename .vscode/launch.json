@@ -5,10 +5,14 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "port": 9222,
+            "request": "attach"
+        },
+        {
             "type": "chrome",
             "request": "launch",
             "name": "Open index.html",
-            "file": "c:\\Users\\samue_\\OneDrive\\Desktop\\Projeto Integrador - Rota 365\\teste.html"
+            "file": "c:\\Users\\samue_\\OneDrive\\Desktop\\Projeto-Integrador-Rota365\\index.html"
         }
     ]
 }
