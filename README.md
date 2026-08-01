@@ -1,4 +1,7 @@
 # Projeto-Integrador-Rota365
+<<<<<<< HEAD
+Repository made for a academic project.
+=======
 Repository made for a academic project. The repository is about a website for car renting.
 
 
@@ -16,3 +19,4 @@ Juan Henrique Ferreira Neves;
 Lucas Alexandre Souza Maia;
 Samuel Marques Medeiros;
 Thiago Cardoso Costa;
+>>>>>>> 386beace4016245f5521d46dc50e12dc1e403f30
