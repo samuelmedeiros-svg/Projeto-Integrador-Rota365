@@ -166,6 +166,7 @@ main{
     align-items: center;
     justify-content: center;
     gap: 12px;
+    transition: transform 0.3s ease-in-out;
 }
 
 .card img{
@@ -179,9 +180,9 @@ main{
     font-weight: 600;
     color: #000;
 }
-.card span:hover{
-    transition: .3s;
-    color:#ff7a00;
+
+.card:hover{
+    transform: scale(1.1);
 }
 .alugar{
     margin-top: auto;
@@ -256,26 +257,20 @@ main{
 }
 
 .buscar button{
-
     background:#ff6f00;
-
     color:#fff;
-
     border:none;
     border-radius:30px;
     padding:8px 40px;
     font-size:14px;
-
     font-weight:bold;
-
     cursor:pointer;
-
-    transition:.3s;
+    transition: transform 0.3s ease-in-out;
 }
 
 .buscar button:hover{
-
     background:#e65f00;
+    transform: scale(1.08);
 }
     
 
@@ -369,6 +364,10 @@ main{
         <div class="card">
             <img src="assets/images/like.png" alt="like">
             <span>Reserve rápido</span>
+        </div>
+        <div class="card">
+            <img src="assets/images/car.png" alt="carro">
+            <span>Maior variedade</span>
         </div>
     </section>
     <main>   
