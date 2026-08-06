@@ -1,1 +1,0 @@
-Recado do pauzudo Nascimento
