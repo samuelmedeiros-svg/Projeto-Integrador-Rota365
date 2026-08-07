@@ -1,0 +1,73 @@
+/* Fundo cinza apenas para destacar o card branco na tela */
+.filter{
+    margin-top: 90px;
+    padding: 40px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+/* Container Principal do Filtro */
+.filter-card {
+    width: 100%;
+    max-width: 320px;
+    border-radius: 15px;
+    border: none;
+    background-color: #fff;
+}
+/* Estilo do Título (Laranja) */
+.text-brand {
+    color: #ff5a00;
+    letter-spacing: 0.5px;
+}
+/* Sobrescrevendo o Accordion do Bootstrap */
+.accordion-item {
+    border: none;
+    border-bottom: 1.5px solid #dcdcdc; /* Linhas separadoras */
+    border-radius: 0 !important;
+    background-color: transparent;
+}
+
+/* Botões de abrir/fechar categorias */
+.accordion-button {
+    padding: 15px 0;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #000;
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+
+.accordion-button:not(.collapsed) {
+    color: #000; /* Mantém a cor preta quando aberto */
+}
+
+/* Remove o padding lateral do conteúdo interno */
+.accordion-body {
+    padding: 0 0 15px 0;
+}
+/* Customizando os Radio Buttons para ficarem com a borda laranja */
+.custom-radio {
+    width: 22px;
+    height: 22px;
+    border: 2px solid #ff5a00;
+    cursor: pointer;
+}
+
+.custom-radio:checked {
+    background-color: #ff5a00;
+    border-color: #ff5a00;
+}
+.custom-label {
+    font-weight: 500;
+    cursor: pointer;
+    margin-left: 8px;
+    font-size: 0.95rem;
+}
+
+/* Alinhamento dos itens da lista */
+.filter-option {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+}
