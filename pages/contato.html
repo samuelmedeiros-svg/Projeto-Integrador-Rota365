@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="authors" content="Samuel Marques Medeiros, Arthur Chaves Macedo">
+    <meta name="reply-to" content="samuel.medeiros@estudante.iftm.edu.br">
+    <meta name="description" content="Página de contato">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - Rota365</title>
+
+    
+    <link rel="stylesheet" href="../assets/css/header.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .contato-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .contato-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .contato-header h1 {
+            color: #333333;
+            margin-bottom: 10px;
+        }
+
+        .contato-header p {
+            color: #666666;
+        }
+
+        .contato-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contato-form input, 
+        .contato-form textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        .contato-form textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .contato-form button {
+            background-color: #ff6600;
+            color: #ffffff;
+            padding: 15px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .contato-form button:hover {
+            background-color: #e65c00;
+        }
+        
+        .mensagem-sucesso {
+            text-align: center;
+            padding: 40px 20px;
+        }
+        
+        .mensagem-sucesso h2 {
+            color: #28a745;
+            margin-bottom: 20px;
+        }
+        
+        .mensagem-sucesso p {
+            font-size: 18px;
+            color: #333333;
+            margin-bottom: 40px;
+            line-height: 1.5;
+        }
+        
+        .btn-voltar {
+            background-color: #ff6600;
+            color: #ffffff;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-voltar:hover {
+            background-color: #e65c00;
+        }
+    </style>
+</head>
+
+<body>
+    <header id="header">
+        <div class="container">
+            <div class="logo">
+            <!-- Voltou uma pasta para ir para o Início e achar as imagens -->
+            <a href="../index.html">
+                <img src="../assets/images/logo.png" alt="logo" width="150" id="logo">
+            </a>
+            </div>
+            <nav>
+                <a href="../index.html">Início</a>
+                <!-- Como já estamos na pasta pages, não precisa de "pages/" antes -->
+                <a href="frota.html">Frota365</a>
+                <a href="#">365hub</a>
+                <a href="#">Reservas</a>
+                <a href="contato.html">Contato</a>
+                <a href="ajuda.html">Ajuda</a>
+            </nav>
+            <div class="profile">
+                <a href="#">
+                    <img src="../assets/images/profile.png" alt="profile" id="profile">
+                </a>
+            </div>
+            <div class="lupa">
+                <a href="#">
+                    <img src="../assets/images/lupa.png" alt="lupa" id="lupa">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="contato-container" id="contato-container">
+            <div class="contato-header">
+                <h1>Fale Conosco</h1>
+                <p>Preencha o formulário abaixo e nossa equipe entrará em contato com você o mais rápido possível.</p>
+            </div>
+            <form class="contato-form" id="form-contato">
+                <input type="text" name="nome" placeholder="Nome Completo" required>
+                <input type="email" name="email" placeholder="E-mail" required>
+                <input type="text" name="telefone" placeholder="Telefone / WhatsApp (10 números)" pattern="[0-9]{10}" title="O telefone deve conter exatamente 10 números" maxlength="10" required>
+                <input type="text" name="assunto" placeholder="Assunto" required>
+                <textarea name="mensagem" placeholder="Escreva sua mensagem aqui..." required></textarea>
+                <button type="submit">ENVIAR MENSAGEM</button>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        document.getElementById('form-contato').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const telefone = document.querySelector('input[name="telefone"]').value;
+            const apenasNumeros = telefone.replace(/\D/g, '');
+            
+            if (apenasNumeros.length !== 10) {
+                alert("O número de telefone deve conter exatamente 10 números.");
+                return;
+            }
+            
+            const container = document.getElementById('contato-container');
+            container.innerHTML = `
+                <div class="mensagem-sucesso">
+                    <h2>Mensagem Enviada!</h2>
+                    <p>Sua mensagem foi enviada e será respondida o mais rápido possível ou até 48 horas pela equipe ROTA 365.</p>
+                    <a href="../index.html" class="btn-voltar">Voltar para a página principal</a>
+                </div>
+            `;
+        });
+    </script>
+    <script src="../assets/js/scroll.js"></script>
+</body>
+</html>
