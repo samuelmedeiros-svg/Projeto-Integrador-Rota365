@@ -1,3 +1,7 @@
+
+const scriptSrc = document.currentScript.src;
+const BASE_URL = scriptSrc.substring(0, scriptSrc.indexOf('assets/js/scroll.js'));
+
 window.addEventListener('scroll', function () {
   const header = document.querySelector('header');
   const logo = document.getElementById('logo');
@@ -9,14 +13,14 @@ window.addEventListener('scroll', function () {
   header.classList.toggle('scroll', scrolled);
 
   logo.src = scrolled
-    ? 'assets/images/logo-branca.png'
-    : 'assets/images/logo.png';
+    ? BASE_URL + 'assets/images/logo-branca.png'
+    : BASE_URL + 'assets/images/logo.png';
 
   lupa.src = scrolled
-    ? 'assets/images/lupa-branca.png'
-    : 'assets/images/lupa.png';
+    ? BASE_URL + 'assets/images/lupa-branca.png'
+    : BASE_URL + 'assets/images/lupa.png';
 
   profile.src = scrolled
-    ? 'assets/images/profile-branca.png'
-    : 'assets/images/profile.png';
+    ? BASE_URL + 'assets/images/profile-branca.png'
+    : BASE_URL + 'assets/images/profile.png';
 });
