@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="../assets/css/header.css">
     <link rel="stylesheet" href="../assets/css/card.css">
     <link rel="stylesheet" href="../assets/css/index.css">
+    <link rel="stylesheet" href="../assets/css/login.css">
 </head>
 
 <body>
@@ -50,32 +51,27 @@
   </header>
 
     <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledbt="loginModallabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-dialog modal-dialog-centered w-75">
         <div class="modal-content">
             <div class="modal-body">
               <img src="../assets/images/logo-login.png" alt="logo" class="modal-img">
               <form>
                 <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label">Email</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="seuemail@aqui.com">
+                  <label for="InputEmail1" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp" placeholder="seuemail@aqui.com">
                 </div>
-                <div class="mb-3">
-                  <label for="exampleInputPassword1" class="form-label">Senha</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1">
-                  <div id="passwordHelpBlock" class="form-text">
-                    Minimo 8 caracteres.
-                  </div>
-                  <div>
-                  <span id="passwordReset" class="form-text">
-                    Esqueceu esqueceu a senha?
-                  </span>
-                  <span>
-                    <button class="btn btn-secondary" data-bs-target="#trocarsenhaModal" data-bs-toggle="modal">Troque aqui</button>
-                  </span>
+                <div class="mb-1">
+                    <label for="InputPassword1" class="form-label">Senha</label>
+                    <input type="password" class="form-control white-text" id="InputPassword1" placeholder="sua senha aqui">
                 </div>
+                <div class="leva-senha mb-2">
+                    <button id="levasenha-btn"class="btn btn-link btn-sm p-0" data-bs-target="#trocarsenhaModal" data-bs-toggle="modal">Esqueci minha senha</button> 
                 </div>
-                <button type="submit" class="btn btn-primary">Entrar</button>
-               
+                
+                <button id="entrar-btn" type="submit" class="btn btn-sm mb-2">Entrar</button>
+                <div class="leva-cadastro"> 
+                    <button id="levacadastro-btn" class="btn btn-link btn-sm p-0" data-bs-target="#cadastroModal" data-bs-toggle="modal">Crie sua conta</button>
+                </div>  
               </form>
             </div>
           </div>

@@ -1,0 +1,85 @@
+.modal-dialog {
+  max-width: 350px;
+}
+
+.modal-body { 
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: center;  
+  padding: 0;
+  margin: 0;
+  margin-top: 30px;
+  margin-bottom: 30px;  
+}
+
+.modal .modal-img {
+  width: 80px;
+}
+
+.modal .form-label{
+  color: #ff8d49;
+}
+
+.modal .form-control {
+  background-color: #ff8d49;
+}
+
+.modal .form-control::placeholder {
+  font-size: 14px;
+  color: white;
+  opacity: 0.9;
+}
+
+.modal .form-control {
+  color: white;
+}
+/* Altera a cor da borda e a sombra de foco padrão do Bootstrap */
+.modal .form-control:focus {
+  border-color: #c66023 !important; /* Laranja mais escuro */
+  box-shadow: 0 0 0 0.25rem rgba(255, 141, 73, 0.4) !important; /* Brilho laranja ao redor */
+  background-color: #ff8d49 !important; /* Mantém o fundo laranja original */
+  color: white !important;
+}
+.modal #levasenha-btn, #levacadastro-btn{
+  color: #ff8d49;
+}
+/* 1. Aumenta a largura dos itens mantendo o modal intacto */
+.modal-body form {
+  width: 85%; /* Os inputs ficarão mais largos ocupando 85% dos 350px */
+}
+
+/* 2. Centraliza os botões de esqueci a senha e cadastro */
+.leva-senha, 
+.leva-cadastro {
+  font-size: 12px;
+  text-align: center;
+  width: 100%;
+}
+
+/* 3. Estiliza o botão Entrar para ser levemente menor e com texto branco */
+#entrar-btn {
+  background-color: #ff8d49;
+  color: white; 
+  width: 80% !important;  /* Levemente menor que a largura total (100%) dos inputs */
+  margin-left: auto !important;
+  margin-right: auto !important;/* Centraliza o botão dentro do form */
+  display: block !important;
+  border: none;
+  outline: none;
+  transition: background-color 0.2s ease;
+}
+
+/* 4. Estado de clique/foco: mais escuro, sem bordas ou outlines padrão do Bootstrap */
+#entrar-btn:hover {
+  color: white; /* Garante que o texto continue branco no hover */
+}
+
+#entrar-btn:active, 
+#entrar-btn:focus {
+  background-color: #e07634 !important; /* Laranja levemente mais escuro */
+  color: white !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important; /* Remove o anel de foco azul do Bootstrap */
+}
