@@ -68,6 +68,7 @@
   border: none;
   outline: none;
   transition: background-color 0.2s ease;
+  border-radius: 35px;
 }
 
 /* 4. Estado de clique/foco: mais escuro, sem bordas ou outlines padrão do Bootstrap */

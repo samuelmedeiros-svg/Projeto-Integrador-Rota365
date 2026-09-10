@@ -50,7 +50,63 @@
       </div>
   </header>
 
-    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledbt="loginModallabel" aria-hidden="true">
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-label="loginModallabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered w-75">
+        <div class="modal-content">
+            <div class="modal-body">
+              <img src="../assets/images/logo.png" alt="logo" class="modal-img">
+              <form>
+                <div class="mb-3">
+                  <label for="InputEmail1" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp" placeholder="seuemail@aqui.com">
+                </div>
+                <div class="mb-2">
+                    <label for="InputPassword1" class="form-label">Senha</label>
+                    <input type="password" class="form-control white-text" id="InputPassword1" placeholder="sua senha aqui">
+                </div>
+                <div class="leva-senha mb-2">
+                    <button type="button" id="levasenha-btn"class="btn btn-link btn-sm p-0" data-bs-toggle="modal" data-bs-target="#trocarsenhaModal">Esqueci minha senha</button> 
+                </div>
+                
+                <button id="entrar-btn" type="submit" class="btn btn-sm mb-2">Entrar</button>
+                <div class="leva-cadastro"> 
+                    <button type="button" id="levacadastro-btn" class="btn btn-link btn-sm p-0" data-bs-target="#cadastroModal" data-bs-toggle="modal">Crie sua conta</button>
+                </div>  
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+     <div class="modal fade" id="trocarsenhaModal"  aria-label="trocarsenhaModallabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered w-75">
+        <div class="modal-content">
+            <div class="modal-body">
+              <img src="../assets/images/logo-login.png" alt="logo" class="modal-img">
+              <form>
+                <div class="mb-3">
+                    <label for="InputNewPassword" class="form-label">Nova Senha</label>
+                    <input type="password" class="form-control white-text" id="InputNewPassword" placeholder="sua nova senha aqui">
+                </div>
+
+                <div class="mb-4">
+                    <label for="RepeteInputPassword" class="form-label">Repita sua nova senha</label>
+                    <input type="password" class="form-control white-text" id="RepeteInputPassword" placeholder="repita sua senha aqui">
+                </div>
+                          
+                <button id="entrar-btn" type="submit" class="btn btn-sm mb-2">Trocar Senha</button>
+                <div class="leva-cadastro"> 
+                    <button type="button" id="levacadastro-btn" class="btn btn-link btn-sm p-0" data-bs-target="#cadastroModal" data-bs-toggle="modal">Crie sua conta</button>
+                </div>  
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="modal fade" id="cadastroModal" aria-label="cadastroModallabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered w-75">
         <div class="modal-content">
             <div class="modal-body">
@@ -60,17 +116,20 @@
                   <label for="InputEmail1" class="form-label">Email</label>
                   <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp" placeholder="seuemail@aqui.com">
                 </div>
-                <div class="mb-1">
-                    <label for="InputPassword1" class="form-label">Senha</label>
-                    <input type="password" class="form-control white-text" id="InputPassword1" placeholder="sua senha aqui">
+
+                <div class="mb-3">
+                    <label for="InputNewPassword" class="form-label">Senha</label>
+                    <input type="password" class="form-control white-text" id="InputNewPassword" placeholder="sua nova senha aqui">
                 </div>
-                <div class="leva-senha mb-2">
-                    <button id="levasenha-btn"class="btn btn-link btn-sm p-0" data-bs-target="#trocarsenhaModal" data-bs-toggle="modal">Esqueci minha senha</button> 
+
+                <div class="mb-4">
+                    <label for="InputTel" class="form-label">Seu Telefone</label>
+                    <input type="text" class="form-control white-text" id="InputTel" placeholder="(99) 99999-9999">
                 </div>
-                
-                <button id="entrar-btn" type="submit" class="btn btn-sm mb-2">Entrar</button>
+                          
+                <button id="entrar-btn" type="submit" class="btn btn-sm mb-2">Criar Conta</button>
                 <div class="leva-cadastro"> 
-                    <button id="levacadastro-btn" class="btn btn-link btn-sm p-0" data-bs-target="#cadastroModal" data-bs-toggle="modal">Crie sua conta</button>
+                    <button type="button" id="levacadastro-btn" class="btn btn-link btn-sm p-0" data-bs-target="#loginModal" data-bs-toggle="modal">Faça login</button>
                 </div>  
               </form>
             </div>
@@ -78,6 +137,7 @@
         </div>
       </div>
     </div>
+
 
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
