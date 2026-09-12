@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="authors" content="Samuel Marques Medeiros, Arthur Chaves Macedo, Juan Henrique Ferreira Neves">
+    <meta name="reply-to" content="samuel.medeiros@estudante.iftm.edu.br">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Rota365 - Funcionário</title>
+
+    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+</head>
+
+<body>
+
+    <header id="header">
+        <div class="container">
+
+            <div class="logo">
+                <a href="index.html">
+                    <img 
+                        src="assets/images/logo.png" 
+                        alt="Logo" 
+                        width="150" 
+                        id="logo"
+                    >
+                </a>
+            </div>
+
+            <nav>
+                <a href="index.html">Início</a>
+                <a href="#">Frota</a>
+                <a href="#">Reservas</a>
+                <a href="#">Clientes</a>
+                <a href="#">Financeiro</a>
+                <a href="#">Relatórios</a>
+            </nav>
+
+            <div class="profile">
+                <a href="#">
+                    <img 
+                        src="assets/images/profile.png" 
+                        alt="Perfil" 
+                        id="profile"
+                    >
+                </a>
+            </div>
+
+            <div class="lupa">
+                <a href="#">
+                    <img 
+                        src="assets/images/lupa.png" 
+                        alt="Pesquisar" 
+                        id="lupa"
+                    >
+                </a>
+            </div>
+
+        </div>
+    </header>
+
+    <main>
+        <h2 class="saudacao">Olá, Ana! Aqui está o resumo da Rota365 hoje.</h2>
+        <p class="subtitulo">Confira os principais indicadores de hoje.</p>
+
+        <div class="cards-container">
+
+            <div class="card">
+                <div class="card-title">Veículos disponíveis</div>
+                <div class="card-number">32</div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Reservas Marcadas Para Hoje</div>
+                <div class="card-number">7</div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Veículos alugados</div>
+                <div class="card-number">18</div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Devoluções Marcadas Para Hoje</div>
+                <div class="card-number">12</div>
+            </div>
+
+        </div>
+
+        <div class="tabela-container">
+
+            <div class="tabela-header">
+                <div class="tabela-titulo">Reservas Confirmadas</div>
+                <a href="#" class="ver-todas">Ver todas →</a>
+            </div>
+
+            <div class="tabela-card">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Cliente</th>
+                            <th>Veículo</th>
+                            <th>Retirada</th>
+                            <th>Devolução</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="cliente-nome">João Silva</td>
+                            <td><span class="veiculo-badge">HB20</span></td>
+                            <td>10:00</td>
+                            <td>13/09</td>
+                        </tr>
+                        <tr>
+                            <td class="cliente-nome">Maria Souza</td>
+                            <td><span class="veiculo-badge">Corolla</span></td>
+                            <td>11:30</td>
+                            <td>15/09</td>
+                        </tr>
+                        <tr>
+                            <td class="cliente-nome">Pedro Oliveira</td>
+                            <td><span class="veiculo-badge">Onix</span></td>
+                            <td>14:00</td>
+                            <td>17/09</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="alertas-container">
+
+            <div class="alertas-titulo">
+                
+                Atenção
+            </div>
+
+            <div class="alerta-item">
+                
+                <span>3 veículos em manutenção</span>
+            </div>
+
+            <div class="alerta-item">
+                
+                <span>2 reservas aguardando confirmação</span>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script src="assets/js/scroll.js"></script>
+
+</body>
+</html>
