@@ -1,0 +1,223 @@
+:root {
+    --laranja: #FF6B00;
+    --laranja-escuro: #E85D00;
+    --laranja-claro: #FFF1E6;
+    --preto: #1A1A1A;
+    --cinza: #6B6B6B;
+    --cinza-claro: #F4F4F4;
+    --branco: #FFFFFF;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--cinza-claro);
+    margin: 0;
+}
+
+/* Saudação */
+
+.saudacao {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-align: center;
+    margin-top: 40px;
+    color: var(--preto);
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.subtitulo {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-align: center;
+    color: var(--cinza);
+    font-size: 14px;
+    margin-top: 6px;
+}
+
+/* Cards */
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 700px;
+    margin: 40px auto 0;
+    padding: 0 20px;
+}
+
+.card {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: var(--branco);
+    border-radius: 16px;
+    padding: 22px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+    border-top: 4px solid var(--laranja);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px rgba(255, 107, 0, 0.18);
+}
+
+.card-title {
+    font-size: 18px;
+    color: var(--preto);
+    line-height: 1.3;
+    font-weight: 700;
+}
+
+.card-number {
+    font-size: 34px;
+    font-weight: 800;
+    margin-top: 10px;
+    color: var(--preto);
+}
+
+/* Tabela */
+
+.tabela-container {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    max-width: 700px;
+    margin: 40px auto 0;
+    padding: 0 20px 50px;
+}
+
+.tabela-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.tabela-titulo {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--preto);
+}
+
+.tabela-titulo::before {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: var(--laranja);
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.ver-todas {
+    font-size: 13px;
+    color: var(--laranja);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.ver-todas:hover {
+    text-decoration: underline;
+}
+
+.tabela-card {
+    background-color: var(--branco);
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: var(--preto);
+}
+
+th {
+    text-align: left;
+    padding: 14px 20px;
+    font-size: 12px;
+    color: var(--branco);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+td {
+    text-align: left;
+    padding: 16px 20px;
+    font-size: 14px;
+    color: var(--preto);
+    border-bottom: 1px solid var(--cinza-claro);
+}
+
+tbody tr {
+    transition: background-color 0.15s ease;
+}
+
+tbody tr:hover {
+    background-color: var(--laranja-claro);
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.cliente-nome {
+    font-weight: 600;
+}
+
+.veiculo-badge {
+    display: inline-block;
+    background-color: var(--laranja-claro);
+    color: var(--laranja-escuro);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* Alertas */
+
+.alertas-container {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    max-width: 700px;
+    margin: 0 auto 50px;
+    padding: 0 20px;
+}
+
+.alertas-titulo {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--preto);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.alerta-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--branco);
+    border-left: 4px solid var(--laranja);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: var(--preto);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.alerta-item:last-child {
+    margin-bottom: 0;
+}
+
+.alerta-emoji {
+    font-size: 18px;
+}
