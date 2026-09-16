@@ -1,0 +1,207 @@
+/* ===================================================
+   MODAL DE LOGIN / CADASTRO / RECUPERAÇÃO DE SENHA
+   Layout inspirado no modelo enviado, cores do projeto
+   =================================================== */
+
+.modal-dialog {
+  max-width: 380px;
+}
+
+.modal-content {
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 36px 30px 28px;
+  margin: 0;
+}
+
+.modal .modal-img {
+  width: 120px;
+  margin-bottom: 18px;
+}
+
+.modal-body form {
+  width: 100%;
+}
+
+/* -------- Divisor com texto (linha - texto - linha) -------- */
+.divider-text {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  color: #777;
+  font-size: 13px;
+  margin: 4px 0 18px;
+}
+
+.divider-text::before,
+.divider-text::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: #e0e0e0;
+}
+
+/* -------- Botões sociais (Google / Apple) -------- */
+.social-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 10px 12px;
+  background-color: #fff;
+  color: #333;
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.social-btn i,
+.social-btn img {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+}
+
+.social-btn:hover {
+  background-color: #f7f7f7;
+  border-color: #ccc;
+  color: #333;
+}
+
+/* -------- Campos de formulário com linha embaixo -------- */
+.field-group {
+  position: relative;
+  margin-bottom: 22px;
+}
+
+.field-group .form-label {
+  color: #ff8d49;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.field-group .form-control {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #d8d8d8;
+  border-radius: 0;
+  padding: 6px 30px 6px 0;
+  color: #333;
+  opacity: 1;
+}
+
+.field-group .form-control::placeholder {
+  color: #bbb;
+  font-size: 14px;
+}
+
+.field-group .form-control:focus {
+  border-bottom: 1.5px solid #ff8d49;
+  box-shadow: none;
+  background-color: transparent;
+  color: #333;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 0;
+  bottom: 8px;
+  background: none;
+  border: none;
+  padding: 0;
+  color: #ff8d49;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.toggle-password:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+/* -------- Links "Esqueci a senha" / "Esqueci o e-mail" -------- */
+.form-links {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 26px;
+}
+
+.form-links button,
+.form-links a {
+  font-size: 13px;
+  color: #777 !important;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.leva-senha {
+  text-align: right;
+  width: 100%;
+  margin-bottom: 26px;
+}
+
+.leva-senha button {
+  font-size: 13px;
+  color: #777 !important;
+  text-decoration: underline;
+  padding: 0;
+}
+
+/* -------- Botão principal (Entrar / Trocar senha / Criar conta) -------- */
+#entrar-btn {
+  background-color: #ff8d49;
+  color: #fff;
+  width: 100%;
+  border: none;
+  outline: none;
+  border-radius: 30px;
+  padding: 11px 0;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: background-color 0.2s ease;
+  margin-bottom: 6px;
+}
+
+#entrar-btn:hover {
+  background-color: #e07634;
+  color: #fff;
+}
+
+#entrar-btn:active,
+#entrar-btn:focus {
+  background-color: #e07634 !important;
+  color: #fff !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* -------- Link "Ainda não tenho cadastro" / "Faça login" -------- */
+.leva-cadastro {
+  width: 100%;
+  text-align: center;
+  margin-top: 16px;
+}
+
+.leva-cadastro button {
+  font-size: 13px;
+  color: #ff8d49 !important;
+  text-decoration: underline;
+  padding: 0;
+}

@@ -1,0 +1,75 @@
+/* Container principal do Card com altura menor */
+.cards .card {
+  background-color: #fff;
+  height: 260px; /* Reduzido (ajuste esse valor se quiser ainda menor, ex: 240px) */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 8px; /* Opcional: Arredonda os cantos do card */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cards .card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* O card-body usa flexbox em linha */
+.cards .card-body {
+  flex: 1; 
+  padding: 1.2rem; /* Um pouco menos de padding para caber na nova altura */
+  gap: 10px; 
+}
+
+/* Imagem do carro */
+.cards .card-img img {
+  width: 100%;
+  max-width: 170px;
+  height: auto; 
+}
+
+/* --- Botão Laranja (agora arredondado) --- */
+.btn-laranja {
+  background-color: #ff5a00;
+  color: #ffffff;
+  border: none;
+  font-weight: 500;
+  padding: 4px 16px;
+  border-radius: 20px; /* Isso deixa o botão arredondado igual à imagem */
+  white-space: nowrap;
+  transition: 0.3s;
+}
+
+.btn-laranja:hover {
+  background-color: #e04f00;
+  color: #ffffff;
+}
+
+/* --- Estilo do Preço (Mantido) --- */
+.preco-estilizado {
+  font-family: Arial, sans-serif;
+  display: inline-flex;
+  align-items: baseline; 
+  line-height: 1; /* Garante que não haja espaço extra abaixo do texto */
+}
+.valor-principal { color: #ff5e00; font-size: 26px; font-weight: 800; }
+.centavos { color: #ff5e00; font-size: 15px; font-weight: 700; }
+.periodo { color: #1a1a1a; font-size: 13px; font-weight: 400; margin-left: 2px; }
+
+.card-footer {
+  gap: 3px;
+}
+
+.card-footer .footer-info {
+  display: flex;  
+  align-items: center;
+  gap: 3px;
+}
+.card-footer .footer-info img {
+  width: 30px;
+  height: auto; 
+}
+.card-footer .footer-info p {
+  margin: 0;
+  line-height: 1;
+}
