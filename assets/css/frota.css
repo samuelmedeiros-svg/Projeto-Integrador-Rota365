@@ -1,16 +1,8 @@
-/* Fundo cinza apenas para destacar o card branco na tela */
-.filter{
-    margin-top: 90px;
-    padding: 40px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-}
+
 /* Container Principal do Filtro */
 .filter-card {
     width: 100%;
-    max-width: 320px;
+    max-width: 360px;
     border-radius: 15px;
     border: none;
     background-color: #fff;
