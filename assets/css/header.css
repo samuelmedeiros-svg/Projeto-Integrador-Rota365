@@ -12,7 +12,7 @@ body{
 main{
     padding-top: 70px;
 }
-
+/*Seção do header principal*/
 #header{
     position: fixed;
     top: 0;
@@ -80,7 +80,7 @@ main{
 #header.scroll nav a{
     color:#fff;
 }
-
+/*Conteudos do header*/
 .logo{
     position:absolute;
     left:20px;
