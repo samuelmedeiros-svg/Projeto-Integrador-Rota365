@@ -63,3 +63,42 @@
     display: flex;
     align-items: center;
 }
+
+.search-bar-wrapper {
+    padding: 20px 0;
+    
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #fff; /* cinza acinzentado */
+    border-radius: 50px; /* bordas bem arredondadas */
+    padding: 16px 20px;
+    max-width: 700px;
+    margin: 8px auto;
+    transition: box-shadow 0.2s ease;
+}
+
+.search-bar:focus-within {
+    box-shadow: 0 0 0 2px #ff5a00; /* destaque laranja ao focar, combinando com a marca */
+}
+
+.search-bar .bi-search {
+    color: #888;
+    font-size: 1.2rem;
+    margin-right: 10px;
+}
+
+.search-input {
+    border: none;
+    background: transparent;
+    outline: none;
+    width: 100%;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.search-input::placeholder {
+    color: #999;
+}
