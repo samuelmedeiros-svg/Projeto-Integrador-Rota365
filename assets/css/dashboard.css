@@ -105,6 +105,12 @@ body {
     color: var(--preto);
 }
 
+.sidebar-nav a.active {
+    background-color: var(--branco);
+    color: var(--preto);
+}
+
+
 
 
 .sidebar-search {
@@ -432,4 +438,679 @@ tbody tr:last-child td {
     .cards-container {
         grid-template-columns: 1fr;
     }
+}
+
+/* ======================================================================
+   RESERVAS — estilos específicos da página de Reservas
+   ====================================================================== */
+
+:root {
+    --amarelo: #B7791F;
+    --amarelo-claro: #FFF3CD;
+    --azul: #1565C0;
+    --azul-claro: #E3F2FD;
+    --verde: #2E7D32;
+    --verde-claro: #E8F5E9;
+    --vermelho: #C62828;
+    --vermelho-claro: #FDECEA;
+}
+
+/* Botões genéricos reutilizáveis */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    border: none;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 12px 18px;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    white-space: nowrap;
+}
+
+.btn-primario {
+    background-color: var(--laranja);
+    color: var(--branco);
+}
+
+.btn-primario:hover {
+    background-color: var(--laranja-escuro);
+}
+
+.btn-secundario {
+    background-color: var(--branco);
+    color: var(--preto);
+    border: 1px solid #E0E0E0;
+}
+
+.btn-secundario:hover {
+    background-color: var(--cinza-claro);
+}
+
+.btn-sm {
+    padding: 7px 12px;
+    font-size: 12px;
+    border-radius: 8px;
+}
+
+/* Topbar com ação (título + botão "Nova Reserva") */
+
+.topbar-acao {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+/* Cards de status (reaproveita .card, .card-title, .card-number) */
+
+.cards-container.cards-status {
+    grid-template-columns: repeat(6, 1fr);
+}
+
+@media (max-width: 1200px) {
+    .cards-container.cards-status {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .cards-container.cards-status {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Filtros */
+
+.filtros-container {
+    background-color: var(--branco);
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+    padding: 22px 24px;
+    margin-bottom: 32px;
+}
+
+.filtros-titulo {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--preto);
+    margin-bottom: 16px;
+}
+
+.filtros-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+@media (max-width: 1080px) {
+    .filtros-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .filtros-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+.filtro-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.filtro-grupo label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--cinza);
+}
+
+.filtro-grupo input,
+.filtro-grupo select {
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 13px;
+    font-family: inherit;
+    color: var(--preto);
+    background-color: var(--branco);
+}
+
+.filtro-grupo input:focus,
+.filtro-grupo select:focus {
+    outline: none;
+    border-color: var(--laranja);
+}
+
+.filtros-acoes {
+    display: flex;
+    gap: 12px;
+}
+
+/* Alertas de reservas (reaproveita a lógica de .alerta-item com variações de cor) */
+
+.alertas-reservas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 14px;
+    margin-bottom: 32px;
+}
+
+.alerta-reserva {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    border-radius: 12px;
+    padding: 14px 16px;
+    font-size: 13px;
+    color: var(--preto);
+    border-left: 4px solid var(--laranja);
+    background-color: var(--laranja-claro);
+}
+
+.alerta-reserva strong {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 2px;
+}
+
+.alerta-reserva span {
+    color: var(--cinza);
+    font-size: 12px;
+}
+
+.alerta-reserva.alerta-atraso {
+    border-left-color: var(--vermelho);
+    background-color: var(--vermelho-claro);
+}
+
+.alerta-reserva.alerta-conflito {
+    border-left-color: var(--vermelho);
+    background-color: var(--vermelho-claro);
+}
+
+.alerta-reserva.alerta-indisponivel {
+    border-left-color: var(--amarelo);
+    background-color: var(--amarelo-claro);
+}
+
+.alerta-reserva.alerta-cancelada {
+    border-left-color: var(--cinza);
+    background-color: var(--cinza-claro);
+}
+
+/* Layout tabela + calendário lado a lado */
+
+.reservas-layout {
+    display: grid;
+    grid-template-columns: 2.2fr 1fr;
+    gap: 20px;
+    align-items: start;
+}
+
+@media (max-width: 1080px) {
+    .reservas-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Badges de status */
+
+.status-badge {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+
+.status-pendente {
+    background-color: var(--amarelo-claro);
+    color: var(--amarelo);
+}
+
+.status-confirmada {
+    background-color: var(--laranja-claro);
+    color: var(--laranja-escuro);
+}
+
+.status-andamento {
+    background-color: var(--azul-claro);
+    color: var(--azul);
+}
+
+.status-finalizada {
+    background-color: var(--verde-claro);
+    color: var(--verde);
+}
+
+.status-cancelada {
+    background-color: var(--vermelho-claro);
+    color: var(--vermelho);
+}
+
+.tipo-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.tipo-retirada {
+    background-color: var(--laranja-claro);
+    color: var(--laranja-escuro);
+}
+
+.tipo-devolucao {
+    background-color: var(--preto);
+    color: var(--branco);
+}
+
+/* Ações da tabela */
+
+.acoes-cell {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.btn-acao {
+    border: 1px solid #E0E0E0;
+    background-color: var(--branco);
+    color: var(--preto);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 6px 10px;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn-acao:hover {
+    background-color: var(--cinza-claro);
+}
+
+.btn-acao.acao-ver {
+    border-color: var(--laranja);
+    color: var(--laranja-escuro);
+}
+
+.btn-acao.acao-confirmar {
+    border-color: var(--azul);
+    color: var(--azul);
+}
+
+.btn-acao.acao-cancelar {
+    border-color: var(--vermelho);
+    color: var(--vermelho);
+}
+
+.btn-acao.acao-iniciar {
+    border-color: var(--azul);
+    color: var(--azul);
+}
+
+.btn-acao.acao-finalizar {
+    border-color: var(--verde);
+    color: var(--verde);
+}
+
+/* Paginação */
+
+.paginacao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 18px 24px;
+}
+
+.paginacao button {
+    border: 1px solid #E0E0E0;
+    background-color: var(--branco);
+    color: var(--preto);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.paginacao button:hover:not(:disabled) {
+    background-color: var(--cinza-claro);
+}
+
+.paginacao button.ativo {
+    background-color: var(--laranja);
+    border-color: var(--laranja);
+    color: var(--branco);
+}
+
+.paginacao button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* Calendário */
+
+.calendario-container {
+    background-color: var(--branco);
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+    padding: 20px;
+}
+
+.calendario-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.calendario-header h3 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--preto);
+    text-transform: capitalize;
+}
+
+.calendario-header button {
+    border: 1px solid #E0E0E0;
+    background-color: var(--branco);
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--preto);
+}
+
+.calendario-header button:hover {
+    background-color: var(--cinza-claro);
+}
+
+.calendario-dias-semana {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    margin-bottom: 6px;
+}
+
+.calendario-dias-semana span {
+    text-align: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--cinza);
+    text-transform: uppercase;
+}
+
+.calendario-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+}
+
+.dia-calendario {
+    position: relative;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: var(--preto);
+    border-radius: 8px;
+    background-color: var(--cinza-claro);
+}
+
+.dia-calendario.fora-mes {
+    background-color: transparent;
+    color: #C9C9C9;
+}
+
+.dia-calendario.dia-hoje {
+    border: 2px solid var(--preto);
+    font-weight: 700;
+}
+
+.dia-calendario .pontos {
+    position: absolute;
+    bottom: 4px;
+    display: flex;
+    gap: 2px;
+}
+
+.dia-calendario .ponto {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+}
+
+.ponto-retirada {
+    background-color: var(--laranja);
+}
+
+.ponto-devolucao {
+    background-color: var(--preto);
+}
+
+.dia-calendario.dia-multiplas {
+    background-color: var(--laranja-claro);
+}
+
+.calendario-legenda {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 16px;
+    font-size: 11px;
+    color: var(--cinza);
+}
+
+.calendario-legenda span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.calendario-legenda .ponto {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+/* Modal de detalhes da reserva */
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(26, 26, 26, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 1000;
+}
+
+.modal-overlay.oculto {
+    display: none;
+}
+
+.modal-caixa {
+    background-color: var(--branco);
+    border-radius: 16px;
+    width: 100%;
+    max-width: 640px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 28px;
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--preto);
+}
+
+.modal-fechar {
+    border: none;
+    background: none;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--cinza);
+    padding: 4px 8px;
+}
+
+.modal-fechar:hover {
+    color: var(--preto);
+}
+
+.modal-secao {
+    margin-bottom: 20px;
+}
+
+.modal-secao:last-child {
+    margin-bottom: 0;
+}
+
+.modal-secao-titulo {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--laranja-escuro);
+    margin-bottom: 10px;
+}
+
+.modal-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 20px;
+}
+
+.modal-linha {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.modal-linha .rotulo {
+    font-size: 11px;
+    color: var(--cinza);
+}
+
+.modal-linha .valor {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--preto);
+}
+
+@media (max-width: 480px) {
+    .modal-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ======================================================================
+   VEÍCULOS — estilos específicos da página de Veículos
+   ====================================================================== */
+
+.cards-container.cards-veiculos {
+    grid-template-columns: repeat(5, 1fr);
+}
+
+@media (max-width: 1200px) {
+    .cards-container.cards-veiculos {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .cards-container.cards-veiculos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .cards-container.cards-veiculos {
+        grid-template-columns: 1fr;
+    }
+}
+
+.filtros-grid.filtros-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 700px) {
+    .filtros-grid.filtros-3 {
+        grid-template-columns: 1fr;
+    }
+}
+
+.status-disponivel {
+    background-color: var(--verde-claro);
+    color: var(--verde);
+}
+
+.status-alugado {
+    background-color: var(--azul-claro);
+    color: var(--azul);
+}
+
+.status-reservado {
+    background-color: var(--amarelo-claro);
+    color: var(--amarelo);
+}
+
+.status-manutencao {
+    background-color: var(--vermelho-claro);
+    color: var(--vermelho);
+}
+
+.btn-acao.acao-status {
+    border-color: var(--azul);
+    color: var(--azul);
+}
+
+.btn-acao.acao-excluir {
+    border-color: var(--vermelho);
+    color: var(--vermelho);
+}
+
+.historico-item {
+    border-left: 3px solid var(--laranja);
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    background-color: var(--cinza-claro);
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+.historico-item .historico-data {
+    font-size: 11px;
+    color: var(--cinza);
+    display: block;
+    margin-bottom: 2px;
 }
