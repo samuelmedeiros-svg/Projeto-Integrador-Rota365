@@ -1,11 +1,251 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
+<div class="topbar topbar-acao">
+    <div>
+        <h2 class="saudacao">Reservas e Devoluções</h2>
+        <p class="subtitulo">Gerencie as reservas e acompanhe os veículos que serão retirados e devolvidos.</p>
+    </div>
+    <button type="button" class="btn btn-primario" id="btn-nova-reserva">+ Nova Reserva</button>
+</div>
+
+<div class="cards-container cards-status">
+    <div class="card">
+        <div class="card-title">Reservas hoje</div>
+        <div class="card-number" id="card-hoje">0</div>
+    </div>
+    <div class="card">
+        <div class="card-title">Reservas Pendentes</div>
+        <div class="card-number" id="card-pendentes">0</div>
+    </div>
+    <div class="card">
+        <div class="card-title">Reservas Confirmadas</div>
+        <div class="card-number" id="card-confirmadas">0</div>
+    </div>
+    <div class="card">
+        <div class="card-title">Reservas Em andamento</div>
+        <div class="card-number" id="card-andamento">0</div>
+    </div>
+    <div class="card">
+        <div class="card-title">Reservas Finalizadas</div>
+        <div class="card-number" id="card-finalizadas">0</div>
+    </div>
+    <div class="card">
+        <div class="card-title">Reservas Canceladas</div>
+        <div class="card-number" id="card-canceladas">0</div>
+    </div>
+</div>
+
+<div class="cards-container">
+    <div class="card">
+        <div class="card-title">Devoluções hoje</div>
+        <div class="card-number" id="card-dev-hoje">0</div>
+    </div>
+    <div class="card">
+        <div class="card-title">Devoluções atrasadas</div>
+        <div class="card-number" id="card-dev-atrasadas">0</div>
+    </div>
+    <div class="card">
+        <div class="card-title">Devoluções esta semana</div>
+        <div class="card-number" id="card-dev-semana">0</div>
+    </div>
+    <div class="card">
+        <div class="card-title">Devoluções realizadas</div>
+        <div class="card-number" id="card-dev-realizadas">0</div>
+    </div>
+</div>
+
+<div class="tabela-container" style="margin-bottom: 32px;">
+    <div class="tabela-header">
+        <div class="tabela-titulo">Retiradas e Devoluções de Hoje</div>
+    </div>
+    <div class="tabela-card" style="overflow-x: auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th>Cliente</th>
+                    <th>Veículo</th>
+                    <th>Placa</th>
+                    <th>Tipo</th>
+                    <th>Horário</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="reservas-hoje-tbody">
+                <!-- Preenchido dinamicamente pelo dashboard.js -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="alertas-reservas" id="reservas-alertas"></div>
+
+<div class="filtros-container">
+    <div class="filtros-titulo">Filtros</div>
+    <div class="filtros-grid">
+        <div class="filtro-grupo">
+            <label for="filtro-cliente">Cliente</label>
+            <input type="text" id="filtro-cliente" placeholder="Nome do cliente">
+        </div>
+        <div class="filtro-grupo">
+            <label for="filtro-veiculo">Veículo</label>
+            <input type="text" id="filtro-veiculo" placeholder="Placa ou modelo">
+        </div>
+        <div class="filtro-grupo">
+            <label for="filtro-status">Status</label>
+            <select id="filtro-status">
+                <option value="">Todos</option>
+                <option value="pendente">Pendente</option>
+                <option value="confirmada">Confirmada</option>
+                <option value="andamento">Em andamento</option>
+                <option value="finalizada">Finalizada</option>
+                <option value="cancelada">Cancelada</option>
+            </select>
+        </div>
+        <div class="filtro-grupo">
+            <label for="filtro-categoria">Categoria</label>
+            <select id="filtro-categoria">
+                <option value="">Todas</option>
+                <option value="Econômico">Econômico</option>
+                <option value="Sedan">Sedan</option>
+                <option value="SUV">SUV</option>
+            </select>
+        </div>
+        <div class="filtro-grupo">
+            <label for="filtro-retirada">Data de retirada</label>
+            <input type="date" id="filtro-retirada">
+        </div>
+        <div class="filtro-grupo">
+            <label for="filtro-devolucao">Data de devolução</label>
+            <input type="date" id="filtro-devolucao">
+        </div>
+    </div>
+    <div class="filtros-acoes">
+        <button type="button" class="btn btn-primario" id="btn-filtrar">Filtrar</button>
+        <button type="button" class="btn btn-secundario" id="btn-limpar-filtros">Limpar filtros</button>
+    </div>
+</div>
+
+<div class="reservas-layout">
+
+    <div class="tabela-container">
+        <div class="tabela-header">
+            <div class="tabela-titulo">Lista de Reservas</div>
+        </div>
+        <div class="tabela-card" style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Cliente</th>
+                        <th>Veículo</th>
+                        <th>Placa</th>
+                        <th>Retirada</th>
+                        <th>Devolução</th>
+                        <th>Valor total</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="reservas-tbody">
+                    <!-- Preenchido dinamicamente pelo dashboard.js -->
+                </tbody>
+            </table>
+        </div>
+        <div class="paginacao" id="reservas-paginacao"></div>
+    </div>
+
+    <div class="calendario-container">
+        <div class="calendario-header">
+            <button type="button" id="calendario-mes-anterior" aria-label="Mês anterior">‹</button>
+            <h3 id="calendario-mes-atual"></h3>
+            <button type="button" id="calendario-mes-proximo" aria-label="Próximo mês">›</button>
+        </div>
+        <div class="calendario-dias-semana">
+            <span>D</span><span>S</span><span>T</span><span>Q</span><span>Q</span><span>S</span><span>S</span>
+        </div>
+        <div class="calendario-grid" id="calendario-grid"></div>
+        <div class="calendario-legenda">
+            <span><span class="ponto ponto-retirada"></span> Retirada</span>
+            <span><span class="ponto ponto-devolucao"></span> Devolução</span>
+        </div>
+    </div>
+
+</div>
+
+<!-- Modal de detalhes da reserva -->
+<div class="modal-overlay oculto" id="modal-reserva">
+    <div class="modal-caixa">
+        <div class="modal-header">
+            <h3>Detalhes da Reserva</h3>
+            <button type="button" class="modal-fechar" id="modal-fechar" aria-label="Fechar">&times;</button>
+        </div>
+        <div id="modal-corpo">
+            <!-- Preenchido dinamicamente pelo dashboard.js -->
+        </div>
+    </div>
+</div>
+
+<!-- Modal de nova reserva -->
+<div class="modal-overlay oculto" id="modal-nova-reserva">
+    <div class="modal-caixa">
+        <div class="modal-header">
+            <h3>Nova Reserva</h3>
+            <button type="button" class="modal-fechar" id="nova-reserva-fechar" aria-label="Fechar">&times;</button>
+        </div>
+        <form id="form-nova-reserva">
+            <div class="modal-secao">
+                <div class="modal-secao-titulo">Cliente</div>
+                <div class="modal-grid">
+                    <div class="filtro-grupo">
+                        <label for="nr-cliente-nome">Nome</label>
+                        <input type="text" id="nr-cliente-nome" required>
+                    </div>
+                    <div class="filtro-grupo">
+                        <label for="nr-cliente-telefone">Telefone</label>
+                        <input type="text" id="nr-cliente-telefone" required>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-secao">
+                <div class="modal-secao-titulo">Veículo</div>
+                <div class="modal-grid">
+                    <div class="filtro-grupo">
+                        <label for="nr-veiculo-modelo">Modelo</label>
+                        <input type="text" id="nr-veiculo-modelo" required>
+                    </div>
+                    <div class="filtro-grupo">
+                        <label for="nr-veiculo-placa">Placa</label>
+                        <input type="text" id="nr-veiculo-placa" required>
+                    </div>
+                    <div class="filtro-grupo">
+                        <label for="nr-veiculo-categoria">Categoria</label>
+                        <select id="nr-veiculo-categoria">
+                            <option value="Econômico">Econômico</option>
+                            <option value="Sedan">Sedan</option>
+                            <option value="SUV">SUV</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-secao">
+                <div class="modal-secao-titulo">Locação</div>
+                <div class="modal-grid">
+                    <div class="filtro-grupo">
+                        <label for="nr-retirada">Data de retirada</label>
+                        <input type="date" id="nr-retirada" required>
+                    </div>
+                    <div class="filtro-grupo">
+                        <label for="nr-devolucao">Data de devolução</label>
+                        <input type="date" id="nr-devolucao" required>
+                    </div>
+                    <div class="filtro-grupo">
+                        <label for="nr-diaria">Valor da diária (R$)</label>
+                        <input type="number" id="nr-diaria" min="0" step="0.01" required>
+                    </div>
+                </div>
+            </div>
+            <div class="filtros-acoes" style="margin-top: 20px;">
+                <button type="submit" class="btn btn-primario">Salvar Reserva</button>
+                <button type="button" class="btn btn-secundario" id="nova-reserva-cancelar">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>

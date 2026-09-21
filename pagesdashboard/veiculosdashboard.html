@@ -1,11 +1,189 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>hello world</h1>
-</body>
-</html>
+<div class="topbar topbar-acao">
+    <div>
+        <h2 class="saudacao">Veículos</h2>
+        <p class="subtitulo">Gerencie a frota da Rota365: disponibilidade, status e manutenção.</p>
+    </div>
+    <button type="button" class="btn btn-primario" id="btn-adicionar-veiculo">+ Adicionar veículo</button>
+</div>
+
+<div class="cards-container cards-veiculos">
+    <div class="card">
+        <div class="card-title">Total de veículos</div>
+        <div class="card-number" id="card-total-veiculos">0</div>
+    </div>
+    <div class="card">
+        <div class="card-title">Disponíveis</div>
+        <div class="card-number" id="card-disponiveis">0</div>
+    </div>
+    <div class="card">
+        <div class="card-title">Alugados</div>
+        <div class="card-number" id="card-alugados">0</div>
+    </div>
+    <div class="card">
+        <div class="card-title">Reservados</div>
+        <div class="card-number" id="card-reservados">0</div>
+    </div>
+    <div class="card">
+        <div class="card-title">Em manutenção</div>
+        <div class="card-number" id="card-manutencao">0</div>
+    </div>
+</div>
+
+<div class="filtros-container">
+    <div class="filtros-titulo">Filtros</div>
+    <div class="filtros-grid filtros-3">
+        <div class="filtro-grupo">
+            <label for="filtro-busca-veiculo">Modelo ou placa</label>
+            <input type="text" id="filtro-busca-veiculo" placeholder="Ex: Onix ou GHI-3F45">
+        </div>
+        <div class="filtro-grupo">
+            <label for="filtro-categoria-veiculo">Categoria</label>
+            <select id="filtro-categoria-veiculo">
+                <option value="">Todas</option>
+                <option value="Econômico">Econômico</option>
+                <option value="Sedan">Sedan</option>
+                <option value="SUV">SUV</option>
+            </select>
+        </div>
+        <div class="filtro-grupo">
+            <label for="filtro-status-veiculo">Status</label>
+            <select id="filtro-status-veiculo">
+                <option value="">Todos</option>
+                <option value="disponivel">Disponível</option>
+                <option value="alugado">Alugado</option>
+                <option value="reservado">Reservado</option>
+                <option value="manutencao">Manutenção</option>
+            </select>
+        </div>
+    </div>
+    <div class="filtros-acoes">
+        <button type="button" class="btn btn-primario" id="btn-filtrar-veiculos">Filtrar</button>
+        <button type="button" class="btn btn-secundario" id="btn-limpar-veiculos">Limpar</button>
+    </div>
+</div>
+
+<div class="tabela-container">
+    <div class="tabela-header">
+        <div class="tabela-titulo">Frota</div>
+    </div>
+    <div class="tabela-card" style="overflow-x: auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th>Veículo</th>
+                    <th>Placa</th>
+                    <th>Categoria</th>
+                    <th>Ano</th>
+                    <th>Km</th>
+                    <th>Diária</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="veiculos-tbody">
+                <!-- Preenchido dinamicamente pelo dashboard.js -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal: visualizar veículo -->
+<div class="modal-overlay oculto" id="modal-veiculo">
+    <div class="modal-caixa">
+        <div class="modal-header">
+            <h3>Detalhes do Veículo</h3>
+            <button type="button" class="modal-fechar" id="modal-veiculo-fechar" aria-label="Fechar">&times;</button>
+        </div>
+        <div id="modal-veiculo-corpo"></div>
+    </div>
+</div>
+
+<!-- Modal: adicionar/editar veículo -->
+<div class="modal-overlay oculto" id="modal-form-veiculo">
+    <div class="modal-caixa">
+        <div class="modal-header">
+            <h3 id="modal-form-titulo">Adicionar Veículo</h3>
+            <button type="button" class="modal-fechar" id="modal-form-fechar" aria-label="Fechar">&times;</button>
+        </div>
+        <form id="form-veiculo">
+            <input type="hidden" id="vf-id">
+            <div class="modal-secao">
+                <div class="modal-grid">
+                    <div class="filtro-grupo">
+                        <label for="vf-modelo">Modelo</label>
+                        <input type="text" id="vf-modelo" required>
+                    </div>
+                    <div class="filtro-grupo">
+                        <label for="vf-marca">Marca</label>
+                        <input type="text" id="vf-marca" required>
+                    </div>
+                    <div class="filtro-grupo">
+                        <label for="vf-ano">Ano</label>
+                        <input type="number" id="vf-ano" min="1990" max="2100" required>
+                    </div>
+                    <div class="filtro-grupo">
+                        <label for="vf-placa">Placa</label>
+                        <input type="text" id="vf-placa" required>
+                    </div>
+                    <div class="filtro-grupo">
+                        <label for="vf-cor">Cor</label>
+                        <input type="text" id="vf-cor" required>
+                    </div>
+                    <div class="filtro-grupo">
+                        <label for="vf-categoria">Categoria</label>
+                        <select id="vf-categoria">
+                            <option value="Econômico">Econômico</option>
+                            <option value="Sedan">Sedan</option>
+                            <option value="SUV">SUV</option>
+                        </select>
+                    </div>
+                    <div class="filtro-grupo">
+                        <label for="vf-km">Quilometragem</label>
+                        <input type="number" id="vf-km" min="0" required>
+                    </div>
+                    <div class="filtro-grupo">
+                        <label for="vf-diaria">Valor da diária (R$)</label>
+                        <input type="number" id="vf-diaria" min="0" step="0.01" required>
+                    </div>
+                    <div class="filtro-grupo">
+                        <label for="vf-status">Status</label>
+                        <select id="vf-status">
+                            <option value="disponivel">Disponível</option>
+                            <option value="alugado">Alugado</option>
+                            <option value="reservado">Reservado</option>
+                            <option value="manutencao">Manutenção</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="filtros-acoes" style="margin-top: 20px;">
+                <button type="submit" class="btn btn-primario">Salvar</button>
+                <button type="button" class="btn btn-secundario" id="modal-form-cancelar">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Modal: alterar status -->
+<div class="modal-overlay oculto" id="modal-status-veiculo">
+    <div class="modal-caixa" style="max-width: 380px;">
+        <div class="modal-header">
+            <h3>Alterar Status</h3>
+            <button type="button" class="modal-fechar" id="modal-status-fechar" aria-label="Fechar">&times;</button>
+        </div>
+        <input type="hidden" id="status-veiculo-id">
+        <div class="filtro-grupo">
+            <label for="status-veiculo-select">Novo status</label>
+            <select id="status-veiculo-select">
+                <option value="disponivel">Disponível</option>
+                <option value="alugado">Alugado</option>
+                <option value="reservado">Reservado</option>
+                <option value="manutencao">Manutenção</option>
+            </select>
+        </div>
+        <div class="filtros-acoes" style="margin-top: 20px;">
+            <button type="button" class="btn btn-primario" id="btn-salvar-status">Salvar</button>
+            <button type="button" class="btn btn-secundario" id="btn-cancelar-status">Cancelar</button>
+        </div>
+    </div>
+</div>
