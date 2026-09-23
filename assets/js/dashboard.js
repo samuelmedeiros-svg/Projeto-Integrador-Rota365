@@ -31,6 +31,163 @@
 (function () {
     "use strict";
 
+    // Registrar plugins do Chart.js para rótulos visuais
+    if (typeof Chart !== 'undefined') {
+        // Plugin 1: Rótulo com porcentagens dentro de Rosca/Pizza
+        Chart.register({
+            id: 'percentLabels',
+            afterDraw(chart) {
+                if (chart.config.type !== 'doughnut' && chart.config.type !== 'pie') return;
+
+                const ctx = chart.ctx;
+                const data = chart.data.datasets[0].data;
+                const total = data.reduce((a, b) => a + b, 0);
+
+                chart.getDatasetMeta(0).data.forEach((element, index) => {
+                    const value = data[index];
+                    if (!value) return;
+                    const percent = ((value / total) * 100).toFixed(0) + "%";
+                    const position = element.tooltipPosition();
+
+                    ctx.fillStyle = "#ffffff";
+                    ctx.font = "bold 12px sans-serif";
+                    ctx.textAlign = "center";
+                    ctx.textBaseline = "middle";
+                    ctx.fillText(percent, position.x, position.y);
+                });
+            }
+        });
+
+        // Plugin 2: Valores nos pontos do gráfico de linha
+        Chart.register({
+            id: 'lineValuePlugin',
+            afterDatasetsDraw(chart) {
+                if (chart.config.type !== 'line') return;
+                const ctx = chart.ctx;
+                chart.data.datasets.forEach((dataset, datasetIndex) => {
+                    const meta = chart.getDatasetMeta(datasetIndex);
+                    meta.data.forEach((element, index) => {
+                        const val = dataset.data[index];
+                        if (val !== undefined && val !== null) {
+                            const formatted = "R$ " + val.toLocaleString('pt-BR');
+                            ctx.fillStyle = '#1A1A1A';
+                            ctx.font = 'bold 10px sans-serif';
+                            ctx.textAlign = 'center';
+                            ctx.fillText(formatted, element.x, element.y - 10);
+                        }
+                    });
+                });
+            }
+        });
+    }
+
+    let graficosAtivos = {
+        faturamento: null,
+        categoria: null,
+        frota: null
+    };
+
+    function inicializarGraficos(pageKey) {
+        // Destruir instâncias existentes para não sobrepor
+        Object.keys(graficosAtivos).forEach(key => {
+            if (graficosAtivos[key]) {
+                graficosAtivos[key].destroy();
+                graficosAtivos[key] = null;
+            }
+        });
+
+        if (typeof Chart === 'undefined') return;
+
+        if (pageKey === 'financeiro') {
+            const ctxFaturamento = document.getElementById('graficoFaturamento');
+            const ctxCategoria = document.getElementById('graficoCategoria');
+            
+            if (ctxFaturamento) {
+                graficosAtivos.faturamento = new Chart(ctxFaturamento, {
+                    type: 'line',
+                    data: {
+                        labels: ['Abr/26', 'Mai/26', 'Jun/26', 'Jul/26', 'Ago/26', 'Set/26'],
+                        datasets: [{
+                            label: 'Faturamento (R$)',
+                            data: [18800, 19300, 21200, 24700, 27300, 29800],
+                            borderColor: '#FF6B00',
+                            backgroundColor: 'rgba(255, 107, 0, 0.12)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.35,
+                            pointRadius: 5,
+                            pointBackgroundColor: '#FF6B00',
+                            pointBorderColor: '#FFFFFF',
+                            pointBorderWidth: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        layout: { padding: { top: 20 } },
+                        plugins: { legend: { display: false } },
+                        scales: {
+                            y: {
+                                display: true,
+                                grid: { color: '#F0F0F0' },
+                                ticks: {
+                                    callback: function(val) { return 'R$ ' + (val/1000) + 'k'; }
+                                }
+                            },
+                            x: { grid: { display: false } }
+                        }
+                    }
+                });
+            }
+
+            if (ctxCategoria) {
+                graficosAtivos.categoria = new Chart(ctxCategoria, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Sedan', 'Econômico', 'SUV', 'Luxo'],
+                        datasets: [{
+                            data: [34, 24, 24, 18],
+                            backgroundColor: ['#FF6B00', '#3A86FF', '#00A878', '#FFB000'],
+                            borderWidth: 3,
+                            borderColor: '#FFFFFF'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        cutout: '70%',
+                        plugins: { legend: { display: false } }
+                    }
+                });
+            }
+        }
+
+        if (pageKey === 'relatorios') {
+            const ctxFrota = document.getElementById('graficoFrota');
+            if (ctxFrota) {
+                graficosAtivos.frota = new Chart(ctxFrota, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Alugados', 'Disponíveis', 'Reservados', 'Manutenção'],
+                        datasets: [{
+                            data: [55, 20, 15, 10],
+                            backgroundColor: ['#FF6B00', '#3A86FF', '#00A878', '#FFB000'],
+                            borderWidth: 3,
+                            borderColor: '#FFFFFF'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        cutout: '65%',
+                        plugins: { legend: { display: false } }
+                    }
+                });
+            }
+        }
+    }
+
+
     // Mapa central de rotas: chave -> arquivo dentro de /pagesdashboard
     const ROUTES = {
         inicio: "pagesdashboard/inicio.html",
@@ -46,6 +203,7 @@
     const PAGE_INIT = {
         reservas: initPaginaReservas,
         veiculos: initPaginaVeiculos,
+        clientes: initPaginaClientes,
     };
 
     const PAGINA_PADRAO = "inicio";
@@ -64,7 +222,7 @@
         });
     }
 
-    async function carregarPagina(pageKey) {
+    async function carregarPagina(pageKey, atualizarHistorico = true) {
         const url = ROUTES[pageKey];
 
         if (!url) {
@@ -87,10 +245,13 @@
             }
 
             mainContent.innerHTML = html;
+            inicializarGraficos(pageKey);
             marcarLinkAtivo(pageKey);
 
             // Atualiza a URL (hash) sem recarregar a página
-            history.replaceState({ pageKey }, "", `#${pageKey}`);
+            if (atualizarHistorico && window.location.hash !== "#" + pageKey) {
+                history.pushState({ pageKey }, "", "#" + pageKey);
+            }
 
             // Executa a inicialização específica da página, se existir
             if (typeof PAGE_INIT[pageKey] === "function") {
@@ -134,6 +295,11 @@
             console.error(erro);
         }
     }
+
+    window.addEventListener("popstate", () => {
+        const paginaPelaUrl = window.location.hash ? window.location.hash.slice(1) : PAGINA_PADRAO;
+        carregarPagina(ROUTES[paginaPelaUrl] ? paginaPelaUrl : PAGINA_PADRAO, false);
+    });
 
     async function inicializar() {
         // 1) Carrega a sidebar (e liga os cliques dela)
@@ -1065,5 +1231,373 @@
         atualizarTudoVeiculos();
     }
 
+    /* ==================================================================
+     * PÁGINA: CLIENTES
+     * Dados mockados em memória — sem backend, seguindo o mesmo padrão
+     * das páginas de Reservas e Veículos.
+     * ================================================================== */
+
+    function initPaginaClientes() {
+        const hoje = new Date();
+        hoje.setHours(0, 0, 0, 0);
+
+        const ITENS_POR_PAGINA = 5;
+        let paginaAtual = 1;
+        let proximoIdCliente = 1;
+
+        function novoIdCliente() {
+            return "CLI-" + String(proximoIdCliente++).padStart(4, "0");
+        }
+
+        function formatarDataBR(iso) {
+            if (!iso) return "—";
+            const [ano, mes, dia] = iso.split("-");
+            return `${dia}/${mes}/${ano}`;
+        }
+
+        function statusLabelCliente(status) {
+            const mapa = { ativo: "Ativo", inativo: "Inativo", bloqueado: "Bloqueado" };
+            return mapa[status] || status;
+        }
+
+        function cnhStatus(validadeIso) {
+            if (!validadeIso) return null;
+            return new Date(validadeIso) >= hoje ? "valida" : "vencida";
+        }
+
+        function cnhLabel(validadeIso) {
+            const situacao = cnhStatus(validadeIso);
+            if (!situacao) return "—";
+            return situacao === "valida" ? `Válida até ${formatarDataBR(validadeIso)}` : `Vencida em ${formatarDataBR(validadeIso)}`;
+        }
+
+        function criarCliente(nome, cpf, telefone, email, nascimento, cnh, cnhValidade, endereco, status, cadastradoEm, historico) {
+            return {
+                id: novoIdCliente(),
+                nome, cpf, telefone, email, nascimento, cnh, cnhValidade, endereco, status, cadastradoEm,
+                historico: historico || [],
+            };
+        }
+
+        // ---------- Dados mockados (mesmos clientes usados nas Reservas) ----------
+
+        let CLIENTES = [
+            criarCliente("João Silva", "111.111.111-11", "(34) 99111-2222", "joao.silva@email.com", "1990-04-12", "12345678900", "2028-06-10", "Rua das Flores, 120, Centro - Uberlândia/MG", "ativo", "2025-11-02", [
+                { data: "01/09/2026", descricao: "Locação: HB20 (Hyundai) — ABC-1D23" },
+            ]),
+            criarCliente("Maria Souza", "222.222.222-22", "(34) 99222-3333", "maria.souza@email.com", "1988-09-23", "22345678900", "2027-03-15", "Av. Brasil, 540, Santa Mônica - Uberlândia/MG", "ativo", "2025-08-19", [
+                { data: "23/09/2026", descricao: "Locação: Corolla (Toyota) — DEF-2E34" },
+            ]),
+            criarCliente("Pedro Oliveira", "333.333.333-33", "(34) 99333-4444", "pedro.oliveira@email.com", "1995-01-30", "32345678900", "2026-05-20", "Rua Goiás, 88, Tibery - Uberlândia/MG", "ativo", "2026-01-14", [
+                { data: "24/09/2026", descricao: "Locação: Onix (Chevrolet) — GHI-3F45" },
+            ]),
+            criarCliente("Ana Lima", "444.444.444-44", "(34) 99444-5555", "ana.lima@email.com", "1992-07-08", "42345678900", "2029-11-02", "Rua Paraná, 15, Custódio Pereira - Uberlândia/MG", "ativo", "2025-05-27", [
+                { data: "20/09/2026", descricao: "Locação: Compass (Jeep) — JKL-4G56" },
+            ]),
+            criarCliente("Carlos Souza", "555.555.555-55", "(34) 99555-6666", "carlos.souza@email.com", "1985-12-17", "52345678900", "2026-01-09", "Rua Amazonas, 300, Martins - Uberlândia/MG", "ativo", "2025-03-11", [
+                { data: "23/09/2026", descricao: "Locação: Civic (Honda) — MNO-5H67" },
+            ]),
+            criarCliente("Fernanda Reis", "666.666.666-66", "(34) 99666-7777", "fernanda.reis@email.com", "1998-03-05", "62345678900", "2028-08-22", "Av. Rondon Pacheco, 900, Osvaldo Rezende - Uberlândia/MG", "ativo", "2026-02-03", [
+                { data: "25/09/2026", descricao: "Locação: Kicks (Nissan) — PQR-6I78" },
+            ]),
+            criarCliente("Lucas Martins", "777.777.777-77", "(34) 99777-8888", "lucas.martins@email.com", "1993-10-11", "72345678900", "2025-12-01", "Rua Bahia, 47, Fundinho - Uberlândia/MG", "bloqueado", "2024-09-30", [
+                { data: "21/09/2026", descricao: "Locação: Argo (Fiat) — STU-7J89 (devolução em atraso)" },
+            ]),
+            criarCliente("Beatriz Alves", "888.888.888-88", "(34) 99888-9999", "beatriz.alves@email.com", "1997-06-25", "82345678900", "2027-09-14", "Rua Pará, 210, Brasil - Uberlândia/MG", "ativo", "2025-12-20", [
+                { data: "26/09/2026", descricao: "Locação: Renegade (Jeep) — VWX-8K90" },
+            ]),
+            criarCliente("Rafael Costa", "999.999.999-99", "(34) 99999-0000", "rafael.costa@email.com", "1989-02-14", "92345678900", "2026-02-28", "Av. João Naves de Ávila, 1500, Aparecida - Uberlândia/MG", "inativo", "2023-07-08", []),
+            criarCliente("Juliana Dias", "101.101.101-01", "(34) 98111-1111", "juliana.dias@email.com", "1994-11-19", "10245678900", "2029-01-17", "Rua Ceará, 66, Nossa Sra. das Graças - Uberlândia/MG", "ativo", "2026-03-09", [
+                { data: "28/09/2026", descricao: "Locação: HB20 (Hyundai) — ABC-1D23" },
+            ]),
+            criarCliente("Marcos Rocha", "202.202.202-02", "(34) 98222-2222", "marcos.rocha@email.com", "1986-08-02", "20245678900", "2025-10-05", "Rua Rio Grande do Sul, 33, Saraiva - Uberlândia/MG", "inativo", "2024-01-22", [
+                { data: "18/09/2026", descricao: "Locação: Onix (Chevrolet) — GHI-3F45 (cancelada)" },
+            ]),
+            criarCliente("Patrícia Nunes", "303.303.303-03", "(34) 98333-3333", "patricia.nunes@email.com", "1991-05-27", "30245678900", "2028-04-30", "Av. Floriano Peixoto, 700, Presidente Roosevelt - Uberlândia/MG", "ativo", "2025-09-17", [
+                { data: "19/09/2026", descricao: "Locação: Civic (Honda) — MNO-5H67" },
+            ]),
+        ];
+
+        // ---------- Elementos do DOM ----------
+
+        const tbodyEl = document.getElementById("clientes-tbody");
+        if (!tbodyEl) return;
+
+        const paginacaoEl = document.getElementById("clientes-paginacao");
+
+        const filtroBusca = document.getElementById("filtro-busca-cliente");
+        const filtroStatus = document.getElementById("filtro-status-cliente");
+        const filtroCnh = document.getElementById("filtro-cnh-cliente");
+        const btnFiltrar = document.getElementById("btn-filtrar-clientes");
+        const btnLimpar = document.getElementById("btn-limpar-clientes");
+
+        const modalVerEl = document.getElementById("modal-cliente");
+        const modalVerCorpoEl = document.getElementById("modal-cliente-corpo");
+        const modalVerFecharBtn = document.getElementById("modal-cliente-fechar");
+
+        const btnAdicionar = document.getElementById("btn-adicionar-cliente");
+        const modalFormEl = document.getElementById("modal-form-cliente");
+        const modalFormTituloEl = document.getElementById("modal-form-cliente-titulo");
+        const modalFormFecharBtn = document.getElementById("modal-form-cliente-fechar");
+        const modalFormCancelarBtn = document.getElementById("modal-form-cliente-cancelar");
+        const formCliente = document.getElementById("form-cliente");
+
+        // ---------- Cards ----------
+
+        function renderizarCardsClientes() {
+            document.getElementById("card-total-clientes").textContent = CLIENTES.length;
+            document.getElementById("card-clientes-ativos").textContent = CLIENTES.filter((c) => c.status === "ativo").length;
+            document.getElementById("card-clientes-bloqueados").textContent = CLIENTES.filter((c) => c.status === "bloqueado").length;
+            document.getElementById("card-clientes-novos").textContent = CLIENTES.filter((c) => {
+                const cad = new Date(c.cadastradoEm);
+                return cad.getFullYear() === hoje.getFullYear() && cad.getMonth() === hoje.getMonth();
+            }).length;
+        }
+
+        // ---------- Filtros ----------
+
+        function obterClientesFiltrados() {
+            const busca = filtroBusca.value.trim().toLowerCase();
+            const status = filtroStatus.value;
+            const cnh = filtroCnh.value;
+
+            return CLIENTES.filter((c) => {
+                if (busca && !(c.nome.toLowerCase().includes(busca) || c.cpf.toLowerCase().includes(busca) || c.email.toLowerCase().includes(busca))) return false;
+                if (status && c.status !== status) return false;
+                if (cnh && cnhStatus(c.cnhValidade) !== cnh) return false;
+                return true;
+            });
+        }
+
+        btnFiltrar.addEventListener("click", () => {
+            paginaAtual = 1;
+            atualizarTudoClientes();
+        });
+
+        btnLimpar.addEventListener("click", () => {
+            filtroBusca.value = "";
+            filtroStatus.value = "";
+            filtroCnh.value = "";
+            paginaAtual = 1;
+            atualizarTudoClientes();
+        });
+
+        // ---------- Ações da tabela ----------
+
+        function renderizarAcoesCliente(c) {
+            return `
+                <button type="button" class="btn-acao acao-ver" data-action="ver" data-id="${c.id}">Visualizar</button>
+                <button type="button" class="btn-acao" data-action="editar" data-id="${c.id}">Editar</button>
+                <button type="button" class="btn-acao acao-excluir" data-action="excluir" data-id="${c.id}">Excluir</button>
+            `;
+        }
+
+        // ---------- Tabela + paginação ----------
+
+        function renderizarTabelaClientes() {
+            const filtrados = obterClientesFiltrados();
+            const totalPaginas = Math.max(1, Math.ceil(filtrados.length / ITENS_POR_PAGINA));
+            if (paginaAtual > totalPaginas) paginaAtual = totalPaginas;
+
+            const inicio = (paginaAtual - 1) * ITENS_POR_PAGINA;
+            const pagina = filtrados.slice(inicio, inicio + ITENS_POR_PAGINA);
+
+            tbodyEl.innerHTML = pagina.length
+                ? pagina
+                      .map(
+                          (c) => `
+                <tr>
+                    <td class="cliente-nome">${c.nome}</td>
+                    <td><span class="veiculo-badge">${c.cpf}</span></td>
+                    <td>${c.telefone}<br><span style="color: var(--cinza); font-size: 12px;">${c.email}</span></td>
+                    <td>${cnhLabel(c.cnhValidade)}</td>
+                    <td>${c.historico.length}</td>
+                    <td><span class="status-badge status-${c.status}">${statusLabelCliente(c.status)}</span></td>
+                    <td><div class="acoes-cell">${renderizarAcoesCliente(c)}</div></td>
+                </tr>
+            `
+                      )
+                      .join("")
+                : `<tr><td colspan="7" style="text-align:center; padding: 24px; color: var(--cinza);">Nenhum cliente encontrado.</td></tr>`;
+
+            renderizarPaginacaoClientes(totalPaginas);
+        }
+
+        function renderizarPaginacaoClientes(totalPaginas) {
+            if (totalPaginas <= 1) {
+                paginacaoEl.innerHTML = "";
+                return;
+            }
+
+            let botoes = `<button type="button" data-pagina="${paginaAtual - 1}" ${paginaAtual === 1 ? "disabled" : ""}>‹</button>`;
+            for (let i = 1; i <= totalPaginas; i++) {
+                botoes += `<button type="button" class="${i === paginaAtual ? "ativo" : ""}" data-pagina="${i}">${i}</button>`;
+            }
+            botoes += `<button type="button" data-pagina="${paginaAtual + 1}" ${paginaAtual === totalPaginas ? "disabled" : ""}>›</button>`;
+
+            paginacaoEl.innerHTML = botoes;
+        }
+
+        paginacaoEl.addEventListener("click", (evento) => {
+            const btn = evento.target.closest("button[data-pagina]");
+            if (!btn || btn.disabled) return;
+            paginaAtual = parseInt(btn.dataset.pagina, 10);
+            renderizarTabelaClientes();
+        });
+
+        // ---------- Modal: visualizar ----------
+
+        function abrirModalVisualizarCliente(id) {
+            const c = CLIENTES.find((x) => x.id === id);
+            if (!c) return;
+
+            const historicoHtml = c.historico.length
+                ? c.historico
+                      .map(
+                          (h) => `
+                    <div class="historico-item">
+                        <span class="historico-data">${h.data}</span>
+                        ${h.descricao}
+                    </div>
+                `
+                      )
+                      .join("")
+                : `<p style="color: var(--cinza); font-size: 13px;">Nenhuma locação registrada.</p>`;
+
+            modalVerCorpoEl.innerHTML = `
+                <div class="modal-secao">
+                    <div class="modal-secao-titulo">Dados pessoais</div>
+                    <div class="modal-grid">
+                        <div class="modal-linha"><span class="rotulo">Nome</span><span class="valor">${c.nome}</span></div>
+                        <div class="modal-linha"><span class="rotulo">CPF</span><span class="valor">${c.cpf}</span></div>
+                        <div class="modal-linha"><span class="rotulo">Nascimento</span><span class="valor">${formatarDataBR(c.nascimento)}</span></div>
+                        <div class="modal-linha"><span class="rotulo">CNH</span><span class="valor">${c.cnh || "—"}</span></div>
+                        <div class="modal-linha"><span class="rotulo">Validade da CNH</span><span class="valor">${cnhLabel(c.cnhValidade)}</span></div>
+                        <div class="modal-linha"><span class="rotulo">Status</span><span class="valor"><span class="status-badge status-${c.status}">${statusLabelCliente(c.status)}</span></span></div>
+                    </div>
+                </div>
+                <div class="modal-secao">
+                    <div class="modal-secao-titulo">Contato</div>
+                    <div class="modal-grid">
+                        <div class="modal-linha"><span class="rotulo">Telefone</span><span class="valor">${c.telefone}</span></div>
+                        <div class="modal-linha"><span class="rotulo">E-mail</span><span class="valor">${c.email}</span></div>
+                        <div class="modal-linha" style="grid-column: 1 / -1;"><span class="rotulo">Endereço</span><span class="valor">${c.endereco || "—"}</span></div>
+                        <div class="modal-linha"><span class="rotulo">Cliente desde</span><span class="valor">${formatarDataBR(c.cadastradoEm)}</span></div>
+                    </div>
+                </div>
+                <div class="modal-secao">
+                    <div class="modal-secao-titulo">Histórico de locações</div>
+                    ${historicoHtml}
+                </div>
+            `;
+            modalVerEl.classList.remove("oculto");
+        }
+
+        modalVerFecharBtn.addEventListener("click", () => modalVerEl.classList.add("oculto"));
+        modalVerEl.addEventListener("click", (e) => {
+            if (e.target === modalVerEl) modalVerEl.classList.add("oculto");
+        });
+
+        // ---------- Modal: adicionar/editar ----------
+
+        function abrirModalFormCliente(id) {
+            const editando = !!id;
+            const c = editando ? CLIENTES.find((x) => x.id === id) : null;
+
+            modalFormTituloEl.textContent = editando ? "Editar Cliente" : "Adicionar Cliente";
+            document.getElementById("cf-id").value = editando ? c.id : "";
+            document.getElementById("cf-nome").value = editando ? c.nome : "";
+            document.getElementById("cf-cpf").value = editando ? c.cpf : "";
+            document.getElementById("cf-nascimento").value = editando ? c.nascimento : "";
+            document.getElementById("cf-cnh").value = editando ? c.cnh : "";
+            document.getElementById("cf-cnh-validade").value = editando ? c.cnhValidade : "";
+            document.getElementById("cf-status").value = editando ? c.status : "ativo";
+            document.getElementById("cf-telefone").value = editando ? c.telefone : "";
+            document.getElementById("cf-email").value = editando ? c.email : "";
+            document.getElementById("cf-endereco").value = editando ? c.endereco : "";
+
+            modalFormEl.classList.remove("oculto");
+        }
+
+        function fecharModalFormCliente() {
+            modalFormEl.classList.add("oculto");
+            formCliente.reset();
+        }
+
+        btnAdicionar.addEventListener("click", () => abrirModalFormCliente(null));
+        modalFormFecharBtn.addEventListener("click", fecharModalFormCliente);
+        modalFormCancelarBtn.addEventListener("click", fecharModalFormCliente);
+        modalFormEl.addEventListener("click", (e) => {
+            if (e.target === modalFormEl) fecharModalFormCliente();
+        });
+
+        formCliente.addEventListener("submit", (evento) => {
+            evento.preventDefault();
+
+            const id = document.getElementById("cf-id").value;
+            const dados = {
+                nome: document.getElementById("cf-nome").value,
+                cpf: document.getElementById("cf-cpf").value,
+                nascimento: document.getElementById("cf-nascimento").value,
+                cnh: document.getElementById("cf-cnh").value,
+                cnhValidade: document.getElementById("cf-cnh-validade").value,
+                status: document.getElementById("cf-status").value,
+                telefone: document.getElementById("cf-telefone").value,
+                email: document.getElementById("cf-email").value,
+                endereco: document.getElementById("cf-endereco").value,
+            };
+
+            if (id) {
+                const c = CLIENTES.find((x) => x.id === id);
+                Object.assign(c, dados);
+            } else {
+                CLIENTES.push(
+                    criarCliente(
+                        dados.nome, dados.cpf, dados.telefone, dados.email, dados.nascimento,
+                        dados.cnh, dados.cnhValidade, dados.endereco, dados.status,
+                        isoData(hoje), []
+                    )
+                );
+            }
+
+            fecharModalFormCliente();
+            paginaAtual = 1;
+            atualizarTudoClientes();
+        });
+
+        function isoData(d) {
+            return d.toISOString().split("T")[0];
+        }
+
+        // ---------- Delegação de ações na tabela ----------
+
+        tbodyEl.addEventListener("click", (evento) => {
+            const btn = evento.target.closest("button[data-action]");
+            if (!btn) return;
+
+            const { action, id } = btn.dataset;
+
+            if (action === "ver") abrirModalVisualizarCliente(id);
+            if (action === "editar") abrirModalFormCliente(id);
+            if (action === "excluir") {
+                if (confirm("Tem certeza que deseja excluir este cliente?")) {
+                    CLIENTES = CLIENTES.filter((c) => c.id !== id);
+                    atualizarTudoClientes();
+                }
+            }
+        });
+
+        // ---------- Render inicial ----------
+
+        function atualizarTudoClientes() {
+            renderizarCardsClientes();
+            renderizarTabelaClientes();
+        }
+
+        atualizarTudoClientes();
+    }
+
     inicializar();
 })();
+
+
