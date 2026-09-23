@@ -1,91 +1,80 @@
-<div class="topbar">
-    <div>
-        <h2 class="saudacao">Olá, Ana! Aqui está o resumo da Rota365 hoje.</h2>
-        <p class="subtitulo">Confira os principais indicadores de hoje.</p>
+<div class="topbar-container">
+    <div class="topbar-title-group">
+        <div class="topbar-icon">
+            <i class="fa-solid fa-chart-pie"></i>
+        </div>
+        <div>
+            <h2 class="saudacao">Olá, Ana! Aqui está o resumo da Rota365 hoje.</h2>
+            <p class="subtitulo">Confira os principais indicadores de hoje.</p>
+        </div>
     </div>
 </div>
 
-<div class="cards-container">
-
-    <div class="card">
-        <div class="card-title">Veículos disponíveis</div>
-        <div class="card-number">32</div>
+<!-- Indicadores do dashboard -->
+<div class="cards-grid-8">
+    <div class="card-metric">
+        <div class="card-metric-header"><span class="card-metric-title">Veículos disponíveis</span></div>
+        <div class="card-metric-value val-verde">32</div>
+        <div class="card-metric-sub">Prontos para locação</div>
     </div>
-
-    <div class="card">
-        <div class="card-title">Reservas Marcadas Para Hoje</div>
-        <div class="card-number">2</div>
+    <div class="card-metric">
+        <div class="card-metric-header"><span class="card-metric-title">Reservas hoje</span></div>
+        <div class="card-metric-value">2</div>
+        <div class="card-metric-sub">Aguardando retirada</div>
     </div>
-
-    <div class="card">
-        <div class="card-title">Veículos alugados</div>
-        <div class="card-number">18</div>
+    <div class="card-metric">
+        <div class="card-metric-header"><span class="card-metric-title">Veículos alugados</span></div>
+        <div class="card-metric-value val-azul">18</div>
+        <div class="card-metric-sub">Em circulação</div>
     </div>
-
-    <div class="card">
-        <div class="card-title">Devoluções Marcadas Para Hoje</div>
-        <div class="card-number">12</div>
+    <div class="card-metric">
+        <div class="card-metric-header"><span class="card-metric-title">Devoluções hoje</span></div>
+        <div class="card-metric-value">12</div>
+        <div class="card-metric-sub">Previstas até o fim do dia</div>
     </div>
-
 </div>
 
-<div class="dashboard-content">
-
-    <div class="tabela-container">
-
-        <div class="tabela-header">
-            <div class="tabela-titulo">Reservas Confirmadas</div>
-            <a href="#" class="ver-todas">Ver todas →</a>
+<!-- Reservas e alertas -->
+<div class="tables-row">
+    <div class="table-card">
+        <div class="table-header">
+            <h3 class="table-title">Reservas Confirmadas</h3>
+            <a href="#reservas" class="btn-link">Ver todas →</a>
         </div>
-
-        <div class="tabela-card">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Cliente</th>
-                        <th>Veículo</th>
-                        <th>Retirada</th>
-                        <th>Devolução</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="cliente-nome">João Silva</td>
-                        <td><span class="veiculo-badge">HB20</span></td>
-                        <td>10:00</td>
-                        <td>13/09</td>
-                    </tr>
-                    <tr>
-                        <td class="cliente-nome">Maria Souza</td>
-                        <td><span class="veiculo-badge">Corolla</span></td>
-                        <td>11:30</td>
-                        <td>15/09</td>
-                    </tr>
-                    <tr>
-                        <td class="cliente-nome">Pedro Oliveira</td>
-                        <td><span class="veiculo-badge">Onix</span></td>
-                        <td>14:00</td>
-                        <td>17/09</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <table class="custom-table">
+            <thead>
+                <tr><th>Cliente</th><th>Veículo</th><th>Retirada</th><th>Devolução</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>João Silva</strong></td><td><span class="badge-tipo receita">HB20</span></td><td>10:00</td><td>13/09</td></tr>
+                <tr><td><strong>Maria Souza</strong></td><td><span class="badge-tipo receita">Corolla</span></td><td>11:30</td><td>15/09</td></tr>
+                <tr><td><strong>Pedro Oliveira</strong></td><td><span class="badge-tipo receita">Onix</span></td><td>14:00</td><td>17/09</td></tr>
+            </tbody>
+        </table>
     </div>
 
-    <div class="alertas-container">
-
-        <div class="alertas-titulo">Atenção</div>
-
-        <div class="alerta-item">
-            <span>3 veículos em manutenção</span>
+    <div class="table-card" style="padding: 20px;">
+        <div class="table-header" style="padding: 0 0 16px 0; border-bottom: 1px solid var(--cinza-fundo);">
+            <h3 class="table-title">Atenção</h3>
         </div>
-
-        <div class="alerta-item">
-            <span>2 reservas aguardando confirmação</span>
+        <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 16px;">
+            <div class="card-dica-dia" style="background-color: #FFEBEE; border-color: #FFCDD2;">
+                <div class="dica-icon" style="color: var(--vermelho);">⚠️</div>
+                <div class="dica-content">
+                    <h4 style="color: #C62828;">3 veículos em manutenção</h4>
+                    <p style="color: #B71C1C;">Verifique a oficina para reativar a frota.</p>
+                </div>
+            </div>
+            <div class="card-dica-dia">
+                <div class="dica-icon">💡</div>
+                <div class="dica-content">
+                    <h4>2 reservas pendentes</h4>
+                    <p>Aguardando confirmação de pagamento.</p>
+                </div>
+            </div>
+            <button class="btn-action-dark" style="margin-top: 8px; width: 100%;" type="button">
+                Ver todos os alertas
+            </button>
         </div>
-
-        <a href="#" class="ver-todas-btn">Ver todos os alertas</a>
-
     </div>
-
 </div>
