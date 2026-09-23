@@ -1,130 +1,28 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="authors" content="Samuel Marques Medeiros, Arthur Chaves Macedo, Juan Henrique Ferreira Neves">
     <meta name="reply-to" content="samuel.medeiros@estudante.iftm.edu.br">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Rota365 - Funcionário</title>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="assets/css/dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-
 <body>
-
     <div class="layout">
-
-        <aside class="sidebar" id="sidebar-container">
-            <!-- Conteúdo carregado dinamicamente pelo dashboard.js a partir de partials/sidebar.html -->
+        <aside class="sidebar" id="sidebar-container" aria-label="Menu principal">
+            <!-- A sidebar é carregada pelo dashboard.js a partir de partials/sidebar.html. -->
         </aside>
 
-        <div class="conteudo">
-
-            <div id="main-content">
-                <!-- Conteúdo carregado dinamicamente pelo dashboard.js -->
-                <!-- Conteúdo inicial (pages/inicio.html) já embutido para evitar tela em branco antes do JS carregar -->
-                <div class="topbar">
-                    <div>
-                        <h2 class="saudacao">Olá, Ana! Aqui está o resumo da Rota365 hoje.</h2>
-                        <p class="subtitulo">Confira os principais indicadores de hoje.</p>
-                    </div>
-                </div>
-
-                <div class="cards-container">
-
-                    <div class="card">
-                        <div class="card-title">Veículos disponíveis</div>
-                        <div class="card-number">32</div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-title">Reservas Marcadas Para Hoje</div>
-                        <div class="card-number">3</div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-title">Veículos alugados</div>
-                        <div class="card-number">18</div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-title">Devoluções Marcadas Para Hoje</div>
-                        <div class="card-number">1</div>
-                    </div>
-
-                </div>
-
-                <div class="dashboard-content">
-
-                    <div class="tabela-container">
-
-                        <div class="tabela-header">
-                            <div class="tabela-titulo">Reservas Confirmadas</div>
-                            <a href="#" class="ver-todas">Ver todas →</a>
-                        </div>
-
-                        <div class="tabela-card">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Cliente</th>
-                                        <th>Veículo</th>
-                                        <th>Retirada</th>
-                                        <th>Devolução</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="cliente-nome">João Silva</td>
-                                        <td><span class="veiculo-badge">HB20</span></td>
-                                        <td>10:00</td>
-                                        <td>13/09</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="cliente-nome">Maria Souza</td>
-                                        <td><span class="veiculo-badge">Corolla</span></td>
-                                        <td>11:30</td>
-                                        <td>15/09</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="cliente-nome">Pedro Oliveira</td>
-                                        <td><span class="veiculo-badge">Onix</span></td>
-                                        <td>14:00</td>
-                                        <td>17/09</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <div class="alertas-container">
-
-                        <div class="alertas-titulo">Atenção</div>
-
-                        <div class="alerta-item">
-                            <span>3 veículos em manutenção</span>
-                        </div>
-
-                        <div class="alerta-item">
-                            <span>2 reservas aguardando confirmação</span>
-                        </div>
-
-                        <a href="#" class="ver-todas-btn">Ver todos os alertas</a>
-
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
-
+        <main id="main-content" class="conteudo">
+            <!-- O dashboard.js carrega aqui a página selecionada. -->
+        </main>
     </div>
 
     <script src="assets/js/scroll.js"></script>
     <script src="assets/js/dashboard.js"></script>
-
 </body>
-
 </html>
