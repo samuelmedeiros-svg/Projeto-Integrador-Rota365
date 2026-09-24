@@ -1,4 +1,4 @@
-#Projeto-Integrador-Rota365
+# Projeto-Integrador-Rota365
 
 Repositório criado para um projeto acadêmico.
 
@@ -12,7 +12,7 @@ Ao realizar um commit, descreva as alterações de forma correta e clara. Padrã
 
 Os arquivos que começam com _ são arquivos que podem ser ignorados.
 
-##Sobre o tasks
+## Sobre o tasks
 
 Ao criar uma atividade adicionar ao tasks para realizar e registrar tarefas.
 
@@ -26,7 +26,7 @@ Iniciado: Task registra e em processo de estágio
 
 Concluída: Task concluída.
 
-##Membros
+## Membros
 
 Arthur Chaves Macedo;
 
