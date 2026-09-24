@@ -1820,3 +1820,7 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+#profile {
+    cursor: pointer;
+}

@@ -1,0 +1,27 @@
+.cards {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.anuncio-btn {
+    background: #f7f7f7;
+    color: #ff7f32;
+    border: none;
+    border-radius: 14px;
+    padding: 12px 40px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.anuncio-btn:hover {
+    transform: scale(1.05);
+}

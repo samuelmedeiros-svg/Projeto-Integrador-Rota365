@@ -1,17 +1,22 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="detalhes do veículo">
+    <meta name="authors" content="Samuel Marques Medeiros, Arthur Chaves Macedo">
+    <meta name="reply-to" content="samuel.medeiros@estudante.iftm.edu.br">
+    <meta name="description" content="home page">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fiat Argo - Frota365</title>
+    <title>Frota365</title>
+
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="../assets/css/header.css">
+   
+    <link rel="stylesheet" href="../assets/css/hub.css">
     <link rel="stylesheet" href="../assets/css/card.css">
-    <link rel="stylesheet" href="../assets/css/carro-detalhes.css">
+    <link rel="stylesheet" href="../assets/css/header.css">
     <link rel="stylesheet" href="../assets/css/footer.css">
 </head>
 
@@ -41,91 +46,13 @@
         </div>
     </header>
 
-    <section class="container-fluid mt-5 pt-5 pb-5 px-4 px-lg-5">
-        <div class="row g-4">
+    
+    <main class="cards mt-5 pt-5 mb-5">
+      <h1>Nenhum carro cadastrado</h1>
+      <button type="button" class="anuncio-btn">CADASTRAR VEICULO</button>
+    </main>
 
-            <!-- Coluna esquerda: imagem + descrição -->
-            <div class="col-lg-8">
-
-                <!-- Imagem principal (carrossel com uma imagem por enquanto) -->
-                <div class="carro-carrossel-simples">
-                    <img src="../assets/images/carro.png" alt="Fiat Argo" class="w-100">
-                </div>
-
-                <!-- Título e specs rápidas -->
-                <div class="mt-4">
-                    <h2 class="fw-bold mb-1">Fiat Argo</h2>
-                    <p class="text-muted mb-3">Econômico • Manual • 5 lugares • Ar-condicionado</p>
-                </div>
-
-                <!-- Descrição -->
-                <div class="descricao-card p-4">
-                    <h5 class="fw-bold mb-3">Descrição</h5>
-                    <p>O Fiat Argo é a escolha ideal para quem busca economia sem abrir mão do conforto. Com motor eficiente, ar-condicionado e um interior espaçoso para até 5 pessoas, é perfeito tanto para o dia a dia na cidade quanto para viagens curtas.</p>
-                    <p>Todos os veículos da Frota365 passam por revisão completa antes de cada locação, incluindo checagem de pneus, freios, óleo e itens de segurança, garantindo uma experiência tranquila durante todo o período de aluguel.</p>
-
-                    <h6 class="fw-bold mt-4 mb-2">Itens inclusos</h6>
-                    <ul class="lista-itens">
-                        <li><i class="bi bi-check-circle-fill"></i> Ar-condicionado</li>
-                        <li><i class="bi bi-check-circle-fill"></i> Direção hidráulica</li>
-                        <li><i class="bi bi-check-circle-fill"></i> Central multimídia</li>
-                        <li><i class="bi bi-check-circle-fill"></i> Seguro contra terceiros</li>
-                        <li><i class="bi bi-check-circle-fill"></i> Quilometragem livre</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Coluna direita: preço + local -->
-            <div class="col-lg-4">
-                <div class="info-card p-4 mb-3">
-                    <div class="preco-estilizado mb-1">
-                        <span class="valor-principal">R$ 139</span><span class="centavos">,99</span><span class="periodo">/dia</span>
-                    </div>
-                    <p class="text-muted mb-3">Diária a partir de 1 dia de locação</p>
-
-                    <button type="button" class="btn btn-laranja w-100 mb-3">Reservar agora</button>
-
-                    <hr>
-
-                    <div class="local-info">
-                        <div class="d-flex align-items-start gap-2 mb-2">
-                            <i class="bi bi-geo-alt-fill text-brand"></i>
-                            <div>
-                                <span class="fw-semibold d-block">Retirada</span>
-                                <span class="text-muted small">GRU - Guarulhos Airport</span>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-start gap-2">
-                            <i class="bi bi-clock-fill text-brand"></i>
-                            <div>
-                                <span class="fw-semibold d-block">Disponibilidade</span>
-                                <span class="text-muted small">Imediata</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="info-card p-4">
-                    <h6 class="fw-bold mb-3">Características</h6>
-                    <div class="d-flex justify-content-start gap-3">
-                        <span class="footer-info">
-                            <img src="../assets/images/manual.png" alt="" class="img-fluid">
-                            <p>Manual</p>
-                        </span>
-                        <span class="footer-info">
-                            <img src="../assets/images/pessoas.png" alt="" class="img-fluid">
-                            <p>5</p>
-                        </span>
-                        <span class="footer-info">
-                            <img src="../assets/images/ac.png" alt="" class="img-fluid">
-                            <p>AC</p>
-                        </span>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
+     <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
 
     <footer>
       <nav class="footer-nav">
@@ -168,7 +95,7 @@
       </div>
     </footer>   
 
-    <div class="modal fade" id="loginModal" tabindex="-1" aria-label="loginModallabel" aria-hidden="true">
+<div class="modal fade" id="loginModal" tabindex="-1" aria-label="loginModallabel" aria-hidden="true">
  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-body">
@@ -291,10 +218,8 @@
   </div>
 </div>
 
-
     <script src="../assets/js/scroll.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/login.js"></script>
-
 </body>
 </html>
