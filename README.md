@@ -1,21 +1,39 @@
-# Projeto-Integrador-Rota365
-Repository made for a academic project.
-=======
-Repository made for a academic project. The repository is about a website for car renting.
+#Projeto-Integrador-Rota365
 
+Repositório criado para um projeto acadêmico.
 
-Access git-scm.com to learn how to use Git.
+O repositório é destinado a um projeto acadêmico sobre um site de aluguel de carros.
 
-While editing some part of the project, please make a branch. Do not add, edit or remove itens from the main without consent and authorization.
+Acesse o git-scm.com para aprender a utilizar o Git.
 
-When commiting an archive, define the changes correctly and clearly. Standard commit mensage: "feature: details".
+Ao editar qualquer parte do projeto, crie uma branch. Não adicione, edite ou remova itens da branch main sem consentimento e autorização.
 
-The "_" archives are ignorable archives.
+Ao realizar um commit, descreva as alterações de forma correta e clara. Padrão de mensagem de commit: "feature: detalhes".
 
-Members:
+Os arquivos que começam com _ são arquivos que podem ser ignorados.
+
+##Sobre o tasks
+
+Ao criar uma atividade adicionar ao tasks para realizar e registrar tarefas.
+
+Ao criar um processo de tasks, adicionar data ao conjunto de tasks.
+
+Status existentes:
+
+Não iniciado: Task registrada mas ainda não está em processo de criação
+
+Iniciado: Task registra e em processo de estágio
+
+Concluída: Task concluída.
+
+##Membros
+
 Arthur Chaves Macedo;
-Juan Henrique Ferreira Neves;
-Lucas Alexandre Souza Maia;
-Samuel Marques Medeiros;
-Thiago Cardoso Costa;
 
+Juan Henrique Ferreira Neves;
+
+Lucas Alexandre Souza Maia;
+
+Samuel Marques Medeiros;
+
+Thiago Cardoso Costa.
