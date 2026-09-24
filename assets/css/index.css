@@ -1,6 +1,6 @@
 .banner{
     width: 100%;
-    height: 500px;
+    height: 600px;
     margin-top: 70px;
     background-image: url("../images/descontos-1.png");
     background-size: cover;
@@ -18,46 +18,6 @@
     display:flex;
 }
 
-.vantagens{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    padding: 20px 0;
-    background-color: #b9b9b9;
-    height: 70px;
-}
-
-.card{
-    width: 220px;
-    height: 55px;
-    background: #fff;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    transition: transform 0.3s ease-in-out;
-}
-
-.card img{
-    width: 26px;
-    height: 26px;
-    left: 5px;
-}
-
-.card span{
-    font-size: 15px;
-    font-weight: 600;
-    color: #000;
-}
-
-.card:hover{
-    transform: scale(1.07);
-}
-
-/* ===== Card de aluguel na vertical, alinhado à esquerda ===== */
 .alugar{
     position: absolute;
     top: 50%;
@@ -158,5 +118,106 @@
         margin: 0 auto;
         width: 90%;
         max-width: 420px;
+    }
+}
+
+.destaques-titulo {
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+/* Sobrescreve o .card antigo (220x55) só dentro dos Destaques */
+.destaques .card {
+    width: auto;
+    height: 100%;
+}
+
+/* Área da imagem com altura fixa: todos os cards ficam iguais */
+.destaques .card-img {
+    width: 100%;
+    height: 110px;
+}
+
+.destaques .card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: right top;
+}
+
+.anuncio {
+    padding: 40px 0 60px;
+}
+
+.anuncio-card {
+    display: flex;
+    min-height: 300px;
+    border-radius: 18px;
+    box-shadow: 8px 8px 14px rgba(0, 0, 0, 0.25);
+}
+
+.anuncio-img {
+    flex: 1;
+    border-radius: 18px 0 0 18px;
+    overflow: hidden;
+}
+
+.anuncio-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.anuncio-texto {
+    flex: 0 0 36%;
+    background: #ff7f32;
+    color: #fff;
+    border-radius: 0 18px 18px 0;
+    padding: 32px 44px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.anuncio-texto h3 {
+    font-size: 1.7rem;
+    font-weight: 700;
+    line-height: 1.6;
+    text-align: justify;
+    margin: 0;
+}
+
+.anuncio-btn {
+    background: #f7f7f7;
+    color: #ff7f32;
+    border: none;
+    border-radius: 14px;
+    padding: 12px 40px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.anuncio-btn:hover {
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .anuncio-card {
+        flex-direction: column;
+    }
+
+    .anuncio-img {
+        height: 220px;
+        border-radius: 18px 18px 0 0;
+    }
+
+    .anuncio-texto {
+        flex: none;
+        border-radius: 0 0 18px 18px;
+        gap: 24px;
     }
 }

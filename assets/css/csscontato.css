@@ -1,0 +1,315 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+    --bg: #eef0f3;
+    --surface: #ffffff;
+    --ink: #1c1f24;
+    --muted: #6b7280;
+    --brand: #ff6600;
+    --brand-dark: #e65c00;
+    --line: #e2e4e8;
+    --success: #1f9d55;
+
+    --font-display: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+    color: var(--ink);
+    background-color: var(--bg);
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 100px);
+    padding: 100px 24px 100px;
+}
+
+.contato-wrap {
+    width: 100%;
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    background-color: var(--surface);
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px -25px rgba(28, 31, 36, 0.35);
+}
+
+.contato-info {
+    position: relative;
+    padding: 48px 40px;
+    background: linear-gradient(155deg, var(--brand) 0%, var(--brand-dark) 100%);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.contato-info::after {
+    content: "";
+    position: absolute;
+    right: -60px;
+    bottom: -80px;
+    width: 260px;
+    height: 260px;
+    border: 1.5px solid rgba(255, 255, 255, 0.18);
+    border-radius: 50%;
+}
+
+.contato-info::before {
+    content: "";
+    position: absolute;
+    right: 10px;
+    bottom: 20px;
+    width: 160px;
+    height: 160px;
+    border: 1.5px solid rgba(255, 255, 255, 0.14);
+    border-radius: 50%;
+}
+
+.contato-tag {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 18px;
+}
+
+.contato-info h1 {
+    font-family: var(--font-display);
+    font-size: 32px;
+    line-height: 1.2;
+    font-weight: 600;
+    margin: 0 0 16px;
+    max-width: 22ch;
+}
+
+.contato-info p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0 0 36px;
+    max-width: 34ch;
+}
+
+.info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    position: relative;
+    z-index: 1;
+}
+
+.info-list li {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.info-list strong {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.info-list span {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.contato-form-card {
+    padding: 48px 44px;
+}
+
+.contato-wrap.enviado {
+    grid-template-columns: 1fr;
+}
+
+.contato-wrap.enviado .contato-info {
+    display: none;
+}
+
+.contato-wrap.enviado .contato-form-card {
+    max-width: 440px;
+    margin: 0 auto;
+}
+
+.contato-form-card h2 {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 600;
+    margin: 0 0 8px;
+    color: var(--ink);
+}
+
+.contato-form-card > p {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 0 0 28px;
+    line-height: 1.5;
+}
+
+.contato-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.linha-dupla {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.contato-form label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    margin-bottom: 6px;
+    display: block;
+}
+
+.campo-grupo {
+    display: flex;
+    flex-direction: column;
+}
+
+.contato-form input,
+.contato-form textarea {
+    width: 100%;
+    padding: 14px 18px;
+    border: 1.5px solid var(--line);
+    border-radius: 14px;
+    box-sizing: border-box;
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--ink);
+    background-color: #fafafa;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.contato-form input::placeholder,
+.contato-form textarea::placeholder {
+    color: #a3a7ad;
+}
+
+.contato-form input:focus,
+.contato-form textarea:focus {
+    outline: none;
+    border-color: var(--brand);
+    background-color: #ffffff;
+}
+
+.contato-form textarea {
+    resize: vertical;
+    min-height: 130px;
+    border-radius: 18px;
+}
+
+.contato-form button {
+    margin-top: 8px;
+    background-color: var(--brand);
+    color: #ffffff;
+    padding: 15px;
+    border: none;
+    border-radius: 999px;
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.contato-form button:hover {
+    background-color: var(--brand-dark);
+}
+
+.contato-form button:active {
+    transform: scale(0.98);
+}
+
+.mensagem-sucesso {
+    text-align: left;
+    padding: 20px 4px;
+}
+
+.mensagem-sucesso h2 {
+    font-family: var(--font-display);
+    color: var(--success);
+    font-size: 28px;
+    margin: 0 0 16px;
+}
+
+.mensagem-sucesso p {
+    font-size: 17px;
+    color: var(--muted);
+    margin-bottom: 32px;
+    line-height: 1.7;
+    max-width: 42ch;
+}
+
+.btn-voltar {
+    background-color: var(--brand);
+    color: #ffffff;
+    padding: 14px 28px;
+    text-decoration: none;
+    border-radius: 999px;
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 600;
+    display: inline-block;
+    transition: background-color 0.2s ease;
+}
+
+.btn-voltar:hover {
+    background-color: var(--brand-dark);
+}
+
+@media (max-width: 780px) {
+    .contato-wrap {
+        grid-template-columns: 1fr;
+        border-radius: 18px;
+    }
+
+    .contato-info {
+        padding: 36px 28px;
+    }
+
+    .contato-form-card {
+        padding: 36px 28px;
+    }
+
+    .linha-dupla {
+        grid-template-columns: 1fr;
+    }
+
+    main {
+        padding: 60px 16px 60px;
+        min-height: auto;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .contato-form button,
+    .btn-voltar {
+        transition: none;
+    }
+}

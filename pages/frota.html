@@ -14,10 +14,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
    
-    <link rel="stylesheet" href="/assets/css/frota.css">
-    <link rel="stylesheet" href="/assets/css/card.css">
-    <link rel="stylesheet" href="/assets/css/header.css">
-
+    <link rel="stylesheet" href="../assets/css/frota.css">
+    <link rel="stylesheet" href="../assets/css/card.css">
+    <link rel="stylesheet" href="../assets/css/header.css">
+    <link rel="stylesheet" href="../assets/css/footer.css">
 </head>
 
 <body>
@@ -30,25 +30,23 @@
             </div>
             <nav>
                 <a href="../index.html">Início</a>
-                <a href="frota.html">Frota365</a>
+                <a href="#">Frota365</a>
                 <a href="#">365hub</a>
                 <a href="#">Reservas</a>
                 <a href="#">Contato</a>
                 <a href="#">Ajuda</a>
             </nav>
-            <div class="profile">
-                <a href="#">
-                    <img src="../assets/images/profile.png" alt="profile" id="profile">
-                </a>
-            </div>
-            <div class="lupa">
-                <a href="#">
-                    <img src="../assets/images/lupa.png" alt="lupa" id="lupa">
-                </a>
+            <div class="header-actions">              
+              <button type="button" class="btn btn-link" id="entrar-btn">Entrar</button>
+              <button type="button" class="btn btn-link"  id="cadastrar-btn">Cadastrar</button>
+              <a href="#">
+                <img src="../assets/images/profile.png" alt="profile" id="profile">
+              </a>
             </div>
         </div>
     </header>
 
+    
     <!-- Barra de pesquisa -->
     
 
@@ -221,7 +219,7 @@
                             </div> 
                             
                             <div class="card-btn-right">
-                              <button type="button" class="btn btn-laranja">Saiba mais</button>
+                              <a href="carro-detalhes-argo.html" class="btn btn-laranja">Saiba mais</a>
                             </div>
                           </div>
                           
@@ -254,16 +252,16 @@
                           <!-- Lado Esquerdo: Título, Preço e Botão 1 -->
                           <div class="card-left w-50 d-flex flex-column justify-content-between">
                             <div class="card-title">
-                              <h4 class="mb-0">Fiat Argo</h4> <!-- mb-0 para remover o espaçamento padrão do h4 -->
+                              <h4 class="mb-0">Honda Civic</h4> <!-- mb-0 para remover o espaçamento padrão do h4 -->
                             </div>
                             
                             <div class="price-action-group"> 
                               <div class="card-btn mb-1"> <!-- mb-1 para dar um pequeno espaço entre este botão e o preço -->
-                                <button type="button" class="btn btn-laranja">Econômico</button>
+                                <button type="button" class="btn btn-laranja">Sedan</button>
                               </div>
                               <div class="card-text"> <!-- Removido o mb-2 para que o preço cole na base -->
                                 <div class="preco-estilizado">
-                                  <span class="valor-principal">R$ 139</span><span class="centavos">,99</span><span class="periodo">/dia</span>
+                                  <span class="valor-principal">R$ 219</span><span class="centavos">,99</span><span class="periodo">/dia</span>
                                 </div>  
                               </div> 
                             </div>
@@ -273,11 +271,11 @@
                           <div class="card-right w-50 d-flex flex-column justify-content-between align-items-end">
                             <!-- 'h-100' e 'align-items-center' centralizam o carro no espaço restante -->
                             <div class="card-img d-flex align-items-start h-100">
-                              <img src="../assets/images/carro.png" alt="Fiat Argo" class="img-fluid">   
+                              <img src="../assets/images/civic.jpeg" alt="Honda Civic" class="img-fluid">   
                             </div> 
                             
                             <div class="card-btn-right">
-                              <button type="button" class="btn btn-laranja">Saiba mais</button>
+                              <a href="carro-detalhes-civic.html" class="btn btn-laranja">Saiba mais</a>
                             </div>
                           </div>
                           
@@ -310,7 +308,7 @@
                           <!-- Lado Esquerdo: Título, Preço e Botão 1 -->
                           <div class="card-left w-50 d-flex flex-column justify-content-between">
                             <div class="card-title">
-                              <h4 class="mb-0">Fiat Argo</h4> <!-- mb-0 para remover o espaçamento padrão do h4 -->
+                              <h4 class="mb-0">Fiat Uno</h4> <!-- mb-0 para remover o espaçamento padrão do h4 -->
                             </div>
                             
                             <div class="price-action-group"> 
@@ -319,7 +317,7 @@
                               </div>
                               <div class="card-text"> <!-- Removido o mb-2 para que o preço cole na base -->
                                 <div class="preco-estilizado">
-                                  <span class="valor-principal">R$ 139</span><span class="centavos">,99</span><span class="periodo">/dia</span>
+                                  <span class="valor-principal">R$ 99</span><span class="centavos">,99</span><span class="periodo">/dia</span>
                                 </div>  
                               </div> 
                             </div>
@@ -329,11 +327,11 @@
                           <div class="card-right w-50 d-flex flex-column justify-content-between align-items-end">
                             <!-- 'h-100' e 'align-items-center' centralizam o carro no espaço restante -->
                             <div class="card-img d-flex align-items-start h-100">
-                              <img src="../assets/images/carro.png" alt="Fiat Argo" class="img-fluid">   
+                              <img src="../assets/images/Uno.jpg" alt="Fiat Uno" class="img-fluid">   
                             </div> 
                             
                             <div class="card-btn-right">
-                              <button type="button" class="btn btn-laranja">Saiba mais</button>
+                              <a href="carro-detalhes-uno.html" class="btn btn-laranja">Saiba mais</a>
                             </div>
                           </div>
                           
@@ -391,7 +389,7 @@
                             </div> 
                             
                             <div class="card-btn-right">
-                              <button type="button" class="btn btn-laranja">Saiba mais</button>
+                              <a href="carro-detalhes-argo.html" class="btn btn-laranja">Saiba mais</a>
                             </div>
                           </div>
                           
@@ -424,16 +422,16 @@
                           <!-- Lado Esquerdo: Título, Preço e Botão 1 -->
                           <div class="card-left w-50 d-flex flex-column justify-content-between">
                             <div class="card-title">
-                              <h4 class="mb-0">Fiat Argo</h4> <!-- mb-0 para remover o espaçamento padrão do h4 -->
+                              <h4 class="mb-0">Honda Civic</h4> <!-- mb-0 para remover o espaçamento padrão do h4 -->
                             </div>
                             
                             <div class="price-action-group"> 
                               <div class="card-btn mb-1"> <!-- mb-1 para dar um pequeno espaço entre este botão e o preço -->
-                                <button type="button" class="btn btn-laranja">Econômico</button>
+                                <button type="button" class="btn btn-laranja">Sedan</button>
                               </div>
                               <div class="card-text"> <!-- Removido o mb-2 para que o preço cole na base -->
                                 <div class="preco-estilizado">
-                                  <span class="valor-principal">R$ 139</span><span class="centavos">,99</span><span class="periodo">/dia</span>
+                                  <span class="valor-principal">R$ 219</span><span class="centavos">,99</span><span class="periodo">/dia</span>
                                 </div>  
                               </div> 
                             </div>
@@ -443,11 +441,11 @@
                           <div class="card-right w-50 d-flex flex-column justify-content-between align-items-end">
                             <!-- 'h-100' e 'align-items-center' centralizam o carro no espaço restante -->
                             <div class="card-img d-flex align-items-start h-100">
-                              <img src="../assets/images/carro.png" alt="Fiat Argo" class="img-fluid">   
+                              <img src="../assets/images/civic.jpeg" alt="Honda Civic" class="img-fluid">   
                             </div> 
                             
                             <div class="card-btn-right">
-                              <button type="button" class="btn btn-laranja">Saiba mais</button>
+                              <a href="carro-detalhes-civic.html" class="btn btn-laranja">Saiba mais</a>
                             </div>
                           </div>
                           
@@ -480,7 +478,7 @@
                           <!-- Lado Esquerdo: Título, Preço e Botão 1 -->
                           <div class="card-left w-50 d-flex flex-column justify-content-between">
                             <div class="card-title">
-                              <h4 class="mb-0">Fiat Argo</h4> <!-- mb-0 para remover o espaçamento padrão do h4 -->
+                              <h4 class="mb-0">Fiat Uno</h4> <!-- mb-0 para remover o espaçamento padrão do h4 -->
                             </div>
                             
                             <div class="price-action-group"> 
@@ -489,7 +487,7 @@
                               </div>
                               <div class="card-text"> <!-- Removido o mb-2 para que o preço cole na base -->
                                 <div class="preco-estilizado">
-                                  <span class="valor-principal">R$ 139</span><span class="centavos">,99</span><span class="periodo">/dia</span>
+                                  <span class="valor-principal">R$ 99</span><span class="centavos">,99</span><span class="periodo">/dia</span>
                                 </div>  
                               </div> 
                             </div>
@@ -499,11 +497,11 @@
                           <div class="card-right w-50 d-flex flex-column justify-content-between align-items-end">
                             <!-- 'h-100' e 'align-items-center' centralizam o carro no espaço restante -->
                             <div class="card-img d-flex align-items-start h-100">
-                              <img src="../assets/images/carro.png" alt="Fiat Argo" class="img-fluid">   
+                              <img src="../assets/images/Uno.jpg" alt="Fiat Uno" class="img-fluid">   
                             </div> 
                             
                             <div class="card-btn-right">
-                              <button type="button" class="btn btn-laranja">Saiba mais</button>
+                              <a href="carro-detalhes-uno.html" class="btn btn-laranja">Saiba mais</a>
                             </div>
                           </div>
                           
@@ -561,7 +559,7 @@
                             </div> 
                             
                             <div class="card-btn-right">
-                              <button type="button" class="btn btn-laranja">Saiba mais</button>
+                              <a href="carro-detalhes-argo.html" class="btn btn-laranja">Saiba mais</a>
                             </div>
                           </div>
                           
@@ -594,16 +592,16 @@
                           <!-- Lado Esquerdo: Título, Preço e Botão 1 -->
                           <div class="card-left w-50 d-flex flex-column justify-content-between">
                             <div class="card-title">
-                              <h4 class="mb-0">Fiat Argo</h4> <!-- mb-0 para remover o espaçamento padrão do h4 -->
+                              <h4 class="mb-0">Honda Civic</h4> <!-- mb-0 para remover o espaçamento padrão do h4 -->
                             </div>
                             
                             <div class="price-action-group"> 
                               <div class="card-btn mb-1"> <!-- mb-1 para dar um pequeno espaço entre este botão e o preço -->
-                                <button type="button" class="btn btn-laranja">Econômico</button>
+                                <button type="button" class="btn btn-laranja">Sedan</button>
                               </div>
                               <div class="card-text"> <!-- Removido o mb-2 para que o preço cole na base -->
                                 <div class="preco-estilizado">
-                                  <span class="valor-principal">R$ 139</span><span class="centavos">,99</span><span class="periodo">/dia</span>
+                                  <span class="valor-principal">R$ 219</span><span class="centavos">,99</span><span class="periodo">/dia</span>
                                 </div>  
                               </div> 
                             </div>
@@ -613,11 +611,11 @@
                           <div class="card-right w-50 d-flex flex-column justify-content-between align-items-end">
                             <!-- 'h-100' e 'align-items-center' centralizam o carro no espaço restante -->
                             <div class="card-img d-flex align-items-start h-100">
-                              <img src="../assets/images/carro.png" alt="Fiat Argo" class="img-fluid">   
+                              <img src="../assets/images/civic.jpeg" alt="Honda Civic" class="img-fluid">   
                             </div> 
                             
                             <div class="card-btn-right">
-                              <button type="button" class="btn btn-laranja">Saiba mais</button>
+                              <a href="carro-detalhes-civic.html" class="btn btn-laranja">Saiba mais</a>
                             </div>
                           </div>
                           
@@ -650,7 +648,7 @@
                           <!-- Lado Esquerdo: Título, Preço e Botão 1 -->
                           <div class="card-left w-50 d-flex flex-column justify-content-between">
                             <div class="card-title">
-                              <h4 class="mb-0">Fiat Argo</h4> <!-- mb-0 para remover o espaçamento padrão do h4 -->
+                              <h4 class="mb-0">Fiat Uno</h4> <!-- mb-0 para remover o espaçamento padrão do h4 -->
                             </div>
                             
                             <div class="price-action-group"> 
@@ -659,7 +657,7 @@
                               </div>
                               <div class="card-text"> <!-- Removido o mb-2 para que o preço cole na base -->
                                 <div class="preco-estilizado">
-                                  <span class="valor-principal">R$ 139</span><span class="centavos">,99</span><span class="periodo">/dia</span>
+                                  <span class="valor-principal">R$ 99</span><span class="centavos">,99</span><span class="periodo">/dia</span>
                                 </div>  
                               </div> 
                             </div>
@@ -669,11 +667,11 @@
                           <div class="card-right w-50 d-flex flex-column justify-content-between align-items-end">
                             <!-- 'h-100' e 'align-items-center' centralizam o carro no espaço restante -->
                             <div class="card-img d-flex align-items-start h-100">
-                              <img src="../assets/images/carro.png" alt="Fiat Argo" class="img-fluid">   
+                              <img src="../assets/images/Uno.jpg" alt="Fiat Uno" class="img-fluid">   
                             </div> 
                             
                             <div class="card-btn-right">
-                              <button type="button" class="btn btn-laranja">Saiba mais</button>
+                              <a href="carro-detalhes-uno.html" class="btn btn-laranja">Saiba mais</a>
                             </div>
                           </div>
                           
@@ -705,7 +703,172 @@
         </div>
     </section>
 
+    <footer>
+      <nav class="footer-nav">
+        <a href="#">Sobre nós</a>
+        <a href="#">FAQ</a>
+        <a href="#">Agências</a>
+        <a href="#">Termos</a>
+        <a href="#">Configurações</a>
+      </nav>
+
+      <div class="footer-main">
+        <img src="../assets/images/365.png" alt="365" class="numero-fundo">
+
+        <div class="footer-brand">
+          <a href="index.htm"><img src="../assets/images/logo-footer.png" alt="logo" class="footer-logo"></a>
+        </div>
+
+        <div class="footer-contato">
+          <div class="linha">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 6l10 7 10-7"/></svg>
+            apoio@rota365.com.br
+          </div>
+          <div class="linha">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            + 55 (34) 9 8765-4321
+          </div>
+        </div>
+
+        <div class="footer-dados">
+          Dados da empresa: Grupo Rota 365 Ltda. - CNPJ: Nº 00.123.456/0001-67<br>
+          Sede: R. Blanche Galassi, 150 - Altamira, Uberlândia - MG, 38411-104<br>
+          Central dos usuários: 0800 123 4567
+        </div>
+
+        <div class="footer-site">www.rota365.com.br</div>
+      </div>
+
+      <div class="footer-bottom">
+        © Rota365, todos os direitos reservados, 2026.
+      </div>
+    </footer>   
+
+<div class="modal fade" id="loginModal" tabindex="-1" aria-label="loginModallabel" aria-hidden="true">
+ <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <img src="../assets/images/logo.png" alt="logo" class="modal-img">
+
+        <div class="divider-text">Acesse com uma das suas contas a seguir</div>
+
+        <button type="button" class="social-btn">
+          <i class="bi bi-google" style="color:#EA4335;"></i>
+          Google
+        </button>
+        <button type="button" class="social-btn">
+          <i class="bi bi-apple" style="color:#000;"></i>
+          Apple
+        </button>
+
+        <div class="divider-text">Ou entre com seu login e senha</div>
+
+        <form id="loginForm">
+          <div class="field-group">
+            <label for="InputEmail1" class="form-label">E-mail ou CPF*</label>
+            <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp" placeholder="">
+          </div>
+
+          <div class="field-group">
+            <label for="InputPassword1" class="form-label">Senha*</label>
+            <input type="password" class="form-control" id="InputPassword1" placeholder="">
+            <button type="button" class="toggle-password" data-target="InputPassword1">
+              <i class="bi bi-eye-slash"></i>
+            </button>
+          </div>
+
+          <div class="leva-senha">
+            <button type="button" id="levasenha-btn" class="btn btn-link btn-sm p-0" data-bs-toggle="modal" data-bs-target="#trocarsenhaModal">Esqueci minha senha</button>
+          </div>
+
+          <button id="entrar-btn" type="submit" class="btn btn-sm">Entrar</button>
+
+          <div class="leva-cadastro">
+            <button type="button" id="levacadastro-btn" class="btn btn-link btn-sm p-0" data-bs-target="#cadastroModal" data-bs-toggle="modal">Crie sua conta</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: TROCAR SENHA -->
+<div class="modal fade" id="trocarsenhaModal" aria-label="trocarsenhaModallabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <img src="../assets/images/logo.png" alt="logo" class="modal-img">
+
+        <div class="divider-text">Redefina sua senha</div>
+
+        <form>
+          <div class="field-group">
+            <label for="InputNewPassword" class="form-label">Nova Senha*</label>
+            <input type="password" class="form-control" id="InputNewPassword" placeholder="">
+            <button type="button" class="toggle-password" data-target="InputNewPassword">
+              <i class="bi bi-eye-slash"></i>
+            </button>
+          </div>
+
+          <div class="field-group">
+            <label for="RepeteInputPassword" class="form-label">Repita sua nova senha*</label>
+            <input type="password" class="form-control" id="RepeteInputPassword" placeholder="">
+            <button type="button" class="toggle-password" data-target="RepeteInputPassword">
+              <i class="bi bi-eye-slash"></i>
+            </button>
+          </div>
+
+          <button id="entrar-btn" type="submit" class="btn btn-sm">Trocar Senha</button>
+
+          <div class="leva-cadastro">
+            <button type="button" id="levacadastro-btn" class="btn btn-link btn-sm p-0" data-bs-target="#cadastroModal" data-bs-toggle="modal">Crie sua conta</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: CADASTRO -->
+<div class="modal fade" id="cadastroModal" aria-label="cadastroModallabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <img src="../assets/images/logo.png" alt="logo" class="modal-img">
+        <div class="divider-text">Crie sua conta</div>
+
+        <form>
+          <div class="field-group">
+            <label for="InputEmailCad" class="form-label">E-mail*</label>
+            <input type="email" class="form-control" id="InputEmailCad" aria-describedby="emailHelp" placeholder="">
+          </div>
+
+          <div class="field-group">
+            <label for="InputNewPasswordCad" class="form-label">Senha*</label>
+            <input type="password" class="form-control" id="InputNewPasswordCad" placeholder="">
+            <button type="button" class="toggle-password" data-target="InputNewPasswordCad">
+              <i class="bi bi-eye-slash"></i>
+            </button>
+          </div>
+
+          <div class="field-group">
+            <label for="InputTel" class="form-label">Seu Telefone*</label>
+            <input type="text" class="form-control" id="InputTel" placeholder="(99) 99999-9999">
+          </div>
+
+          <button id="entrar-btn" type="submit" class="btn btn-sm">Criar Conta</button>
+
+          <div class="leva-cadastro">
+            <button type="button" id="levacadastro-btn" class="btn btn-link btn-sm p-0" data-bs-target="#loginModal" data-bs-toggle="modal">Faça login</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
     <script src="../assets/js/scroll.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/login.js"></script>
 </body>
 </html>

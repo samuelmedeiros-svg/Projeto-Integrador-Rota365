@@ -1,0 +1,333 @@
+<div class="topbar-container">
+    <div class="topbar-title-group">
+        <div class="topbar-icon">💰</div>
+        <div>
+            <h2 class="saudacao">Financeiro</h2>
+            <p class="subtitulo">Acompanhe a movimentação financeira da Rota365</p>
+        </div>
+    </div>
+    <div class="topbar-actions">
+        <div class="date-picker-btn">
+            📅 01/09/2026 ➔ 30/09/2026 ▾
+        </div>
+        <button class="btn-action-dark">📥 Exportar Relatório</button>
+        <button class="btn-action-dark">Registrar Despesa</button>
+        <button class="btn-action-orange">+ Registrar Receita</button>
+    </div>
+</div>
+
+<!-- GRID DOS 8 CARDS SUPERIORES IGUAL À IMAGEM DE REFERÊNCIA -->
+<div class="cards-grid-8">
+    <!-- Card 1: Faturamento do Mês -->
+    <div class="card-metric destaque-dark">
+        <div class="card-metric-header">
+            <span class="card-metric-title">Faturamento do Mês</span>
+            
+        </div>
+        <div class="card-metric-value">R$ 29.800</div>
+        <div class="card-metric-sub">
+            <span class="trend-badge trend-up">↑ +18%</span> vs. mês passado
+        </div>
+    </div>
+
+    <!-- Card 2: Receita Hoje -->
+    <div class="card-metric">
+        <div class="card-metric-header">
+            <span class="card-metric-title">Receita Hoje</span>
+            
+        </div>
+        <div class="card-metric-value val-verde">R$ 1.350</div>
+        <div class="card-metric-sub">
+            4 locações concluídas <span class="trend-badge trend-up" style="margin-left:auto;">↑ +12%</span>
+        </div>
+    </div>
+
+    <!-- Card 3: Despesas do Mês -->
+    <div class="card-metric">
+        <div class="card-metric-header">
+            <span class="card-metric-title">Despesas do Mês</span>
+            
+        </div>
+        <div class="card-metric-value val-vermelho">R$ 8.400</div>
+        <div class="card-metric-sub">
+            Manutenção e operações <span class="trend-badge trend-down" style="margin-left:auto;">↑ +6%</span>
+        </div>
+    </div>
+
+    <!-- Card 4: Lucro Parcial -->
+    <div class="card-metric">
+        <div class="card-metric-header">
+            <span class="card-metric-title">Lucro Parcial</span>
+           
+        </div>
+        <div class="card-metric-value val-azul">R$ 21.400</div>
+        <div class="card-metric-sub">
+            Margem de 71% <span class="trend-badge trend-up" style="margin-left:auto;">↑ +14%</span>
+        </div>
+    </div>
+
+    <!-- Card 5: Valores a Receber -->
+    <div class="card-metric">
+        <div class="card-metric-header">
+            <span class="card-metric-title">Valores a Receber</span>
+            
+        </div>
+        <div class="card-metric-value val-roxo">R$ 4.200</div>
+        <div class="card-metric-sub">
+            Reservas pendentes <span class="trend-badge trend-down" style="margin-left:auto;">↓ -4%</span>
+        </div>
+    </div>
+
+    <!-- Card 6: Ticket Médio -->
+    <div class="card-metric">
+        <div class="card-metric-header">
+            <span class="card-metric-title">Ticket Médio</span>
+           
+        </div>
+        <div class="card-metric-value">R$ 1.650</div>
+        <div class="card-metric-sub">
+            Por locação <span class="trend-badge trend-up" style="margin-left:auto;">↑ +5%</span>
+        </div>
+    </div>
+
+    <!-- Card 7: Custos Operacionais -->
+    <div class="card-metric">
+        <div class="card-metric-header">
+            <span class="card-metric-title">Custos Operacionais</span>
+           
+        </div>
+        <div class="card-metric-value val-azul">R$ 12.800</div>
+        <div class="card-metric-sub">
+            Gestão do período <span class="trend-badge trend-up" style="margin-left:auto;">↓ -5%</span>
+        </div>
+    </div>
+
+    <!-- Card 8: Crescimento Mensal -->
+    <div class="card-metric">
+        <div class="card-metric-header">
+            <span class="card-metric-title">Crescimento Mensal</span>
+            
+        </div>
+        <div class="card-metric-value val-verde">+18%</div>
+        <div class="card-metric-sub">
+            Comparado ao mês anterior
+        </div>
+    </div>
+</div>
+
+<!-- GRÁFICOS FINANCEIROS -->
+<div class="charts-row">
+    <!-- Gráfico 1: Evolução do Faturamento Mensal -->
+    <div class="chart-card">
+        <div class="chart-header">
+            <div class="chart-title">Evolução do Faturamento Mensal</div>
+        </div>
+        <div class="chart-container-line">
+            <canvas id="graficoFaturamento"></canvas>
+        </div>
+    </div>
+
+    <!-- Gráfico 2: Receita por Categoria -->
+    <div class="chart-card">
+        <div class="chart-header">
+            <div class="chart-title">Receita por Categoria</div>
+        </div>
+        <div class="chart-donut-wrapper">
+            <div class="donut-canvas-area">
+                <canvas id="graficoCategoria"></canvas>
+                <div class="donut-center-info">
+                    <div class="lbl">Total</div>
+                    <div class="val">R$ 29.800</div>
+                    <div class="sub">Setembro/2026</div>
+                </div>
+            </div>
+            <ul class="chart-legend-list">
+                <li class="legend-item">
+                    <div class="legend-info">
+                        <span class="legend-dot" style="background-color: #FF6B00;"></span>
+                        <span>Sedan</span>
+                        <span class="legend-pct">34%</span>
+                    </div>
+                    <span class="legend-val">R$ 10.700</span>
+                </li>
+                <li class="legend-item">
+                    <div class="legend-info">
+                        <span class="legend-dot" style="background-color: #3A86FF;"></span>
+                        <span>Econômico</span>
+                        <span class="legend-pct">24%</span>
+                    </div>
+                    <span class="legend-val">R$ 7.150</span>
+                </li>
+                <li class="legend-item">
+                    <div class="legend-info">
+                        <span class="legend-dot" style="background-color: #00A878;"></span>
+                        <span>SUV</span>
+                        <span class="legend-pct">24%</span>
+                    </div>
+                    <span class="legend-val">R$ 6.560</span>
+                </li>
+                <li class="legend-item">
+                    <div class="legend-info">
+                        <span class="legend-dot" style="background-color: #FFB000;"></span>
+                        <span>Luxo</span>
+                        <span class="legend-pct">18%</span>
+                    </div>
+                    <span class="legend-val">R$ 5.390</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- TABELAS DE MOVIMENTAÇÕES E PAGAMENTOS -->
+<div class="tables-row">
+    <!-- Tabela 1: Últimas Movimentações -->
+    <div class="table-card">
+        <div class="table-header">
+            <div class="table-title">Últimas Movimentações</div>
+            <a href="#" class="btn-link">Ver todas ➔</a>
+        </div>
+        <table class="custom-table">
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Descrição</th>
+                    <th>Tipo</th>
+                    <th>Valor</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>20/09/2026</td>
+                    <td><strong>Locação #1024 - Fiat Argo</strong></td>
+                    <td><span class="badge-tipo receita">Receita</span></td>
+                    <td><strong>R$ 900,00</strong></td>
+                    <td><span class="badge-status badge-pago">Pago</span></td>
+                </tr>
+                <tr>
+                    <td>19/09/2026</td>
+                    <td>Manutenção - Revisão preventiva</td>
+                    <td><span class="badge-tipo despesa">Despesa</span></td>
+                    <td><strong>R$ 650,00</strong></td>
+                    <td><span class="badge-status badge-pendente">Pendente</span></td>
+                </tr>
+                <tr>
+                    <td>18/09/2026</td>
+                    <td><strong>Locação #1023 - Volkswagen Virtus</strong></td>
+                    <td><span class="badge-tipo receita">Receita</span></td>
+                    <td><strong>R$ 1.200,00</strong></td>
+                    <td><span class="badge-status badge-pago">Pago</span></td>
+                </tr>
+                <tr>
+                    <td>17/09/2026</td>
+                    <td>Combustível - Frota</td>
+                    <td><span class="badge-tipo despesa">Despesa</span></td>
+                    <td><strong>R$ 420,00</strong></td>
+                    <td><span class="badge-status badge-pago">Pago</span></td>
+                </tr>
+                <tr>
+                    <td>16/09/2026</td>
+                    <td>Devolução de reserva - ROSE7</td>
+                    <td><span class="badge-tipo receita">Receita</span></td>
+                    <td><strong>R$ 350,00</strong></td>
+                    <td><span class="badge-status badge-encerrado">Encerrado</span></td>
+                </tr>
+                <tr>
+                    <td>15/09/2026</td>
+                    <td><strong>Locação #1022 - Onix</strong></td>
+                    <td><span class="badge-tipo receita">Receita</span></td>
+                    <td><strong>R$ 780,00</strong></td>
+                    <td><span class="badge-status badge-pago">Pago</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Tabela 2: Próximos Pagamentos -->
+    <div class="table-card">
+        <div class="table-header">
+            <div class="table-title">Próximos Pagamentos</div>
+            <a href="#" class="btn-link">Ver todos ➔</a>
+        </div>
+        <table class="custom-table">
+            <thead>
+                <tr>
+                    <th>Descrição</th>
+                    <th>Data</th>
+                    <th>Valor</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Manutenção HB20</td>
+                    <td>25/09/2026</td>
+                    <td><strong>R$ 850,00</strong></td>
+                    <td><span class="badge-status badge-pendente">Pendente</span></td>
+                </tr>
+                <tr>
+                    <td>Seguro Corolla</td>
+                    <td>30/09/2026</td>
+                    <td><strong>R$ 1.200,00</strong></td>
+                    <td><span class="badge-status badge-pago">Pago</span></td>
+                </tr>
+                <tr>
+                    <td>Combustível Frota</td>
+                    <td>02/10/2026</td>
+                    <td><strong>R$ 3.500,00</strong></td>
+                    <td><span class="badge-status badge-pendente">Pendente</span></td>
+                </tr>
+                <tr>
+                    <td>IPVA - Frota</td>
+                    <td>10/10/2026</td>
+                    <td><strong>R$ 2.300,00</strong></td>
+                    <td><span class="badge-status badge-pendente">Pendente</span></td>
+                </tr>
+                <tr>
+                    <td>Licenciamento - Onix</td>
+                    <td>18/10/2026</td>
+                    <td><strong>R$ 450,00</strong></td>
+                    <td><span class="badge-status badge-pago">Pago</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- BLOCO INFERIOR: RESUMO & DICA DO DIA -->
+<div class="bottom-row">
+    <!-- Card Resumo Financeiro -->
+    <div class="card-resumo-financeiro">
+        <div class="resumo-title">
+            <span>📋</span> Resumo Financeiro
+        </div>
+        <div class="resumo-metrics">
+            <div class="resumo-item">
+                <div class="lbl">Receita prevista</div>
+                <div class="val">R$ 42.500</div>
+                <div class="sub trend-up">↑ +12%</div>
+            </div>
+            <div class="resumo-item">
+                <div class="lbl">Gastos previstos</div>
+                <div class="val val-vermelho">R$ 15.800</div>
+                <div class="sub trend-down">↑ +4%</div>
+            </div>
+            <div class="resumo-item">
+                <div class="lbl">Lucro estimado</div>
+                <div class="val val-verde">R$ 26.700</div>
+                <div class="sub trend-up">↑ +18%</div>
+            </div>
+        </div>
+        <button class="btn-action-orange" style="align-self: flex-end;">📊 Ver relatório completo</button>
+    </div>
+
+    <!-- Card Dica do Dia -->
+    <div class="card-dica-dia">
+        <div class="dica-icon">💡</div>
+        <div class="dica-content">
+            <h4>Dica do dia</h4>
+            <p>O faturamento de setembro foi <strong>18% maior</strong> que o mês passado. Continue com o bom trabalho e mantenha a revisão preventiva em dia!</p>
+        </div>
+    </div>
+</div>
