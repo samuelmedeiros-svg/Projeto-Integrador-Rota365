@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="detalhes do veículo">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiat Argo - Frota365</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="/assets/css/header.css">
+    <link rel="stylesheet" href="/assets/css/card.css">
+    <link rel="stylesheet" href="/assets/css/carro-detalhes.css">
+</head>
+
+<body>
+    <header id="header">
+        <div class="container">
+            <div class="logo">
+            <a href="index.html">
+                <img src="../assets/images/logo.png" alt="logo" width="150" id="logo">
+            </a>
+            </div>
+            <nav>
+                <a href="index.html">Início</a>
+                <a href="pages/frota.html">Frota365</a>
+                <a href="#">365hub</a>
+                <a href="#">Reservas</a>
+                <a href="#">Contato</a>
+                <a href="#">Ajuda</a>
+            </nav>
+            <div class="header-actions">              
+              <button type="button" class="btn btn-link" id="entrar-btn">Entrar</button>
+              <button type="button" class="btn btn-link"  id="cadastrar-btn">Cadastrar</button>
+              <a href="#">
+                <img src="../assets/images/profile.png" alt="profile" id="profile">
+              </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="container-fluid mt-5 pt-5 pb-5 px-5 px-lg-5" id="main">
+        <div class="row g-4">
+
+            <!-- Coluna esquerda: carrossel + descrição -->
+            <div class="col-lg-8">
+
+                <!-- Carrossel principal -->
+                <div id="carroCarrossel" class="carousel slide carro-carrossel" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="../assets/images/carro.png" class="d-block w-100" alt="Fiat Argo - frente">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="../assets/images/carro.png" class="d-block w-100" alt="Fiat Argo - lateral">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="../assets/images/carro.png" class="d-block w-100" alt="Fiat Argo - traseira">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="../assets/images/carro.png" class="d-block w-100" alt="Fiat Argo - interior">
+                        </div>
+                    </div>
+
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carroCarrossel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carroCarrossel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    </button>
+                </div>
+
+                <!-- Miniaturas (clicáveis) -->
+                <div class="thumbs-row mt-3">
+                    <button type="button" class="thumb-btn active" data-bs-target="#carroCarrossel" data-bs-slide-to="0">
+                        <img src="../assets/images/carro.png" alt="miniatura frente">
+                    </button>
+                    <button type="button" class="thumb-btn" data-bs-target="#carroCarrossel" data-bs-slide-to="1">
+                        <img src="../assets/images/carro.png" alt="miniatura lateral">
+                    </button>
+                    <button type="button" class="thumb-btn" data-bs-target="#carroCarrossel" data-bs-slide-to="2">
+                        <img src="../assets/images/carro.png" alt="miniatura traseira">
+                    </button>
+                    <button type="button" class="thumb-btn" data-bs-target="#carroCarrossel" data-bs-slide-to="3">
+                        <img src="../assets/images/carro.png" alt="miniatura interior">
+                    </button>
+                </div>
+
+                <!-- Título e specs rápidas -->
+                <div class="mt-4">
+                    <h2 class="fw-bold mb-1">Fiat Argo</h2>
+                    <p class="text-muted mb-3">Econômico • Manual • 5 lugares • Ar-condicionado</p>
+                </div>
+
+                <!-- Descrição -->
+                <div class="descricao-card p-4">
+                    <h5 class="fw-bold mb-3">Descrição</h5>
+                    <p>
+                        O Fiat Argo é a escolha ideal para quem busca economia sem abrir mão do conforto.
+                        Com motor eficiente, ar-condicionado e um interior espaçoso para até 5 pessoas,
+                        é perfeito tanto para o dia a dia na cidade quanto para viagens curtas.
+                    </p>
+                    <p>
+                        Todos os veículos da Frota365 passam por revisão completa antes de cada locação,
+                        incluindo checagem de pneus, freios, óleo e itens de segurança, garantindo uma
+                        experiência tranquila durante todo o período de aluguel.
+                    </p>
+
+                    <h6 class="fw-bold mt-4 mb-2">Itens inclusos</h6>
+                    <ul class="lista-itens">
+                        <li><i class="bi bi-check-circle-fill"></i> Ar-condicionado</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Direção hidráulica</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Central multimídia</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Seguro contra terceiros</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Quilometragem livre</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Coluna direita: preço + local -->
+            <div class="col-lg-4">
+                <div class="info-card p-4 mb-3">
+                    <div class="preco-estilizado mb-1">
+                        <span class="valor-principal">R$ 139</span><span class="centavos">,99</span><span class="periodo">/dia</span>
+                    </div>
+                    <p class="text-muted mb-3">Diária a partir de 1 dia de locação</p>
+
+                    <button type="button" class="btn btn-laranja w-100 mb-3">Reservar agora</button>
+
+                    <hr>
+
+                    <div class="local-info">
+                        <div class="d-flex align-items-start gap-2 mb-2">
+                            <i class="bi bi-geo-alt-fill text-brand"></i>
+                            <div>
+                                <span class="fw-semibold d-block">Retirada</span>
+                                <span class="text-muted small">GRU - Guarulhos Airport</span>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-start gap-2">
+                            <i class="bi bi-clock-fill text-brand"></i>
+                            <div>
+                                <span class="fw-semibold d-block">Disponibilidade</span>
+                                <span class="text-muted small">Imediata</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-card p-4">
+                    <h6 class="fw-bold mb-3">Características</h6>
+                    <div class="d-flex justify-content-start gap-3">
+                        <span class="footer-info">
+                            <img src="../assets/images/manual.png" alt="" class="img-fluid">
+                            <p>Manual</p>
+                        </span>
+                        <span class="footer-info">
+                            <img src="../assets/images/pessoas.png" alt="" class="img-fluid">
+                            <p>5</p>
+                        </span>
+                        <span class="footer-info">
+                            <img src="../assets/images/ac.png" alt="" class="img-fluid">
+                            <p>AC</p>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="../assets/js/scroll.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -47,7 +47,6 @@ main{
     transform:translate(-50%, -50%);
     display:flex;
     gap:40px;
-    scale: 90%;
 }
 
 #header nav a{
@@ -93,27 +92,35 @@ main{
     height:auto;
     display:block;
 }
-.profile{
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: .3s;
-    cursor: pointer;
+
+.header-actions{
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 3px; 
 }
-.profile img{
-    width: 35px;
-    height: auto;
-    display: block;
+
+.header-actions .btn-link{
+    padding: 2px 4px;
+    color: #000; 
 }
-.lupa{
-    position: absolute;
-    right: 80px;
-    top: 52%;
-    transform: translateY(-50%);
+
+.header-actions .btn-link:hover,
+.header-actions .btn-link:focus,
+.header-actions .btn-link:active{
+    color: #ff7a00;
+    box-shadow: none; /* remove o contorno azul de foco do Bootstrap */
 }
-.lupa img{
-    width: 24px;
-    height: auto;
-    display: flex;
+
+.header-actions img#profile{
+  width: 35px;
+  height: auto;
+  display: block;
+}
+
+#header.scroll .header-actions .btn-link{
+    color: #fff;
 }

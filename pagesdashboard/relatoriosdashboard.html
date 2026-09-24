@@ -1,0 +1,276 @@
+<div class="topbar-container">
+    <div class="topbar-title-group">
+        <div class="topbar-icon">📊</div>
+        <div>
+            <h2 class="saudacao">Relatórios Analíticos</h2>
+            <p class="subtitulo">Visão geral do desempenho, frota e clientes da Rota365</p>
+        </div>
+    </div>
+    <div class="topbar-actions">
+        <div class="date-picker-btn">
+            📅 01/09/2026 ➔ 30/09/2026 ▾
+        </div>
+        <button class="btn-action-orange">📥 Exportar PDF</button>
+    </div>
+</div>
+
+<!-- CARDS MÉTRICAS DA FROTA E FINANCEIRO -->
+<div class="cards-grid-8" style="grid-template-columns: repeat(4, 1fr);">
+    <div class="card-metric destaque-dark">
+        <div class="card-metric-header">
+            <span class="card-metric-title">Taxa de Ocupação</span>
+            
+        </div>
+        <div class="card-metric-value">75%</div>
+        <div class="card-metric-sub">
+            <span class="trend-badge trend-up">↑ +5%</span> Média excelente
+        </div>
+    </div>
+
+    <div class="card-metric">
+        <div class="card-metric-header">
+            <span class="card-metric-title">Veículos Ativos</span>
+            
+        </div>
+        <div class="card-metric-value val-verde">42</div>
+        <div class="card-metric-sub">
+            De um total de 50 veículos
+        </div>
+    </div>
+
+    <div class="card-metric">
+        <div class="card-metric-header">
+            <span class="card-metric-title">Custos de Manutenção</span>
+          
+        </div>
+        <div class="card-metric-value val-vermelho">R$ 3.200</div>
+        <div class="card-metric-sub">
+            Acumulado do mês
+        </div>
+    </div>
+
+    <div class="card-metric">
+        <div class="card-metric-header">
+            <span class="card-metric-title">Mais Rentável</span>
+           
+        </div>
+        <div class="card-metric-value" style="font-size: 20px;">Fiat Argo</div>
+        <div class="card-metric-sub">
+            Categoria Econômico
+        </div>
+    </div>
+</div>
+
+<!-- GRÁFICOS & INSIGHTS -->
+<div class="charts-row">
+    <!-- Gráfico de Status / Taxa de Ocupação da Frota -->
+    <div class="chart-card">
+        <div class="chart-header">
+            <div class="chart-title">Taxa de Ocupação da Frota</div>
+        </div>
+        <div class="chart-donut-wrapper">
+            <div class="donut-canvas-area">
+                <canvas id="graficoFrota"></canvas>
+                <div class="donut-center-info">
+                    <div class="lbl">Total</div>
+                    <div class="val">50</div>
+                    <div class="sub">Veículos</div>
+                </div>
+            </div>
+            <ul class="chart-legend-list">
+                <li class="legend-item">
+                    <div class="legend-info">
+                        <span class="legend-dot" style="background-color: #FF6B00;"></span>
+                        <span>Alugado</span>
+                        <span class="legend-pct">55%</span>
+                    </div>
+                    <span class="legend-val">28 veíc.</span>
+                </li>
+                <li class="legend-item">
+                    <div class="legend-info">
+                        <span class="legend-dot" style="background-color: #3A86FF;"></span>
+                        <span>Disponível</span>
+                        <span class="legend-pct">20%</span>
+                    </div>
+                    <span class="legend-val">10 veíc.</span>
+                </li>
+                <li class="legend-item">
+                    <div class="legend-info">
+                        <span class="legend-dot" style="background-color: #00A878;"></span>
+                        <span>Reservado</span>
+                        <span class="legend-pct">15%</span>
+                    </div>
+                    <span class="legend-val">7 veíc.</span>
+                </li>
+                <li class="legend-item">
+                    <div class="legend-info">
+                        <span class="legend-dot" style="background-color: #FFB000;"></span>
+                        <span>Manutenção</span>
+                        <span class="legend-pct">10%</span>
+                    </div>
+                    <span class="legend-val">5 veíc.</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Bloco de Insights Rápidos -->
+    <div class="chart-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+        <div class="chart-header">
+            <div class="chart-title">Insights Rápidos</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div style="background: var(--cinza-fundo); padding: 12px 14px; border-radius: 8px; border-left: 4px solid var(--laranja); font-size: 12px;">
+                <strong>Alta demanda:</strong> SUVs possuem 95% de ocupação neste fim de semana.
+            </div>
+            <div style="background: var(--cinza-fundo); padding: 12px 14px; border-radius: 8px; border-left: 4px solid var(--verde); font-size: 12px;">
+                📈 <strong>Crescimento mensal:</strong> Reservas aumentaram 18% em comparação a agosto.
+            </div>
+            <div style="background: var(--cinza-fundo); padding: 12px 14px; border-radius: 8px; border-left: 4px solid var(--azul); font-size: 12px;">
+                <strong>Maior rendimento:</strong> Fiat Argo gerou R$ 8.400 em receitas individuais.
+            </div>
+            <div style="background: var(--cinza-fundo); padding: 12px 14px; border-radius: 8px; border-left: 4px solid var(--vermelho); font-size: 12px;">
+                <strong>Atenção:</strong> 4 veículos necessitam de revisão preventiva nos próximos 5 dias.
+            </div>
+        </div>
+        <button class="btn-action-dark" style="margin-top: 16px; width: 100%;">Ver Detalhes da Frota</button>
+    </div>
+</div>
+
+<!-- TABELAS ANALÍTICAS (FROTA E CLIENTES) -->
+<div class="tables-row">
+    <!-- Relatório da Frota / Receita por Veículo -->
+    <div class="table-card">
+        <div class="table-header">
+            <h3 class="table-title">Desempenho da Frota & Receita por Veículo</h3>
+            <a href="#veiculos" class="btn-link">Ver frota →</a>
+        </div>
+        <table class="custom-table">
+            <thead>
+                <tr>
+                    <th>Veículo</th>
+                    <th>Locações</th>
+                    <th>Tempo Parado</th>
+                    <th>Custo Manut.</th>
+                    <th>Receita Gerada</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Fiat Argo</strong></td>
+                    <td>24 locações</td>
+                    <td>2 dias</td>
+                    <td>R$ 350,00</td>
+                    <td><strong class="val-verde">R$ 8.400,00</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Hyundai HB20</strong></td>
+                    <td>21 locações</td>
+                    <td>1 dia</td>
+                    <td>R$ 420,00</td>
+                    <td><strong class="val-verde">R$ 7.350,00</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Toyota Corolla</strong></td>
+                    <td>15 locações</td>
+                    <td>4 dias</td>
+                    <td>R$ 890,00</td>
+                    <td><strong class="val-verde">R$ 9.750,00</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Jeep Compass</strong></td>
+                    <td>12 locações</td>
+                    <td>0 dias</td>
+                    <td>R$ 650,00</td>
+                    <td><strong class="val-verde">R$ 10.200,00</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Relatório de Clientes que Mais Alugam -->
+    <div class="table-card">
+        <div class="table-header">
+            <h3 class="table-title">Clientes em Destaque</h3>
+            <a href="#clientes" class="btn-link">Ver clientes →</a>
+        </div>
+        <table class="custom-table">
+            <thead>
+                <tr>
+                    <th>Cliente</th>
+                    <th>Frequência</th>
+                    <th>Locações</th>
+                    <th>Total Gasto</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Carlos Eduardo</strong></td>
+                    <td><span class="badge-status badge-pago">Recorrente</span></td>
+                    <td>8 locações</td>
+                    <td><strong>R$ 5.400,00</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Juliana Lima</strong></td>
+                    <td><span class="badge-status badge-pendente">Cliente Novo</span></td>
+                    <td>5 locações</td>
+                    <td><strong>R$ 3.200,00</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Roberto Alves</strong></td>
+                    <td><span class="badge-status badge-pago">Recorrente</span></td>
+                    <td>5 locações</td>
+                    <td><strong>R$ 4.100,00</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Fernanda Rocha</strong></td>
+                    <td><span class="badge-status badge-pago">Recorrente</span></td>
+                    <td>4 locações</td>
+                    <td><strong>R$ 2.800,00</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- BLOCO INFERIOR: RESUMO DE RESERVAS & EXPORTAÇÃO -->
+<div class="bottom-row">
+    <!-- Card Resumo de Reservas e Demanda -->
+    <div class="card-resumo-financeiro">
+        <div class="resumo-title">
+            <span>📅</span> Relatório Geral de Reservas & Períodos de Demanda
+        </div>
+        <div class="resumo-metrics">
+            <div class="resumo-item">
+                <div class="lbl">Reservas Confirmadas</div>
+                <div class="val">136</div>
+                <div class="sub val-verde">↑ 95.8% de conversão</div>
+            </div>
+            <div class="resumo-item">
+                <div class="lbl">Cancelamentos</div>
+                <div class="val">6</div>
+                <div class="sub val-vermelho">↓ 4.2% taxa baixa</div>
+            </div>
+            <div class="resumo-item">
+                <div class="lbl">Maior Demanda</div>
+                <div class="val" style="font-size: 16px;">Sexta a Domingo</div>
+                <div class="sub val-azul">Pico de 92% de ocupação</div>
+            </div>
+        </div>
+        <div style="display: flex; gap: 10px; margin-top: 10px;">
+            <button class="btn-action-orange" style="flex: 1;">📥 Baixar Relatório Excel (.XLSX)</button>
+            <button class="btn-action-dark" style="flex: 1;">📄 Baixar Relatório PDF (.PDF)</button>
+        </div>
+    </div>
+
+    <!-- Card Dica do Dia / Resumo Executivo -->
+    <div class="card-dica-dia" style="align-items: center; justify-content: space-between;">
+        <div style="display: flex; gap: 16px; align-items: flex-start;">
+            <div class="dica-icon">📑</div>
+            <div class="dica-content">
+                <h4>Relatório Executivo Pronto</h4>
+                <p>Os dados consolidados de frota, financeiro e clientes de Setembro/2026 estão atualizados para apresentação da gerência.</p>
+            </div>
+        </div>
+    </div>
+</div>
