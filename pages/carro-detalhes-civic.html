@@ -19,21 +19,27 @@
     <header id="header">
         <div class="container">
             <div class="logo">
-                <a href="index.html">
-                    <img src="../assets/images/logo.png" alt="logo" width="150" id="logo">
-                </a>
+            <a href="index.html">
+                <img src="../assets/images/logo.png" alt="logo" width="150" id="logo">
+            </a>
             </div>
             <nav>
                 <a href="../index.html">Início</a>
                 <a href="frota.html">Frota365</a>
-                <a href="#">365hub</a>
+                <a href="365hub.html">365hub</a>
                 <a href="#">Reservas</a>
-                <a href="#">Contato</a>
+                <a href="contato.html">Contato</a>
                 <a href="#">Ajuda</a>
             </nav>
+            <div class="header-actions">              
+              <button type="button" class="btn btn-link" id="entrarheader-btn" data-bs-toggle="modal" data-bs-target="#loginModal">Entrar</button>
+              <button type="button" class="btn btn-link"  id="cadastrarheader-btn" data-bs-toggle="modal" data-bs-target="#cadastroModal">Cadastrar</button>
+              <a href="#">
+                <img src="../assets/images/profile.png" alt="profile" id="profile">
+              </a>
+            </div>
         </div>
     </header>
-
     <section class="container-fluid mt-5 pt-5 pb-5 px-4 px-lg-5">
         <div class="row g-4">
 
@@ -161,8 +167,133 @@
       </div>
     </footer>   
 
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-label="loginModallabel" aria-hidden="true">
+ <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <img src="../assets/images/logo.png" alt="logo" class="modal-img">
+
+        <div class="divider-text">Acesse com uma das suas contas a seguir</div>
+
+        <button type="button" class="social-btn">
+          <i class="bi bi-google" style="color:#EA4335;"></i>
+          Google
+        </button>
+        <button type="button" class="social-btn">
+          <i class="bi bi-apple" style="color:#000;"></i>
+          Apple
+        </button>
+
+        <div class="divider-text">Ou entre com seu login e senha</div>
+
+        <form id="loginForm">
+          <div class="field-group">
+            <label for="InputEmail1" class="form-label">E-mail ou CPF*</label>
+            <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp" placeholder="">
+          </div>
+
+          <div class="field-group">
+            <label for="InputPassword1" class="form-label">Senha*</label>
+            <input type="password" class="form-control" id="InputPassword1" placeholder="">
+            <button type="button" class="toggle-password" data-target="InputPassword1">
+              <i class="bi bi-eye-slash"></i>
+            </button>
+          </div>
+
+          <div class="leva-senha">
+            <button type="button" id="levasenha-btn" class="btn btn-link btn-sm p-0" data-bs-toggle="modal" data-bs-target="#trocarsenhaModal">Esqueci minha senha</button>
+          </div>
+
+          <button id="entrar-btn" type="submit" class="btn btn-sm">Entrar</button>
+
+          <div class="leva-cadastro">
+            <button type="button" id="levacadastro-btn" class="btn btn-link btn-sm p-0" data-bs-target="#cadastroModal" data-bs-toggle="modal">Crie sua conta</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: TROCAR SENHA -->
+<div class="modal fade" id="trocarsenhaModal" aria-label="trocarsenhaModallabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <img src="../assets/images/logo.png" alt="logo" class="modal-img">
+
+        <div class="divider-text">Redefina sua senha</div>
+
+        <form>
+          <div class="field-group">
+            <label for="InputNewPassword" class="form-label">Nova Senha*</label>
+            <input type="password" class="form-control" id="InputNewPassword" placeholder="">
+            <button type="button" class="toggle-password" data-target="InputNewPassword">
+              <i class="bi bi-eye-slash"></i>
+            </button>
+          </div>
+
+          <div class="field-group">
+            <label for="RepeteInputPassword" class="form-label">Repita sua nova senha*</label>
+            <input type="password" class="form-control" id="RepeteInputPassword" placeholder="">
+            <button type="button" class="toggle-password" data-target="RepeteInputPassword">
+              <i class="bi bi-eye-slash"></i>
+            </button>
+          </div>
+
+          <button id="entrar-btn" type="submit" class="btn btn-sm">Trocar Senha</button>
+
+          <div class="leva-cadastro">
+            <button type="button" id="levacadastro-btn" class="btn btn-link btn-sm p-0" data-bs-target="#cadastroModal" data-bs-toggle="modal">Crie sua conta</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: CADASTRO -->
+<div class="modal fade" id="cadastroModal" aria-label="cadastroModallabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <img src="../assets/images/logo.png" alt="logo" class="modal-img">
+        <div class="divider-text">Crie sua conta</div>
+
+        <form>
+          <div class="field-group">
+            <label for="InputEmailCad" class="form-label">E-mail*</label>
+            <input type="email" class="form-control" id="InputEmailCad" aria-describedby="emailHelp" placeholder="">
+          </div>
+
+          <div class="field-group">
+            <label for="InputNewPasswordCad" class="form-label">Senha*</label>
+            <input type="password" class="form-control" id="InputNewPasswordCad" placeholder="">
+            <button type="button" class="toggle-password" data-target="InputNewPasswordCad">
+              <i class="bi bi-eye-slash"></i>
+            </button>
+          </div>
+
+          <div class="field-group">
+            <label for="InputTel" class="form-label">Seu Telefone*</label>
+            <input type="text" class="form-control" id="InputTel" placeholder="(99) 99999-9999">
+          </div>
+
+          <button id="entrar-btn" type="submit" class="btn btn-sm">Criar Conta</button>
+
+          <div class="leva-cadastro">
+            <button type="button" id="levacadastro-btn" class="btn btn-link btn-sm p-0" data-bs-target="#loginModal" data-bs-toggle="modal">Faça login</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
 
     <script src="../assets/js/scroll.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/login.js"></script>
+
 </body>
 </html>
