@@ -12,11 +12,15 @@
     <div class="marca">
       <img src="imagens/logo.png" alt="Rota 365" width="200">
     </div>
+    <div class="perfil">
+      <img src="imagens/perfil.png" alt="Foto de perfil de Julia Dias" width="80" height="80">
+      <p>Julia Dias</p>
+    </div>
     <nav>
       <ul>
         <li><a href="index.html">Visão Geral</a></li>
         <li><a href="veiculos.html">Veículos</a></li>
-        <li><a href="reservas.html">Reservas</a></li>
+        <li><a href="reservas.html">Reservas e Devoluções</a></li>
         <li><a href="clientes.html">Clientes</a></li>
         <li><a href="financeiro.html" class="ativo">Financeiro</a></li>
         <li><a href="relatorios.html">Relatórios</a></li>
@@ -28,34 +32,100 @@
       <h1>Financeiro</h1>
       <p>Acompanhe entradas, saídas e pagamentos pendentes.</p>
     </header>
-    <div class="grade">
-      <div class="cartao indicador destaque">
-        <p class="rotulo">Lucro atual</p>
+    <div class="saldo">
+      <div class="saldo-valor">
+        <p class="rotulo">Saldo do mês</p>
         <span class="numero">R$ 112.200</span>
         <span class="detalhe">Margem de 60% sobre a receita do mês</span>
       </div>
+      <div class="saldo-barras">
+        <div class="linha-barra">
+          <p><span>Receitas</span><span>R$ 186.400</span></p>
+          <div class="trilho"><div class="preenchimento" style="width: 100%;"></div></div>
+        </div>
+        <div class="linha-barra">
+          <p><span>Despesas</span><span>R$ 74.200</span></p>
+          <div class="trilho"><div class="preenchimento escuro" style="width: 40%;"></div></div>
+        </div>
+        <div class="linha-barra">
+          <p><span>A receber</span><span>R$ 21.750</span></p>
+          <div class="trilho"><div class="preenchimento cinza" style="width: 12%;"></div></div>
+        </div>
+      </div>
     </div>
-    <div class="grade grade-3 faixa">
-      <div class="cartao indicador escuro">
-        <p class="rotulo">Despesas do mês</p>
-        <span class="numero">R$ 74.200</span>
-      </div>
-      <div class="cartao indicador">
-        <p class="rotulo">Receita do mês</p>
-        <span class="numero">R$ 186.400</span>
-      </div>
-      <div class="cartao indicador escuro">
-        <p class="rotulo">A receber</p>
-        <span class="numero">R$ 21.750</span>
-      </div>
+    <div class="barra-acoes">
+      <form class="periodo">
+        <div class="campos">
+          <div class="campo">
+            <label for="data-inicial">Data inicial</label>
+            <input type="date" id="data-inicial" name="data-inicial">
+          </div>
+          <div class="campo">
+            <label for="data-final">Data final</label>
+            <input type="date" id="data-final" name="data-final">
+          </div>
+          <div class="campo-botao">
+            <button type="button">Aplicar filtro</button>
+          </div>
+        </div>
+      </form>
     </div>
+    <details class="novo">
+      <summary>+ Nova Transação</summary>
+      <div class="cartao filtros">
+        <form>
+          <fieldset>
+            <legend>Nova transação</legend>
+            <div class="campos">
+            <div class="campo">
+              <label for="tra-descricao">Descrição</label>
+              <input type="text" id="tra-descricao" name="tra-descricao" placeholder="Ex.: Locação #1046">
+            </div>
+            <div class="campo">
+              <label for="tra-valor">Valor (R$)</label>
+              <input type="number" id="tra-valor" name="tra-valor" placeholder="0,00" min="0" step="0.01">
+            </div>
+            <div class="campo">
+              <label for="tra-tipo">Tipo de transação</label>
+              <select id="tra-tipo" name="tra-tipo">
+                <option value="">Selecione</option>
+                <option value="receita">Receita</option>
+                <option value="despesa">Despesa</option>
+              </select>
+            </div>
+            <div class="campo">
+              <label for="tra-data">Data</label>
+              <input type="date" id="tra-data" name="tra-data">
+            </div>
+            <div class="campo">
+              <label for="tra-categoria">Categoria</label>
+              <select id="tra-categoria" name="tra-categoria">
+                <option value="">Selecione</option>
+                <option value="locacao">Locação</option>
+                <option value="manutencao">Manutenção</option>
+                <option value="seguro">Seguro</option>
+                <option value="impostos">Impostos</option>
+                <option value="outros">Outros</option>
+              </select>
+            </div>
+            </div>
+            <div class="campo-botao acao-form">
+              <button type="button">Cadastrar transação</button>
+              <button type="reset" class="secundario">Cancelar</button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </details>
     <div class="cartao tabela-area">
       <table>
-        <caption>Últimas movimentações</caption>
+        <caption>Movimentações</caption>
         <thead>
           <tr>
             <th>Data</th>
             <th>Descrição</th>
+            <th>Categoria</th>
+            <th>Tipo</th>
             <th class="num">Valor</th>
             <th>Situação</th>
           </tr>
@@ -64,25 +134,33 @@
           <tr>
             <td>29/10/2026</td>
             <td>Locação #1042 - Mariana Souza</td>
-            <td class="num">R$ 840</td>
+            <td>Locação</td>
+            <td>Receita</td>
+            <td class="num receita">+ R$ 840</td>
             <td><span class="selo laranja">Pago</span></td>
           </tr>
           <tr>
             <td>28/10/2026</td>
             <td>Manutenção - Toyota Corolla</td>
-            <td class="num">R$ 1.350</td>
+            <td>Manutenção</td>
+            <td>Despesa</td>
+            <td class="num despesa">- R$ 1.350</td>
             <td><span class="selo laranja">Pago</span></td>
           </tr>
           <tr>
             <td>28/10/2026</td>
             <td>Locação #1038 - Carlos Ferreira</td>
-            <td class="num">R$ 1.820</td>
+            <td>Locação</td>
+            <td>Receita</td>
+            <td class="num receita">+ R$ 1.820</td>
             <td><span class="selo branco">Pendente</span></td>
           </tr>
           <tr>
             <td>27/10/2026</td>
             <td>Seguro da frota</td>
-            <td class="num">R$ 6.400</td>
+            <td>Seguro</td>
+            <td>Despesa</td>
+            <td class="num despesa">- R$ 6.400</td>
             <td><span class="selo preto">Vence em 5 dias</span></td>
           </tr>
         </tbody>

@@ -12,11 +12,15 @@
     <div class="marca">
       <img src="imagens/logo.png" alt="Rota 365" width="200">
     </div>
+    <div class="perfil">
+      <img src="imagens/perfil.png" alt="Foto de perfil de Julia Dias" width="80" height="80">
+      <p>Julia Dias</p>
+    </div>
     <nav>
       <ul>
         <li><a href="index.html">Visão Geral</a></li>
         <li><a href="veiculos.html">Veículos</a></li>
-        <li><a href="reservas.html">Reservas</a></li>
+        <li><a href="reservas.html">Reservas e Devoluções</a></li>
         <li><a href="clientes.html" class="ativo">Clientes</a></li>
         <li><a href="financeiro.html">Financeiro</a></li>
         <li><a href="relatorios.html">Relatórios</a></li>
@@ -28,58 +32,196 @@
       <h1>Clientes</h1>
       <p>Consulte os clientes cadastrados e o histórico de locações.</p>
     </header>
-    <div class="grade grade-3 faixa">
-      <div class="cartao indicador">
-        <p class="rotulo">Total de clientes</p>
-        <span class="numero">1.248</span>
+    <p class="resumo">
+      <span><strong>1.248</strong> clientes cadastrados</span>
+      <span><strong>36</strong> novos neste mês</span>
+      <span><strong>412</strong> recorrentes</span>
+    </p>
+    <form class="busca">
+      <div class="campo campo-grande">
+        <label for="busca-cliente">Buscar cliente</label>
+        <input type="text" id="busca-cliente" name="busca-cliente" placeholder="Nome, CPF ou telefone">
       </div>
-      <div class="cartao indicador escuro">
-        <p class="rotulo">Novos no mês</p>
-        <span class="numero">36</span>
+      <div class="campo">
+        <label for="cidade">Cidade</label>
+        <select id="cidade" name="cidade">
+          <option value="">Todas</option>
+          <option value="uberlandia">Uberlândia</option>
+          <option value="araguari">Araguari</option>
+          <option value="uberaba">Uberaba</option>
+        </select>
       </div>
-      <div class="cartao indicador">
-        <p class="rotulo">Clientes recorrentes</p>
-        <span class="numero">412</span>
+      <div class="campo-botao">
+        <button type="button">Buscar</button>
+        <button type="reset" class="secundario">Limpar</button>
       </div>
-    </div>
-    <div class="cartao tabela-area">
-      <table>
-        <caption>Clientes recentes</caption>
-        <thead>
-          <tr>
-            <th>Nome</th>
-            <th>Telefone</th>
-            <th>Cidade</th>
-            <th>Locações</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
+    </form>
+    <details class="novo">
+      <summary>+ Novo Cliente</summary>
+      <div class="cartao filtros">
+        <form>
+          <fieldset>
+            <legend>Novo cliente</legend>
+            <div class="campos">
+            <div class="campo">
+              <label for="cli-nome">Nome completo</label>
+              <input type="text" id="cli-nome" name="cli-nome" placeholder="Ex.: Maria da Silva">
+            </div>
+            <div class="campo">
+              <label for="cli-cpf">CPF</label>
+              <input type="text" id="cli-cpf" name="cli-cpf" placeholder="000.000.000-00">
+            </div>
+            <div class="campo">
+              <label for="cli-telefone">Telefone</label>
+              <input type="tel" id="cli-telefone" name="cli-telefone" placeholder="(00) 00000-0000">
+            </div>
+            <div class="campo">
+              <label for="cli-email">E-mail</label>
+              <input type="email" id="cli-email" name="cli-email" placeholder="nome@email.com">
+            </div>
+            <div class="campo">
+              <label for="cli-endereco">Endereço</label>
+              <input type="text" id="cli-endereco" name="cli-endereco" placeholder="Rua, número">
+            </div>
+            <div class="campo">
+              <label for="cli-cidade">Cidade</label>
+              <input type="text" id="cli-cidade" name="cli-cidade" placeholder="Ex.: Uberlândia">
+            </div>
+            </div>
+            <div class="campo-botao acao-form">
+              <button type="button">Cadastrar cliente</button>
+              <button type="reset" class="secundario">Cancelar</button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </details>
+    <div class="duas-colunas">
+      <div class="cartao tabela-area">
+        <table>
+          <caption>Clientes cadastrados</caption>
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>CPF</th>
+              <th>Telefone</th>
+              <th>Cidade</th>
+              <th>Locações</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr class="cidade-uberlandia">
             <td>Mariana Souza</td>
+            <td>123.456.789-00</td>
             <td>(34) 99812-3456</td>
             <td>Uberlândia</td>
             <td>7</td>
+            <td>
+              <div class="acoes">
+                <a href="#cliente-1" class="botao-mini">Visualizar</a>
+                <button type="button" class="botao-mini excluir">Excluir</button>
+              </div>
+            </td>
           </tr>
-          <tr>
+          <tr class="cidade-uberlandia">
             <td>Carlos Ferreira</td>
+            <td>234.567.890-11</td>
             <td>(34) 99745-8890</td>
             <td>Uberlândia</td>
             <td>3</td>
+            <td>
+              <div class="acoes">
+                <a href="#cliente-2" class="botao-mini">Visualizar</a>
+                <button type="button" class="botao-mini excluir">Excluir</button>
+              </div>
+            </td>
           </tr>
-          <tr>
+          <tr class="cidade-araguari">
             <td>Juliana Alves</td>
+            <td>345.678.901-22</td>
             <td>(34) 99633-2211</td>
             <td>Araguari</td>
             <td>12</td>
+            <td>
+              <div class="acoes">
+                <a href="#cliente-3" class="botao-mini">Visualizar</a>
+                <button type="button" class="botao-mini excluir">Excluir</button>
+              </div>
+            </td>
           </tr>
-          <tr>
+          <tr class="cidade-uberaba">
             <td>Rafael Mendes</td>
+            <td>456.789.012-33</td>
             <td>(34) 99588-7742</td>
             <td>Uberaba</td>
             <td>1</td>
+            <td>
+              <div class="acoes">
+                <a href="#cliente-4" class="botao-mini">Visualizar</a>
+                <button type="button" class="botao-mini excluir">Excluir</button>
+              </div>
+            </td>
           </tr>
-        </tbody>
-      </table>
+          </tbody>
+        </table>
+      </div>
+      <div class="painel">
+        <p class="painel-titulo">Dados do cliente</p>
+        <p class="painel-vazio">Selecione Visualizar em um cliente para consultar os dados completos.</p>
+        <div class="detalhes-cliente" id="cliente-1">
+          <h3>Mariana Souza</h3>
+          <div class="dados">
+            <p><span>CPF</span>123.456.789-00</p>
+            <p><span>Telefone</span>(34) 99812-3456</p>
+            <p><span>E-mail</span>mariana.souza@email.com</p>
+            <p><span>Endereço</span>Av. João Naves de Ávila, 1200</p>
+            <p><span>Cidade</span>Uberlândia</p>
+            <p><span>Cliente desde</span>12/03/2021</p>
+            <p><span>Locações realizadas</span>7</p>
+          </div>
+          <a href="#" class="botao-mini">Fechar</a>
+        </div>
+        <div class="detalhes-cliente" id="cliente-2">
+          <h3>Carlos Ferreira</h3>
+          <div class="dados">
+            <p><span>CPF</span>234.567.890-11</p>
+            <p><span>Telefone</span>(34) 99745-8890</p>
+            <p><span>E-mail</span>carlos.ferreira@email.com</p>
+            <p><span>Endereço</span>Rua Tupaciguara, 455</p>
+            <p><span>Cidade</span>Uberlândia</p>
+            <p><span>Cliente desde</span>05/08/2023</p>
+            <p><span>Locações realizadas</span>3</p>
+          </div>
+          <a href="#" class="botao-mini">Fechar</a>
+        </div>
+        <div class="detalhes-cliente" id="cliente-3">
+          <h3>Juliana Alves</h3>
+          <div class="dados">
+            <p><span>CPF</span>345.678.901-22</p>
+            <p><span>Telefone</span>(34) 99633-2211</p>
+            <p><span>E-mail</span>juliana.alves@email.com</p>
+            <p><span>Endereço</span>Rua Goiás, 87</p>
+            <p><span>Cidade</span>Araguari</p>
+            <p><span>Cliente desde</span>19/01/2019</p>
+            <p><span>Locações realizadas</span>12</p>
+          </div>
+          <a href="#" class="botao-mini">Fechar</a>
+        </div>
+        <div class="detalhes-cliente" id="cliente-4">
+          <h3>Rafael Mendes</h3>
+          <div class="dados">
+            <p><span>CPF</span>456.789.012-33</p>
+            <p><span>Telefone</span>(34) 99588-7742</p>
+            <p><span>E-mail</span>rafael.mendes@email.com</p>
+            <p><span>Endereço</span>Av. Leopoldino de Oliveira, 310</p>
+            <p><span>Cidade</span>Uberaba</p>
+            <p><span>Cliente desde</span>22/10/2026</p>
+            <p><span>Locações realizadas</span>1</p>
+          </div>
+          <a href="#" class="botao-mini">Fechar</a>
+        </div>
+      </div>
     </div>
     <footer class="rodape">
       <p>Rota 365 - Painel do gerente</p>

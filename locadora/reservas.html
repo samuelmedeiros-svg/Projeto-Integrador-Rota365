@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Painel de gerenciamento de locadora de veículos">
-  <title>Reservas - Rota 365</title>
+  <title>Reservas e Devoluções - Rota 365</title>
   <link rel="stylesheet" type="text/css" href="css/estilo.css">
 </head>
 <body>
@@ -12,11 +12,15 @@
     <div class="marca">
       <img src="imagens/logo.png" alt="Rota 365" width="200">
     </div>
+    <div class="perfil">
+      <img src="imagens/perfil.png" alt="Foto de perfil de Julia Dias" width="80" height="80">
+      <p>Julia Dias</p>
+    </div>
     <nav>
       <ul>
         <li><a href="index.html">Visão Geral</a></li>
         <li><a href="veiculos.html">Veículos</a></li>
-        <li><a href="reservas.html" class="ativo">Reservas</a></li>
+        <li><a href="reservas.html" class="ativo">Reservas e Devoluções</a></li>
         <li><a href="clientes.html">Clientes</a></li>
         <li><a href="financeiro.html">Financeiro</a></li>
         <li><a href="relatorios.html">Relatórios</a></li>
@@ -25,66 +29,161 @@
   </aside>
   <div class="principal">
     <header class="topo">
-      <h1>Reservas</h1>
-      <p>Controle as reservas feitas e as retiradas previstas.</p>
+      <h1>Reservas e Devoluções</h1>
+      <p>Controle as reservas feitas, as retiradas previstas e as próximas devoluções.</p>
     </header>
-    <div class="grade grade-3 faixa">
-      <div class="cartao indicador">
-        <p class="rotulo">Reservas ativas</p>
-        <span class="numero">47</span>
-      </div>
-      <div class="cartao indicador escuro">
-        <p class="rotulo">Retiradas hoje</p>
-        <span class="numero">5</span>
-      </div>
-      <div class="cartao indicador">
-        <p class="rotulo">Devoluções hoje</p>
-        <span class="numero">4</span>
-      </div>
+    <div class="alerta">
+      <p><strong>1 devolução atrasada.</strong> Carlos Ferreira deveria ter devolvido o Fiat Toro em 31/10/2026.</p>
     </div>
-    <div class="cartao tabela-area">
-      <table>
-        <caption>Reservas recentes</caption>
-        <thead>
-          <tr>
-            <th>Código</th>
-            <th>Cliente</th>
-            <th>Veículo</th>
-            <th>Retirada</th>
-            <th>Situação</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>#1042</td>
-            <td>Mariana Souza</td>
-            <td>Chevrolet Onix</td>
-            <td>28/10/2026</td>
-            <td><span class="selo preto">Em andamento</span></td>
-          </tr>
-          <tr>
-            <td>#1043</td>
-            <td>Bruno Costa</td>
-            <td>Toyota Corolla</td>
-            <td>01/11/2026</td>
-            <td><span class="selo laranja">Confirmada</span></td>
-          </tr>
-          <tr>
-            <td>#1044</td>
-            <td>Juliana Alves</td>
-            <td>Hyundai HB20</td>
-            <td>30/10/2026</td>
-            <td><span class="selo preto">Em andamento</span></td>
-          </tr>
-          <tr>
-            <td>#1045</td>
-            <td>Pedro Lima</td>
-            <td>Fiat Toro</td>
-            <td>05/11/2026</td>
-            <td><span class="selo branco">Aguardando</span></td>
-          </tr>
-        </tbody>
-      </table>
+    <p class="resumo">
+      <span><strong>47</strong> reservas ativas</span>
+      <span><strong>5</strong> retiradas hoje</span>
+      <span><strong>4</strong> devoluções hoje</span>
+    </p>
+    <form class="periodo">
+      <div class="campos">
+        <div class="campo">
+          <label for="data-inicial">Data inicial</label>
+          <input type="date" id="data-inicial" name="data-inicial">
+        </div>
+        <div class="campo">
+          <label for="data-final">Data final</label>
+          <input type="date" id="data-final" name="data-final">
+        </div>
+        <div class="campo-botao">
+          <button type="button">Aplicar filtro</button>
+        </div>
+      </div>
+    </form>
+    <details class="novo">
+      <summary>+ Nova Locação</summary>
+      <div class="cartao filtros">
+        <form>
+          <fieldset>
+            <legend>Nova locação</legend>
+            <div class="campos">
+            <div class="campo">
+              <label for="loc-cliente">Cliente</label>
+              <select id="loc-cliente" name="loc-cliente">
+                <option value="">Selecione</option>
+                <option value="mariana">Mariana Souza</option>
+                <option value="carlos">Carlos Ferreira</option>
+                <option value="juliana">Juliana Alves</option>
+                <option value="rafael">Rafael Mendes</option>
+              </select>
+            </div>
+            <div class="campo">
+              <label for="loc-veiculo">Veículo</label>
+              <select id="loc-veiculo" name="loc-veiculo">
+                <option value="">Selecione</option>
+                <option value="onix">Chevrolet Onix</option>
+                <option value="hb20">Hyundai HB20</option>
+                <option value="tcross">Volkswagen T-Cross</option>
+                <option value="toro">Fiat Toro</option>
+                <option value="corolla">Toyota Corolla</option>
+              </select>
+            </div>
+            <div class="campo">
+              <label for="loc-retirada">Data de retirada</label>
+              <input type="date" id="loc-retirada" name="loc-retirada">
+            </div>
+            <div class="campo">
+              <label for="loc-devolucao">Data de devolução</label>
+              <input type="date" id="loc-devolucao" name="loc-devolucao">
+            </div>
+            <div class="campo">
+              <label for="loc-situacao">Situação</label>
+              <select id="loc-situacao" name="loc-situacao">
+                <option value="confirmada">Confirmada</option>
+                <option value="andamento">Em andamento</option>
+                <option value="aguardando">Aguardando</option>
+              </select>
+            </div>
+            </div>
+            <div class="campo-botao acao-form">
+              <button type="button">Cadastrar locação</button>
+              <button type="reset" class="secundario">Cancelar</button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </details>
+    <div class="colunas-lista">
+      <div class="coluna-lista reserva">
+        <h2>Reservas e retiradas <span>2</span></h2>
+        <div class="item">
+          <div class="data"><span class="dia">01</span><span class="mes">NOV</span></div>
+          <div class="info">
+            <p class="nome">Bruno Costa</p>
+            <p class="veiculo">Toyota Corolla · #1043</p>
+            <span class="selo laranja">Confirmada</span>
+          </div>
+        </div>
+        <div class="item">
+          <div class="data"><span class="dia">05</span><span class="mes">NOV</span></div>
+          <div class="info">
+            <p class="nome">Pedro Lima</p>
+            <p class="veiculo">Fiat Toro · #1045</p>
+            <span class="selo branco">Aguardando</span>
+          </div>
+        </div>
+      </div>
+      <div class="coluna-lista andamento">
+        <h2>Locações em andamento <span>2</span></h2>
+        <div class="item">
+          <div class="data"><span class="dia">28</span><span class="mes">OUT</span></div>
+          <div class="info">
+            <p class="nome">Mariana Souza</p>
+            <p class="veiculo">Chevrolet Onix · #1042</p>
+          <p class="extra">Devolução em 31/10/2026</p>
+            <span class="selo preto">Em andamento</span>
+          </div>
+        </div>
+        <div class="item">
+          <div class="data"><span class="dia">30</span><span class="mes">OUT</span></div>
+          <div class="info">
+            <p class="nome">Juliana Alves</p>
+            <p class="veiculo">Hyundai HB20 · #1044</p>
+          <p class="extra">Devolução em 02/11/2026</p>
+            <span class="selo preto">Em andamento</span>
+          </div>
+        </div>
+      </div>
+      <div class="coluna-lista devolucao">
+        <h2>Devoluções previstas <span>4</span></h2>
+        <div class="item">
+          <div class="data"><span class="dia">31</span><span class="mes">OUT</span></div>
+          <div class="info">
+            <p class="nome">Carlos Ferreira</p>
+            <p class="veiculo">Fiat Toro</p>
+            <span class="selo vermelho">Atrasada</span>
+          </div>
+        </div>
+        <div class="item">
+          <div class="data"><span class="dia">31</span><span class="mes">OUT</span></div>
+          <div class="info">
+            <p class="nome">Mariana Souza</p>
+            <p class="veiculo">Chevrolet Onix</p>
+            <span class="selo laranja">No prazo</span>
+          </div>
+        </div>
+        <div class="item">
+          <div class="data"><span class="dia">02</span><span class="mes">NOV</span></div>
+          <div class="info">
+            <p class="nome">Juliana Alves</p>
+            <p class="veiculo">Hyundai HB20</p>
+            <span class="selo laranja">No prazo</span>
+          </div>
+        </div>
+        <div class="item">
+          <div class="data"><span class="dia">03</span><span class="mes">NOV</span></div>
+          <div class="info">
+            <p class="nome">Rafael Mendes</p>
+            <p class="veiculo">Volkswagen T-Cross</p>
+            <span class="selo laranja">No prazo</span>
+          </div>
+        </div>
+      </div>
     </div>
     <footer class="rodape">
       <p>Rota 365 - Painel do gerente</p>
