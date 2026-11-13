@@ -69,7 +69,8 @@ textarea:focus-visible {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 40%;
+  padding-top: 30%;
 }
 
 .perfil img {
