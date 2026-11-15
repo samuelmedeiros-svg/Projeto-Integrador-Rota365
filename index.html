@@ -8,13 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
     <link rel="stylesheet" href="assets/css/header.css">
     <link rel="stylesheet" href="assets/css/index.css">
     <link rel="stylesheet" href="assets/css/slideshow.css">
-    <link rel="stylesheet" href="assets/css/footer.css">
-    <link rel="stylesheet" href="assets/css/login.css">
+    <link rel="stylesheet" href="assets/css/footer.css"> 
     <link rel="stylesheet" href="assets/css/card.css">
+    <link rel="stylesheet" href="assets/css/login.css">
 
     <title>Rota365</title>
 </head>
@@ -38,6 +39,7 @@
             <div class="header-actions">              
               <button type="button" class="btn btn-link" id="entrarheader-btn" data-bs-toggle="modal" data-bs-target="#loginModal">Entrar</button>
               <button type="button" class="btn btn-link"  id="cadastrarheader-btn" data-bs-toggle="modal" data-bs-target="#cadastroModal">Cadastrar</button>
+              <span class="btn btn-link d-none" id="saudacao-header">Olá, Ricardo!</span>
               <a href="#">
                 <img src="assets/images/profile.png" alt="profile" id="profile">
               </a>
@@ -47,53 +49,55 @@
 
     
 <section class="banner">
-<div class="alugar">
-    <div class="campos-row">
-        <div class="campo">
-            <label>Retirada</label>
-            <select>
-                <option>GRU - Guarulhos Airport</option>
-                <option>Congonhas</option>
-                <option>Campinas</option>
-            </select>
-            <div class="linha">
-                <input type="date">
-                <input type="time">
-            </div>
-        </div>
-        <div class="campo">
-            <label>Devolução</label>
-            <select>
-                <option>GRU - Guarulhos Airport</option>
-                <option>Congonhas</option>
-                <option>Campinas</option>
-            </select>
-            <div class="linha">
-                <input type="date">
-                <input type="time">
-            </div>
-        </div>
-        <div class="campo">
-            <label>Tipo de veículo</label>
-            <select>
-                <option>Todos</option>
-                <option>Econômico</option>
-                <option>Sedan</option>
-                <option>SUV</option>
-                <option>Pickup</option>
-                <option>Elétrico</option>
-            </select>
-            <select>
-                <option>Mais filtros</option>
-                <option>Automático</option>
-                <option>Manual</option>
-                <option>7 lugares</option>
-            </select>
-        </div>
-    </div>
-    <div class="buscar">
-        <button>BUSCAR VEÍCULOS</button>
-    </div>
+<div class="container h-100 d-flex align-items-center">
+  <div class="alugar">
+      <div class="campos-row">
+          <div class="campo">
+              <label>Retirada</label>
+              <select>
+                  <option>GRU - Guarulhos Airport</option>
+                  <option>Congonhas</option>
+                  <option>Campinas</option>
+              </select>
+              <div class="linha">
+                  <input type="date">
+                  <input type="time">
+              </div>
+          </div>
+          <div class="campo">
+              <label>Devolução</label>
+              <select>
+                  <option>GRU - Guarulhos Airport</option>
+                  <option>Congonhas</option>
+                  <option>Campinas</option>
+              </select>
+              <div class="linha">
+                  <input type="date">
+                  <input type="time">
+              </div>
+          </div>
+          <div class="campo">
+              <label>Tipo de veículo</label>
+              <select>
+                  <option>Todos</option>
+                  <option>Econômico</option>
+                  <option>Sedan</option>
+                  <option>SUV</option>
+                  <option>Pickup</option>
+                  <option>Elétrico</option>
+              </select>
+              <select>
+                  <option>Mais filtros</option>
+                  <option>Automático</option>
+                  <option>Manual</option>
+                  <option>7 lugares</option>
+              </select>
+          </div>
+      </div>
+      <div class="buscar">
+          <button>BUSCAR VEÍCULOS</button>
+      </div>
+  </div>
 </div>
 </section>
 
@@ -458,9 +462,13 @@
 </footer>   
 
 <div class="modal fade" id="loginModal" tabindex="-1" aria-label="loginModallabel" aria-hidden="true">
- <div class="modal-dialog modal-dialog-centered">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-body">
+        <button type="button" class="btn-voltar" data-bs-dismiss="modal" aria-label="Voltar">
+          <i class="bi bi-arrow-left"></i>
+        </button>
+
         <img src="../assets/images/logo.png" alt="logo" class="modal-img">
 
         <div class="divider-text">Acesse com uma das suas contas a seguir</div>
@@ -505,33 +513,27 @@
   </div>
 </div>
 
-<!-- MODAL: TROCAR SENHA -->
 <div class="modal fade" id="trocarsenhaModal" aria-label="trocarsenhaModallabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-body">
+        <button type="button" class="btn-voltar" data-bs-target="#loginModal" data-bs-toggle="modal" aria-label="Voltar">
+          <i class="bi bi-arrow-left"></i>
+        </button>
+
         <img src="../assets/images/logo.png" alt="logo" class="modal-img">
 
         <div class="divider-text">Redefina sua senha</div>
 
         <form>
           <div class="field-group">
-            <label for="InputNewPassword" class="form-label">Nova Senha*</label>
-            <input type="password" class="form-control" id="InputNewPassword" placeholder="">
-            <button type="button" class="toggle-password" data-target="InputNewPassword">
-              <i class="bi bi-eye-slash"></i>
-            </button>
+            <label for="InputEmailReset" class="form-label">E-mail*</label>
+            <input type="email" class="form-control" id="InputEmailReset" placeholder="">
           </div>
 
-          <div class="field-group">
-            <label for="RepeteInputPassword" class="form-label">Repita sua nova senha*</label>
-            <input type="password" class="form-control" id="RepeteInputPassword" placeholder="">
-            <button type="button" class="toggle-password" data-target="RepeteInputPassword">
-              <i class="bi bi-eye-slash"></i>
-            </button>
-          </div>
+          <p class="form-hint">Será enviado um e-mail de redefinição da senha.</p>
 
-          <button id="entrar-btn" type="submit" class="btn btn-sm">Trocar Senha</button>
+          <button id="entrar-btn" type="submit" class="btn btn-sm">Enviar</button>
 
           <div class="leva-cadastro">
             <button type="button" id="levacadastro-btn" class="btn btn-link btn-sm p-0" data-bs-target="#cadastroModal" data-bs-toggle="modal">Crie sua conta</button>
@@ -542,15 +544,28 @@
   </div>
 </div>
 
-<!-- MODAL: CADASTRO -->
 <div class="modal fade" id="cadastroModal" aria-label="cadastroModallabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-body">
+        <button type="button" class="btn-voltar" data-bs-target="#loginModal" data-bs-toggle="modal" aria-label="Voltar">
+          <i class="bi bi-arrow-left"></i>
+        </button>
+
         <img src="../assets/images/logo.png" alt="logo" class="modal-img">
         <div class="divider-text">Crie sua conta</div>
 
         <form>
+          <div class="field-group">
+            <label for="InputNomeCad" class="form-label">Nome completo*</label>
+            <input type="text" class="form-control" id="InputNomeCad" autocomplete="name" placeholder="">
+          </div>
+
+          <div class="field-group">
+            <label for="InputCpfCad" class="form-label">CPF*</label>
+            <input type="text" class="form-control" id="InputCpfCad" inputmode="numeric" maxlength="14" placeholder="000.000.000-00">
+          </div>
+
           <div class="field-group">
             <label for="InputEmailCad" class="form-label">E-mail*</label>
             <input type="email" class="form-control" id="InputEmailCad" aria-describedby="emailHelp" placeholder="">
@@ -579,7 +594,6 @@
     </div>
   </div>
 </div>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="assets/js/scroll.js"></script>
 <script src="assets/js/mostrasenha.js"></script>

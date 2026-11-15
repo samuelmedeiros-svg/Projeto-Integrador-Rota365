@@ -5,6 +5,8 @@
 
 .modal-dialog {
   max-width: 380px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .modal-content {
@@ -20,7 +22,32 @@
   align-items: center;
   padding: 36px 30px 28px;
   margin: 0;
+  position: relative;
 }
+
+.btn-voltar {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: none;
+  border: none;
+  padding: 4px;
+  font-size: 22px;
+  line-height: 1;
+  color: #777;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.btn-voltar:hover {
+  color: #ff8d49;
+}
+
+.btn-voltar:focus {
+  outline: none;
+  box-shadow: none;
+}
+
 
 .modal .modal-img {
   width: 160px;
@@ -204,4 +231,12 @@
   color: #ff8d49 !important;
   text-decoration: underline;
   padding: 0;
+}
+
+/* -------- Texto de ajuda pequeno (ex.: redefinição de senha) -------- */
+.form-hint {
+  font-size: 12px;
+  color: #777;
+  margin: -8px 0 22px;
+  text-align: left;
 }

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Painel de gerenciamento de locadora de veículos">
+  <title>Visão Geral - Rota 365</title>
+  <script src="../../assets/js/guard-gerente.js"></script>
+  <link rel="stylesheet" type="text/css" href="../../assets/css/gerente/estilo.css">
+</head>
+<body class="area-gerente">
+  <aside class="sidebar">
+    <div class="marca">
+      <img src="../../assets/images/gerente/logo.png" alt="Rota 365" width="200">
+    </div>
+    <div class="perfil">
+      <img src="../../assets/images/gerente/perfil.png" alt="Foto de perfil de Julia Dias" width="80" height="80">
+      <p>Julia Dias</p>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="dashboard.html" class="ativo">Visão Geral</a></li>
+        <li><a href="veiculos.html">Veículos</a></li>
+        <li><a href="reservas.html">Reservas e Devoluções</a></li>
+        <li><a href="clientes.html">Clientes</a></li>
+        <li><a href="financeiro.html">Financeiro</a></li>
+        <li><a href="relatorios.html">Relatórios</a></li>
+      </ul>
+    </nav>
+    <div class="sair">
+      <a href="../../index.html">Voltar ao site</a>
+      <a href="#" id="sair-gerente">Sair</a>
+    </div>
+  </aside>
+  <div class="principal">
+    <header class="topo">
+      <h1>Visão Geral</h1>
+      <p>Bem-vindo de volta, gerente. Veja como está a operação da locadora hoje.</p>
+    </header>
+    <h2 class="secao">Desempenho</h2>
+    <div class="grade grade-2">
+      <div class="cartao">
+        <h3>Receita dos últimos 6 meses (em mil reais)</h3>
+        <div class="grafico-colunas">
+          <div class="coluna-item">
+            <span class="valor">128</span>
+            <div class="barra" style="height: 52%;"></div>
+            <span class="mes">Mai</span>
+          </div>
+          <div class="coluna-item">
+            <span class="valor">141</span>
+            <div class="barra" style="height: 58%;"></div>
+            <span class="mes">Jun</span>
+          </div>
+          <div class="coluna-item">
+            <span class="valor">165</span>
+            <div class="barra" style="height: 68%;"></div>
+            <span class="mes">Jul</span>
+          </div>
+          <div class="coluna-item">
+            <span class="valor">152</span>
+            <div class="barra" style="height: 62%;"></div>
+            <span class="mes">Ago</span>
+          </div>
+          <div class="coluna-item">
+            <span class="valor">172</span>
+            <div class="barra" style="height: 71%;"></div>
+            <span class="mes">Set</span>
+          </div>
+          <div class="coluna-item">
+            <span class="valor">186</span>
+            <div class="barra destaque" style="height: 77%;"></div>
+            <span class="mes">Out</span>
+          </div>
+        </div>
+      </div>
+      <div class="cartao">
+        <h3>Situação da frota</h3>
+        <div class="linha-barra">
+          <p><span>Disponíveis</span><span>32 veículos</span></p>
+          <div class="trilho"><div class="preenchimento" style="width: 57%;"></div></div>
+        </div>
+        <div class="linha-barra">
+          <p><span>Alugados</span><span>18 veículos</span></p>
+          <div class="trilho"><div class="preenchimento escuro" style="width: 32%;"></div></div>
+        </div>
+        <div class="linha-barra">
+          <p><span>Em manutenção</span><span>6 veículos</span></p>
+          <div class="trilho"><div class="preenchimento cinza" style="width: 11%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="rodape">
+      <p>Rota 365 - Painel do gerente</p>
+    </footer>
+  </div>
+  <script src="../../assets/js/gerente.js"></script>
+</body>
+</html>
