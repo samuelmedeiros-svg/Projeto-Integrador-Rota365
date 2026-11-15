@@ -1,0 +1,233 @@
+/* =========================================================
+   Cadastro de carro
+   Bootstrap 5 + estilo customizado
+   ========================================================= */
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif; 
+  color: #1f1f1f;
+  background-color: #f1f1f1;
+}
+
+.pagina {
+  padding: 60px 0 90px;
+}
+
+/* ---------- Cards ---------- */
+.painel {
+  height: 100%;
+  padding: 25px 30px;
+  background-color: #ffffff;
+  border: 1px solid #ececec;
+  border-radius: 14px;
+}
+
+.painel-titulo {
+  margin: 0 0 20px 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: #ff6a00;
+}
+
+.painel-subtitulo {
+  margin: 0 0 20px 0;
+  font-size: 15px;
+}
+
+.painel-linha {
+  margin: 25px 0;
+  border-top: 1px solid #d9d9d9;
+}
+
+/* ---------- Campos (Bootstrap floating labels) ---------- */
+.form-control {
+  border: 1px solid #d9d9d9;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+.form-floating > label {
+  font-size: 14px;
+  color: #6b6b6b;
+}
+
+/* ---------- Campo de período (data inicial / data final) ---------- */
+.periodo {
+  padding: 12px 15px;
+  border: 1px solid #d9d9d9;
+  border-radius: 6px;
+  background-color: #ffffff;
+  font-size: 14px;
+  color: #6b6b6b;
+}
+
+.data {
+  margin: 0 5px;
+  padding: 4px;
+  border: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  color: #1f1f1f;
+}
+
+/* ---------- Termos ---------- */
+.termos {
+  margin: 25px 0;
+  font-size: 13px;
+}
+
+.termos a {
+  color: #ff6a00;
+  text-decoration: none;
+}
+
+.termos a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Botão ---------- */
+.centro {
+  text-align: center;
+}
+
+.botao {
+  width: 240px;
+  padding: 13px 30px;
+  border: 0;
+  border-radius: 6px;
+  background-color: #ff6a00;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.botao:hover {
+  background-color: #e55f00;
+}
+
+.botao:active {
+  box-shadow: 0 3px #999999;
+  transform: translateY(3px);
+}
+
+/* ---------- Fotos ---------- */
+.fotos::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.foto {
+  display: block;
+  float: left;
+  width: 48%;
+  height: 175px;
+  margin: 1%;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #e6e6e6;
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  overflow: hidden;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.foto:hover {
+  background-color: #dedede;
+}
+
+.foto-icone {
+  display: block;
+  margin: 15px auto 8px;
+  width: 40px;
+  height: 40px;
+  fill: #6b6b6b;
+}
+
+.foto-titulo {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  color: #6b6b6b;
+}
+
+.foto-status {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: #8a8a8a;
+  word-break: break-all;
+}
+
+/* Quando já tem foto: esconde o ícone e deixa o texto legível sobre a imagem */
+.foto.preenchida .foto-icone {
+  display: none;
+}
+
+.foto.preenchida .foto-titulo,
+.foto.preenchida .foto-status {
+  display: inline-block;
+  margin-top: 100px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.85);
+  color: #1f1f1f;
+}
+
+.foto.preenchida .foto-titulo {
+  margin-top: 90px;
+}
+
+.foto input {
+  width: 100%;
+  font-size: 12px;
+}
+
+/* ---------- Responsivo ---------- */
+@media only screen and (max-width: 600px) {
+  .pagina {
+    padding: 60px 0 20px;
+  }
+
+  .painel {
+    padding: 20px;
+  }
+
+  .botao {
+    width: 100%;
+  }
+
+  .foto {
+    float: none;
+    width: 100%;
+    margin: 0 0 15px 0;
+  }
+}
+
+html {
+    font-size: 14px;
+}
+
+.voltar-pagina {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #333;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.voltar-pagina:hover {
+  color: #ff6a00;
+}

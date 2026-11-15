@@ -6,13 +6,37 @@
     return localStorage.getItem('logado') === 'true';
   }
 
+  function paginaProtegida() {
+    return document.documentElement.dataset.protegida === 'true';
+  }
+
+  // NOVO: em página protegida sem login, abre o modal de login e não deixa fechar.
+  // Todos os modais ficam "estáticos" (sem fechar clicando fora ou com Esc),
+  // para o usuário não escapar ao ir para "Esqueci minha senha" ou "Crie sua conta".
+  function exigirLogin() {
+    if (!paginaProtegida() || estaLogado()) return;
+
+    document.querySelectorAll('.modal').forEach(function (el) {
+      bootstrap.Modal.getOrCreateInstance(el, { backdrop: 'static', keyboard: false });
+    });
+
+    bootstrap.Modal.getOrCreateInstance(document.getElementById('loginModal')).show();
+  }
+
   // Mostra ou esconde os botões conforme o estado de login
   function atualizarHeader() {
     const logado = estaLogado();
+
     ['entrarheader-btn', 'cadastrarheader-btn'].forEach(function (id) {
       const el = document.getElementById(id);
       if (el) el.classList.toggle('d-none', logado);
     });
+
+    const saudacao = document.getElementById('saudacao-header');
+    if (saudacao) saudacao.classList.toggle('d-none', !logado);
+
+    // NOVO: ao carregar, ao sair da conta ou ao deslogar em outra aba
+    exigirLogin();
   }
 
   function fecharModalLogin() {
@@ -21,7 +45,6 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
-    // Roda ao carregar a página (mantém escondido se já estiver logado)
     atualizarHeader();
 
     // ---------- LOGIN ----------
@@ -36,7 +59,14 @@
         if (email === 'gerente@gmail.com' && senha === '123456') {
           localStorage.setItem('logado', 'true');
           localStorage.setItem('tipoUsuario', 'gerente');
-          window.location.href = raiz + 'gerente.html';
+
+          if (paginaProtegida()) {
+            // NOVO: numa página protegida, fica nela em vez de ir para gerente.html
+            fecharModalLogin();
+            atualizarHeader();
+          } else {
+            window.location.href = raiz + 'gerente.html';
+          }
 
         } else if (email === 'cliente@gmail.com' && senha === '123456') {
           localStorage.setItem('logado', 'true');
@@ -63,7 +93,6 @@
             atualizarHeader();
           }
         } else {
-          // Se não estiver logado, abre o modal de login
           const modal = document.getElementById('loginModal');
           if (modal) bootstrap.Modal.getOrCreateInstance(modal).show();
         }

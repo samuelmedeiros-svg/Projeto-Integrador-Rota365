@@ -1,44 +1,54 @@
+html {
+    font-size: 14px;
+}
 
-/* Container Principal do Filtro */
 .filter-card {
     width: 100%;
-    max-width: 360px;
-    border-radius: 15px;
     border: none;
+    border-radius: 15px;
     background-color: #fff;
+    box-shadow: none;
 }
-/* Estilo do Título (Laranja) */
+
+.filter-header {
+    border-bottom: 1px solid #f0f0f0;
+}
+
 .text-brand {
     color: #ff5a00;
     letter-spacing: 0.5px;
 }
-/* Sobrescrevendo o Accordion do Bootstrap */
-.accordion-item {
-    border: none;
-    border-bottom: 1.5px solid #dcdcdc; /* Linhas separadoras */
-    border-radius: 0 !important;
-    background-color: transparent;
+
+.accordion {
+    --bs-accordion-bg: #fff;
+    --bs-accordion-border-width: 0;
+    --bs-accordion-border-color: transparent;
+    --bs-accordion-btn-focus-box-shadow: none;
 }
 
-/* Botões de abrir/fechar categorias */
+.accordion-item {
+    border: none !important;
+    border-radius: 0 !important;
+    background-color: #fff;
+}
+
 .accordion-button {
-    padding: 15px 0;
-    font-weight: 700;
-    font-size: 1.1rem;
-    color: #000;
+    padding: 14px 0;
+    font-weight: 500;
+    font-size: 1rem;
+    color: #6b6b6b;
     background-color: transparent !important;
     box-shadow: none !important;
 }
 
 .accordion-button:not(.collapsed) {
-    color: #000; /* Mantém a cor preta quando aberto */
+    color: #333;
 }
 
-/* Remove o padding lateral do conteúdo interno */
 .accordion-body {
-    padding: 0 0 15px 0;
+    padding: 0 0 12px 0;
 }
-/* Customizando os Radio Buttons para ficarem com a borda laranja */
+
 .custom-radio {
     width: 22px;
     height: 22px;
@@ -50,14 +60,15 @@
     background-color: #ff5a00;
     border-color: #ff5a00;
 }
+
 .custom-label {
-    font-weight: 500;
+    font-weight: 400;
     cursor: pointer;
     margin-left: 8px;
     font-size: 0.95rem;
+    color: #555;
 }
 
-/* Alinhamento dos itens da lista */
 .filter-option {
     margin-bottom: 12px;
     display: flex;
@@ -66,14 +77,13 @@
 
 .search-bar-wrapper {
     padding: 20px 0;
-    
 }
 
 .search-bar {
     display: flex;
     align-items: center;
-    background-color: #fff; /* cinza acinzentado */
-    border-radius: 50px; /* bordas bem arredondadas */
+    background-color: #fff;
+    border-radius: 50px;
     padding: 16px 20px;
     max-width: 700px;
     margin: 8px auto;
@@ -81,7 +91,7 @@
 }
 
 .search-bar:focus-within {
-    box-shadow: 0 0 0 2px #ff5a00; /* destaque laranja ao focar, combinando com a marca */
+    box-shadow: 0 0 0 2px #ff5a00;
 }
 
 .search-bar .bi-search {
@@ -102,5 +112,3 @@
 .search-input::placeholder {
     color: #999;
 }
-
-

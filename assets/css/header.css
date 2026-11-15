@@ -1,126 +1,176 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-    font-family: Helvetica, Arial, sans-serif;
-    background: #e9ecef;
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  background: #e9ecef;
 }
 
-main{
-    padding-top: 70px;
-}
-/*Seção do header principal*/
-#header{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 70px;
-    background: #fff;
-    display: flex;
-    align-items: center;
-    transition: all .4s ease;
-    box-shadow: #000 10px;
-    z-index: 3;
+main {
+  padding-top: 70px;
 }
 
-#header.scroll{
-    height: 70px;
-    background: rgba(0, 0, 0, 0.95);
-    backdrop-filter: blur(10px);
-    box-shadow: #000 10px;
-}
-
-#header.container{
-    width:100%;
-    height:100%;
-    position:relative;
-}
-
-#header nav{
-    position:absolute;
-    left:50%;
-    top:50%;
-    transform:translate(-50%, -50%);
-    display:flex;
-    gap:40px;
-}
-
-#header nav a{
-    color:#000;
-    text-decoration:none;
-    font-weight:600;
-    transition:.3s;
-}
-
-#header nav a:hover{
-    color:#ff7a00;
-    cursor: pointer;
-}
-
-#header.scroll nav a{
-    color:#ffffff;
-}
-#header.scroll nav a:hover{
-    color:#ff7a00;
-}
-
-#header.scroll{
-    background:rgba(0, 0, 0, 0.767);
-    backdrop-filter:blur(12px);
-    -webkit-backdrop-filter:blur(12px);
-}
-
-#header.scroll h2,
-
-#header.scroll nav a{
-    color:#fff;
-}
-/*Conteudos do header*/
-.logo{
-    position:absolute;
-    left:20px;
-    top:55%;
-    transform:translateY(-50%);
-}
-
-.logo img{
-    width:150px;
-    height:auto;
-    display:block;
-}
-
-.header-actions{
-  position: absolute;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
+/* ===== Header ===== */
+#header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  background: #fff;
   display: flex;
   align-items: center;
-  gap: 3px; 
+  transition: all .4s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, .1);
+  z-index: 3;
 }
 
-.header-actions .btn-link{
-    padding: 2px 4px;
-    color: #000; 
+/* Container agora é flex, sem position absolute */
+#header .container {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(8px, 2vw, 30px);
+  padding: 0 clamp(8px, 2vw, 20px);
 }
 
-.header-actions .btn-link:hover,
-.header-actions .btn-link:focus,
-.header-actions .btn-link:active{
-    color: #ff7a00;
-    box-shadow: none; /* remove o contorno azul de foco do Bootstrap */
+/* Logo */
+#header .logo {
+  flex: 0 0 auto;
 }
 
-.header-actions img#profile{
-  width: 35px;
+#header .logo img {
+  width: clamp(80px, 12vw, 150px);
   height: auto;
   display: block;
 }
 
-#header.scroll .header-actions .btn-link{
-    color: #fff;
+/* Navegação: ocupa o espaço do meio e fica centralizada */
+#header nav {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(8px, 2.5vw, 40px);
+}
+
+#header nav a {
+  color: #000;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: clamp(11px, 1.4vw, 16px);
+  white-space: nowrap;
+  transition: .3s;
+}
+
+#header nav a:hover {
+  color: #ff7a00;
+  cursor: pointer;
+}
+
+/* Ações do usuário */
+#header .header-actions {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: clamp(0px, .5vw, 6px);
+}
+
+#header .header-actions .btn-link {
+  padding: 2px 4px;
+  color: #000;
+  font-size: clamp(11px, 1.4vw, 16px);
+  white-space: nowrap;
+}
+
+#header .header-actions .btn-link:hover,
+#header .header-actions .btn-link:focus,
+#header .header-actions .btn-link:active {
+  color: #ff7a00;
+  box-shadow: none;
+}
+
+#header .header-actions img#profile {
+  width: clamp(26px, 3vw, 35px);
+  height: auto;
+  display: block;
+}
+
+#saudacao-header {
+  cursor: default;
+  text-decoration: none;
+  pointer-events: none;
+}
+
+/* ===== Estado "scroll" ===== */
+#header.scroll {
+  background: rgba(0, 0, 0, 0.767);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+#header.scroll nav a,
+#header.scroll .header-actions .btn-link,
+#header.scroll #saudacao-header {
+  color: #fff;
+}
+
+#header.scroll nav a:hover,
+#header.scroll .header-actions .btn-link:hover {
+  color: #ff7a00;
+}
+
+/* ===== Telas pequenas: tudo continua visível, só mais compacto ===== */
+@media (max-width: 768px) {
+  #header .container {
+    gap: 6px;
+    padding: 0 8px;
+  }
+
+  #header nav {
+    gap: 8px;
+  }
+
+  #header nav a,
+  #header .header-actions .btn-link {
+    font-size: 11px;
+  }
+}
+
+/* Celulares muito estreitos: nav em duas linhas */
+@media (max-width: 520px) {
+  #header {
+    height: auto;
+    min-height: 70px;
+    padding: 6px 0;
+  }
+
+  #header .container {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 4px;
+  }
+
+  /* Logo à esquerda, usuário à direita na primeira linha */
+  #header .logo { order: 1; }
+  #header .header-actions { order: 2; }
+
+  /* Links ocupam a linha de baixo inteira */
+  #header nav {
+    order: 3;
+    flex: 1 1 100%;
+    justify-content: space-between;
+    gap: 4px;
+  }
+
+  main {
+    padding-top: 100px;
+  }
 }
