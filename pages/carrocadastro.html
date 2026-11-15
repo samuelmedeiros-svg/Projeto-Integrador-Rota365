@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-protegida="true">
+<head>
+  <title>Cadastrar carro</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Bootstrap 5 -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Estilo customizado -->
+  <link rel="stylesheet" type="text/css" href="../assets/css/carrocadastro.css">
+  <link rel="stylesheet" href="../assets/css/header.css">
+  <link rel="stylesheet" href="../assets/css/footer.css">
+  <link rel="stylesheet" href="../assets/css/login.css">
+  
+  <script src="../assets/js/login.js"></script>
+</head>
+<body>
+
+  <!-- ===== SEU HEADER ENTRA AQUI ===== -->
+  <header id="header">
+  <div class="container">
+    <div class="logo">
+      <a href="../index.html">
+        <img src="../assets/images/logo.png" alt="logo" id="logo">
+      </a>
+    </div>
+
+    <nav>
+      <a href="../index.html">Início</a>
+      <a href="frota.html">Frota365</a>
+      <a href="365hub.html">365hub</a>
+      <a href="#">Reservas</a>
+      <a href="contato.html">Contato</a>
+      <a href="#">Ajuda</a>
+    </nav>
+
+    <div class="header-actions">
+      <button type="button" class="btn btn-link" id="entrarheader-btn" data-bs-toggle="modal" data-bs-target="#loginModal">Entrar</button>
+      <button type="button" class="btn btn-link" id="cadastrarheader-btn" data-bs-toggle="modal" data-bs-target="#cadastroModal">Cadastrar</button>
+      <span class="btn btn-link d-none" id="saudacao-header">Olá, Ricardo!</span>
+      <a href="#">
+        <img src="../assets/images/profile.png" alt="profile" id="profile">
+      </a>
+    </div>
+  </div>
+</header>
+
+  <div class="pagina mt-5">
+    <div class="container">
+      <a href="365hub.html" class="voltar-pagina mb-3">
+        <i class="bi bi-arrow-left"></i> Voltar
+      </a>
+      <form action="#" method="post">
+        <div class="row g-4 justify-content-center">
+
+          <!-- Coluna esquerda: dados do carro -->
+          <div class="col-12 col-lg-6">
+            <section class="painel">
+              <h2 class="painel-titulo">Dados do Carro</h2>
+
+              <div class="row g-3">
+                <div class="col-12">
+                  <div class="form-floating">
+                    <input type="text" class="form-control" id="modelo" name="modelo" placeholder="Nome - Modelo">
+                    <label for="modelo">Nome - Modelo*</label>
+                  </div>
+                </div>
+
+                <div class="col-12 col-sm-6">
+                  <div class="form-floating">
+                    <input type="number" class="form-control" id="km" name="km" placeholder="Quilômetros marcados" min="0">
+                    <label for="km">Quilômetros marcados*</label>
+                  </div>
+                </div>
+
+                <div class="col-12 col-sm-6">
+                  <div class="form-floating">
+                    <input type="number" class="form-control" id="ano" name="ano" placeholder="Ano" min="1950" max="2100">
+                    <label for="ano">Ano*</label>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="form-floating">
+                    <input type="text" class="form-control" id="cor" name="cor" placeholder="Cor">
+                    <label for="cor">Cor*</label>
+                  </div>
+                </div>
+              </div>
+
+              <hr class="painel-linha">
+
+              <div class="row g-3">
+                <div class="col-12">
+                  <div class="form-floating">
+                    <input type="number" class="form-control" id="valor" name="valor" placeholder="Valor/Dia" min="0" step="0.01">
+                    <label for="valor">Valor/Dia (R$)*</label>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="periodo">
+                    <span>Estará disponível do dia*</span>
+                    <input type="date" class="data" id="data-inicio" name="data_inicio">
+                    <span>ao dia*</span>
+                    <input type="date" class="data" id="data-fim" name="data_fim">
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="form-floating">
+                    <input type="text" class="form-control" id="local" name="local" placeholder="Onde se encontra?">
+                    <label for="local">Onde se encontra?*</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-check termos">
+                <input class="form-check-input" type="checkbox" id="termos" name="termos">
+                <label class="form-check-label" for="termos">
+                  Estou ciente dos <a href="#" target="_blank">termos de uso</a>
+                  e <a href="#" target="_blank">política de privacidade</a>
+                </label>
+              </div>
+
+              <div class="centro">
+                <input type="submit" class="botao" value="CADASTRAR CARRO">
+              </div>
+            </section>
+          </div>
+
+          <!-- Coluna direita: imagens -->
+          <div class="col-12 col-lg-6">
+            <section class="painel">
+              <h2 class="painel-titulo">Imagens do carro</h2>
+              <p class="painel-subtitulo">Fotos da frente, trás e os dois lados</p>
+
+              <div class="fotos">
+                <label class="foto" for="foto-frente">
+                  <svg class="foto-icone" viewBox="0 0 24 24"><path d="M9 3 7.2 5H4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-3.2L15 3H9zm3 5.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9zm0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5z"/></svg>
+                  <span class="foto-titulo">Frente</span>
+                  <span class="foto-status">Clique para enviar</span>
+                  <input type="file" id="foto-frente" name="foto_frente" accept="image/*" hidden>
+                </label>
+
+                <label class="foto" for="foto-tras">
+                  <svg class="foto-icone" viewBox="0 0 24 24"><path d="M9 3 7.2 5H4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-3.2L15 3H9zm3 5.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9zm0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5z"/></svg>
+                  <span class="foto-titulo">Trás</span>
+                  <span class="foto-status">Clique para enviar</span>
+                  <input type="file" id="foto-tras" name="foto_tras" accept="image/*" hidden>
+                </label>
+
+                <label class="foto" for="foto-lado-esquerdo">
+                  <svg class="foto-icone" viewBox="0 0 24 24"><path d="M9 3 7.2 5H4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-3.2L15 3H9zm3 5.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9zm0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5z"/></svg>
+                  <span class="foto-titulo">Lado esquerdo</span>
+                  <span class="foto-status">Clique para enviar</span>
+                  <input type="file" id="foto-lado-esquerdo" name="foto_lado_esquerdo" accept="image/*" hidden>
+                </label>
+
+                <label class="foto" for="foto-lado-direito">
+                  <svg class="foto-icone" viewBox="0 0 24 24"><path d="M9 3 7.2 5H4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-3.2L15 3H9zm3 5.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9zm0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5z"/></svg>
+                  <span class="foto-titulo">Lado direito</span>
+                  <span class="foto-status">Clique para enviar</span>
+                  <input type="file" id="foto-lado-direito" name="foto_lado_direito" accept="image/*" hidden>
+                </label>
+               </div>    
+            </section>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- ===== SEU FOOTER ENTRA AQUI ===== -->
+  <footer>
+    <nav class="footer-nav">
+      <a href="#">Sobre nós</a>
+      <a href="#">FAQ</a>
+      <a href="#">Agências</a>
+      <a href="#">Termos</a>
+      <a href="#">Configurações</a>
+    </nav>
+
+    <div class="footer-main">
+      <img src="../assets/images/365.png" alt="365" class="numero-fundo">
+
+      <div class="footer-brand">
+        <a href="index.htm"><img src="../assets/images/logo-footer.png" alt="logo" class="footer-logo"></a>
+      </div>
+
+      <div class="footer-contato">
+        <div class="linha">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 6l10 7 10-7"/></svg>
+          apoio@rota365.com.br
+        </div>
+        <div class="linha">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          + 55 (34) 9 8765-4321
+        </div>
+      </div>
+
+      <div class="footer-dados">
+        Dados da empresa: Grupo Rota 365 Ltda. - CNPJ: Nº 00.123.456/0001-67<br>
+        Sede: R. Blanche Galassi, 150 - Altamira, Uberlândia - MG, 38411-104<br>
+        Central dos usuários: 0800 123 4567
+      </div>
+
+      <div class="footer-site">www.rota365.com.br</div>
+    </div>
+
+    <div class="footer-bottom">
+      © Rota365, todos os direitos reservados, 2026.
+    </div>
+  </footer> 
+
+<div class="modal fade" id="loginModal" tabindex="-1" aria-label="loginModallabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="btn-voltar" data-bs-dismiss="modal" aria-label="Voltar">
+          <i class="bi bi-arrow-left"></i>
+        </button>
+
+        <img src="../assets/images/logo.png" alt="logo" class="modal-img">
+
+        <div class="divider-text">Acesse com uma das suas contas a seguir</div>
+
+        <button type="button" class="social-btn">
+          <i class="bi bi-google" style="color:#EA4335;"></i>
+          Google
+        </button>
+        <button type="button" class="social-btn">
+          <i class="bi bi-apple" style="color:#000;"></i>
+          Apple
+        </button>
+
+        <div class="divider-text">Ou entre com seu login e senha</div>
+
+        <form id="loginForm">
+          <div class="field-group">
+            <label for="InputEmail1" class="form-label">E-mail ou CPF*</label>
+            <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp" placeholder="">
+          </div>
+
+          <div class="field-group">
+            <label for="InputPassword1" class="form-label">Senha*</label>
+            <input type="password" class="form-control" id="InputPassword1" placeholder="">
+            <button type="button" class="toggle-password" data-target="InputPassword1">
+              <i class="bi bi-eye-slash"></i>
+            </button>
+          </div>
+
+          <div class="leva-senha">
+            <button type="button" id="levasenha-btn" class="btn btn-link btn-sm p-0" data-bs-toggle="modal" data-bs-target="#trocarsenhaModal">Esqueci minha senha</button>
+          </div>
+
+          <button id="entrar-btn" type="submit" class="btn btn-sm">Entrar</button>
+
+          <div class="leva-cadastro">
+            <button type="button" id="levacadastro-btn" class="btn btn-link btn-sm p-0" data-bs-target="#cadastroModal" data-bs-toggle="modal">Crie sua conta</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="trocarsenhaModal" aria-label="trocarsenhaModallabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="btn-voltar" data-bs-target="#loginModal" data-bs-toggle="modal" aria-label="Voltar">
+          <i class="bi bi-arrow-left"></i>
+        </button>
+
+        <img src="../assets/images/logo.png" alt="logo" class="modal-img">
+
+        <div class="divider-text">Redefina sua senha</div>
+
+        <form>
+          <div class="field-group">
+            <label for="InputEmailReset" class="form-label">E-mail*</label>
+            <input type="email" class="form-control" id="InputEmailReset" placeholder="">
+          </div>
+
+          <p class="form-hint">Será enviado um e-mail de redefinição da senha.</p>
+
+          <button id="entrar-btn" type="submit" class="btn btn-sm">Enviar</button>
+
+          <div class="leva-cadastro">
+            <button type="button" id="levacadastro-btn" class="btn btn-link btn-sm p-0" data-bs-target="#cadastroModal" data-bs-toggle="modal">Crie sua conta</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="cadastroModal" aria-label="cadastroModallabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="btn-voltar" data-bs-target="#loginModal" data-bs-toggle="modal" aria-label="Voltar">
+          <i class="bi bi-arrow-left"></i>
+        </button>
+
+        <img src="../assets/images/logo.png" alt="logo" class="modal-img">
+        <div class="divider-text">Crie sua conta</div>
+
+        <form>
+          <div class="field-group">
+            <label for="InputNomeCad" class="form-label">Nome completo*</label>
+            <input type="text" class="form-control" id="InputNomeCad" autocomplete="name" placeholder="">
+          </div>
+
+          <div class="field-group">
+            <label for="InputCpfCad" class="form-label">CPF*</label>
+            <input type="text" class="form-control" id="InputCpfCad" inputmode="numeric" maxlength="14" placeholder="000.000.000-00">
+          </div>
+
+          <div class="field-group">
+            <label for="InputEmailCad" class="form-label">E-mail*</label>
+            <input type="email" class="form-control" id="InputEmailCad" aria-describedby="emailHelp" placeholder="">
+          </div>
+
+          <div class="field-group">
+            <label for="InputNewPasswordCad" class="form-label">Senha*</label>
+            <input type="password" class="form-control" id="InputNewPasswordCad" placeholder="">
+            <button type="button" class="toggle-password" data-target="InputNewPasswordCad">
+              <i class="bi bi-eye-slash"></i>
+            </button>
+          </div>
+
+          <div class="field-group">
+            <label for="InputTel" class="form-label">Seu Telefone*</label>
+            <input type="text" class="form-control" id="InputTel" placeholder="(99) 99999-9999">
+          </div>
+
+          <button id="entrar-btn" type="submit" class="btn btn-sm">Criar Conta</button>
+
+          <div class="leva-cadastro">
+            <button type="button" id="levacadastro-btn" class="btn btn-link btn-sm p-0" data-bs-target="#loginModal" data-bs-toggle="modal">Faça login</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/scroll.js"></script>
+</body>
+</html>
