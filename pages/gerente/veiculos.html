@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Painel de gerenciamento de locadora de veículos">
+  <title>Veículos - Rota 365</title>
+  <script src="../../assets/js/guard-gerente.js"></script>
+  <link rel="stylesheet" type="text/css" href="../../assets/css/gerente/estilo.css">
+</head>
+<body class="area-gerente">
+  <aside class="sidebar">
+    <div class="marca">
+      <img src="../../assets/images/gerente/logo.png" alt="Rota 365" width="200">
+    </div>
+    <div class="perfil">
+      <img src="../../assets/images/gerente/perfil.png" alt="Foto de perfil de Julia Dias" width="80" height="80">
+      <p>Julia Dias</p>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="dashboard.html">Visão Geral</a></li>
+        <li><a href="veiculos.html" class="ativo">Veículos</a></li>
+        <li><a href="reservas.html">Reservas e Devoluções</a></li>
+        <li><a href="clientes.html">Clientes</a></li>
+        <li><a href="financeiro.html">Financeiro</a></li>
+        <li><a href="relatorios.html">Relatórios</a></li>
+      </ul>
+    </nav>
+    <div class="sair">
+      <a href="../../index.html">Voltar ao site</a>
+      <a href="#" id="sair-gerente">Sair</a>
+    </div>
+  </aside>
+  <div class="principal">
+    <header class="topo">
+      <h1>Veículos</h1>
+      <p>Acompanhe a frota e a situação de cada veículo.</p>
+    </header>
+    <div class="frota">
+      <div class="frota-topo">
+        <p class="frota-total"><strong>56</strong> veículos na frota</p>
+      </div>
+      <div class="frota-barra">
+        <div class="trecho laranja" style="width: 57%;"></div>
+        <div class="trecho preto" style="width: 32%;"></div>
+        <div class="trecho cinza" style="width: 11%;"></div>
+      </div>
+      <div class="frota-legenda">
+        <p><span class="marca-cor laranja"></span><strong>32</strong> Disponíveis</p>
+        <p><span class="marca-cor preto"></span><strong>18</strong> Alugados</p>
+        <p><span class="marca-cor cinza"></span><strong>6</strong> Em manutenção</p>
+      </div>
+    </div>
+    <details class="novo">
+      <summary>+ Novo Veículo</summary>
+      <div class="cartao filtros">
+        <form>
+          <fieldset>
+            <legend>Novo veículo</legend>
+            <div class="campos">
+            <div class="campo">
+              <label for="vei-modelo">Modelo</label>
+              <input type="text" id="vei-modelo" name="vei-modelo" placeholder="Ex.: Onix">
+            </div>
+            <div class="campo">
+              <label for="vei-marca">Marca</label>
+              <input type="text" id="vei-marca" name="vei-marca" placeholder="Ex.: Chevrolet">
+            </div>
+            <div class="campo">
+              <label for="vei-placa">Placa</label>
+              <input type="text" id="vei-placa" name="vei-placa" placeholder="QWE-1A23">
+            </div>
+            <div class="campo">
+              <label for="vei-ano">Ano</label>
+              <input type="number" id="vei-ano" name="vei-ano" placeholder="2026" min="1990" max="2027">
+            </div>
+            <div class="campo">
+              <label for="vei-categoria">Categoria do Veículo</label>
+              <select id="vei-categoria" name="vei-categoria">
+                <option value="">Selecione</option>
+                <option value="economico">Econômico</option>
+                <option value="suv">SUV</option>
+                <option value="picape">Picape</option>
+                <option value="sedan">Sedan</option>
+              </select>
+            </div>
+            <div class="campo">
+              <label for="vei-diaria">Valor da diária (R$)</label>
+              <input type="number" id="vei-diaria" name="vei-diaria" placeholder="0,00" min="0" step="0.01">
+            </div>
+            <div class="campo">
+              <label for="vei-status">Situação</label>
+              <select id="vei-status" name="vei-status">
+                <option value="disponivel">Disponível</option>
+                <option value="alugado">Alugado</option>
+                <option value="manutencao">Manutenção</option>
+              </select>
+            </div>
+            </div>
+            <div class="campo-botao acao-form">
+              <button type="button">Cadastrar veículo</button>
+              <button type="reset" class="secundario">Cancelar</button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </details>
+    <div class="cartao tabela-area">
+      <form class="filtro-embutido">
+        <div class="campos">
+          <div class="campo">
+            <label for="placa">Placa</label>
+            <input type="text" id="placa" name="placa" placeholder="Ex.: QWE-1A23">
+          </div>
+          <div class="campo">
+            <label for="marca">Marca</label>
+            <select id="marca" name="marca">
+              <option value="">Todas</option>
+              <option value="chevrolet">Chevrolet</option>
+              <option value="hyundai">Hyundai</option>
+              <option value="volkswagen">Volkswagen</option>
+              <option value="fiat">Fiat</option>
+              <option value="toyota">Toyota</option>
+            </select>
+          </div>
+          <div class="campo">
+            <label for="categoria">Categoria do Veículo</label>
+            <select id="categoria" name="categoria">
+              <option value="">Todas</option>
+              <option value="economico">Econômico</option>
+              <option value="suv">SUV</option>
+              <option value="picape">Picape</option>
+              <option value="sedan">Sedan</option>
+            </select>
+          </div>
+          <div class="campo">
+            <label for="status">Situação</label>
+            <select id="status" name="status">
+              <option value="">Todas</option>
+              <option value="disponivel">Disponível</option>
+              <option value="alugado">Alugado</option>
+              <option value="manutencao">Manutenção</option>
+            </select>
+          </div>
+          <div class="campo-botao">
+            <button type="button">Filtrar</button>
+            <button type="reset" class="secundario">Limpar</button>
+          </div>
+        </div>
+      </form>
+      <table>
+        <caption>Frota cadastrada</caption>
+        <thead>
+          <tr>
+            <th>Placa</th>
+            <th>Modelo</th>
+            <th>Ano</th>
+            <th>Categoria</th>
+            <th class="num">Diária</th>
+            <th>Situação</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="marca-chevrolet categoria-economico status-disponivel">
+            <td>QWE-1A23</td>
+            <td>Chevrolet Onix</td>
+            <td>2024</td>
+            <td>Econômico</td>
+            <td class="num">R$ 120</td>
+            <td><span class="selo laranja">Disponível</span></td>
+            <td>
+              <div class="acoes">
+                <button type="button" class="botao-mini">Editar</button>
+                <button type="button" class="botao-mini excluir">Remover</button>
+              </div>
+            </td>
+          </tr>
+          <tr class="marca-hyundai categoria-economico status-alugado">
+            <td>RTY-4B56</td>
+            <td>Hyundai HB20</td>
+            <td>2023</td>
+            <td>Econômico</td>
+            <td class="num">R$ 125</td>
+            <td><span class="selo preto">Alugado</span></td>
+            <td>
+              <div class="acoes">
+                <button type="button" class="botao-mini">Editar</button>
+                <button type="button" class="botao-mini excluir">Remover</button>
+              </div>
+            </td>
+          </tr>
+          <tr class="marca-volkswagen categoria-suv status-disponivel">
+            <td>UIO-7C89</td>
+            <td>Volkswagen T-Cross</td>
+            <td>2025</td>
+            <td>SUV</td>
+            <td class="num">R$ 230</td>
+            <td><span class="selo laranja">Disponível</span></td>
+            <td>
+              <div class="acoes">
+                <button type="button" class="botao-mini">Editar</button>
+                <button type="button" class="botao-mini excluir">Remover</button>
+              </div>
+            </td>
+          </tr>
+          <tr class="marca-fiat categoria-picape status-alugado">
+            <td>ASD-2D34</td>
+            <td>Fiat Toro</td>
+            <td>2024</td>
+            <td>Picape</td>
+            <td class="num">R$ 260</td>
+            <td><span class="selo preto">Alugado</span></td>
+            <td>
+              <div class="acoes">
+                <button type="button" class="botao-mini">Editar</button>
+                <button type="button" class="botao-mini excluir">Remover</button>
+              </div>
+            </td>
+          </tr>
+          <tr class="marca-toyota categoria-sedan status-manutencao">
+            <td>FGH-5E67</td>
+            <td>Toyota Corolla</td>
+            <td>2022</td>
+            <td>Sedan</td>
+            <td class="num">R$ 280</td>
+            <td><span class="selo branco">Manutenção</span></td>
+            <td>
+              <div class="acoes">
+                <button type="button" class="botao-mini">Editar</button>
+                <button type="button" class="botao-mini excluir">Remover</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <footer class="rodape">
+      <p>Rota 365 - Painel do gerente</p>
+    </footer>
+  </div>
+  <script src="../../assets/js/gerente.js"></script>
+</body>
+</html>
